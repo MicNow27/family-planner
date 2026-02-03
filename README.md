@@ -67,14 +67,20 @@ npm run lint
 family-planner/
 ├── public/          # Static assets
 ├── src/
-│   ├── assets/      # Images, icons, etc.
-│   ├── App.tsx      # Main application component
-│   ├── App.scss     # Application-wide styles
-│   ├── main.tsx     # Application entry point
-│   └── index.scss   # Global styles
-├── index.html       # HTML template
-├── vite.config.ts   # Vite configuration
-└── tsconfig.json    # TypeScript configuration
+│   ├── assets/        # Images, icons, etc.
+│   ├── components/    # Reusable React components
+│   ├── styles/        # SCSS styles
+│   │   ├── abstracts/
+│   │   ├── base/
+│   │   └── values/
+│   ├── App.scss       # Root component styles
+│   ├── App.tsx        # Main application component
+│   ├── index.scss     # Global styles and entry point for SCSS
+│   └── main.tsx       # Application entry point
+├── eslint.config.js   # ESLint configuration
+├── index.html         # HTML template
+├── tsconfig.json      # TypeScript configuration
+└── vite.config.ts     # Vite configuration
 ```
 
 ## 🇺🇸 Spelling Convention
