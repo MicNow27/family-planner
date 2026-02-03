@@ -1,0 +1,6 @@
+@use "../values/component-structure" as *;
+
+@mixin card-defaults {
+  border-radius: $card-border-radius;
+  padding: $card-padding;
+}
