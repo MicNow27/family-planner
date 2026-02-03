@@ -1,0 +1,43 @@
+@use "../values/text" as *;
+
+@mixin xxs-text {
+  font-size: $font-size-xxs;
+  line-height: $line-height-xxs;
+  letter-spacing: $letter-spacing-xxs;
+}
+
+@mixin xs-text {
+  font-size: $font-size-xs;
+  line-height: $line-height-xs;
+  letter-spacing: $letter-spacing-xs;
+}
+
+@mixin s-text {
+  font-size: $font-size-s;
+  line-height: $line-height-s;
+  letter-spacing: $letter-spacing-s;
+}
+
+@mixin m-text {
+  font-size: $font-size-m;
+  line-height: $line-height-m;
+  letter-spacing: $letter-spacing-m;
+}
+
+@mixin l-text {
+  font-size: $font-size-l;
+  line-height: $line-height-l;
+  letter-spacing: $letter-spacing-l;
+}
+
+@mixin xl-text {
+  font-size: $font-size-xl;
+  line-height: $line-height-xl;
+  letter-spacing: $letter-spacing-xl;
+}
+
+@mixin xxl-text {
+  font-size: $font-size-xxl;
+  line-height: $line-height-xxl;
+  letter-spacing: $letter-spacing-xxl;
+}
