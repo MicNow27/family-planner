@@ -1,5 +1,6 @@
 import SignUp from "@/features/auth/SignUp/SignUp.tsx";
 import Dashboard from "@/features/Dashboard/Dashboard.tsx";
+import Onboarding from "@/features/onboarding/Onboarding/Onboarding.tsx";
 import SettingsLanding from "@/features/settings/SettingsLanding/SettingsLanding.tsx";
 import App from "@/layouts/App/App.tsx";
 import PublicLanding from "@/layouts/PublicLanding/PublicLanding.tsx";
@@ -32,6 +33,16 @@ const routes: Route[] = [
           header: {
             title: "Login",
             showBackButton: true,
+          },
+        },
+      },
+      {
+        path: "/onboarding",
+        element: <Onboarding />,
+        handle: {
+          header: {
+            title: "Onboarding",
+            showBackButton: false,
           },
         },
       },
