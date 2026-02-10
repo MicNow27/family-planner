@@ -17,7 +17,6 @@ type ChildRoute = {
 };
 
 type MainRoute = {
-  path?: string;
   element: React.ReactNode;
   children: ChildRoute[];
 };
