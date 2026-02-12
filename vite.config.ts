@@ -1,6 +1,6 @@
-import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
+import { defineConfig } from "vite";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -13,7 +13,10 @@ export default defineConfig({
         __dirname,
         "./src/styles/abstracts/_breakpoints.scss",
       ),
-      cards: path.resolve(__dirname, "./src/styles/abstracts/_cards.scss"),
+      components: path.resolve(
+        __dirname,
+        "./src/styles/abstracts/_components.scss",
+      ),
       typography: path.resolve(
         __dirname,
         "./src/styles/abstracts/_typography.scss",
