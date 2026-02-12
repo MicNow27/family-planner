@@ -1,0 +1,38 @@
+@use "typography" as typo;
+
+.public-landing {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  &__logo {
+    height: 10rem;
+    width: 10rem;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.125rem;
+  }
+
+  &__title {
+    @include typo.xxl-text();
+    color: var(--primary-text-color);
+  }
+
+  &__slogan {
+    @include typo.m-text();
+    color: var(--tertiary-text-color);
+    font-style: italic;
+  }
+}
