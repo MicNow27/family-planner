@@ -1,21 +1,45 @@
+@use "breakpoints" as bp;
 @use "typography" as typo;
 
 .public-landing {
   height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
+
+  &__hero {
+    display: none;
+
+    @include bp.media-query(lg) {
+      flex: 3;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding-right: 20vw;
+
+      &__img {
+        height: 50vh;
+      }
+    }
+  }
 
   &__actions {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 1.25rem;
+
+    @include bp.media-query(lg) {
+      flex: 2;
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+    }
   }
 
   &__logo {
     height: 10rem;
-    width: 10rem;
   }
 
   &__text {
@@ -32,7 +56,14 @@
 
   &__slogan {
     @include typo.m-text();
+    font-weight: var(--font-weight-medium);
     color: var(--tertiary-text-color);
     font-style: italic;
+  }
+
+  &__button-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
   }
 }
