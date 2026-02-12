@@ -1,0 +1,18 @@
+@use "components" as *;
+
+.secondary-button {
+  @include button-defaults();
+
+  border: solid var(--border-weight) var(--dividers-color);
+  background-color: var(--interactive-surface-color);
+  color: var(--primary-text-color);
+
+  &:hover {
+    background-color: var(--interactive-surface-hover);
+  }
+
+  &:disabled {
+    background-color: var(--primary-surface-color);
+    color: var(--disabled-text-color);
+  }
+}
