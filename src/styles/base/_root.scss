@@ -4,10 +4,12 @@
 
 :root {
   --primary-color: #{$accent};
+  --primary-hover: #{$accent-hover};
   --primary-focus: #{$accent-focus};
+  --primary-disabled: #{$accent-disabled};
+
   --secondary-color: #{$burnt-orange};
-  --tertiary-color: #{$light-pink};
-  --highlight-color: #{$bright-pink};
+  --tertiary-color: #{$bright-pink};
 
   --primary-user-color-1: #{$coral-pink};
   --primary-user-color-2: #{$green-blue};
@@ -30,6 +32,7 @@
   --primary-surface-color: #{$primary-surface};
   --secondary-surface-color: #{$secondary-surface};
   --interactive-surface-color: #{$interactive-surface};
+  --interactive-surface-hover: #{$interactive-surface-hover};
   --dividers-color: #{$dividers};
 
   --primary-text-color: #{$primary-text};
