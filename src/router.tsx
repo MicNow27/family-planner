@@ -3,7 +3,7 @@ import Dashboard from "@/features/Dashboard/Dashboard.tsx";
 import Onboarding from "@/features/onboarding/Onboarding/Onboarding.tsx";
 import SettingsLanding from "@/features/settings/SettingsLanding/SettingsLanding.tsx";
 import App from "@/layouts/App/App.tsx";
-import PublicLanding from "@/layouts/PublicLanding/PublicLanding.tsx";
+import Landing from "@/layouts/Landing/Landing.tsx";
 import type { Route } from "@/types/route.ts";
 import { createBrowserRouter } from "react-router";
 import Login from "./features/auth/Login/Login";
@@ -11,7 +11,7 @@ import Login from "./features/auth/Login/Login";
 const routes: Route[] = [
   {
     path: "/",
-    element: <PublicLanding />,
+    element: <Landing />,
   },
   {
     element: <App />,
