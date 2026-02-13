@@ -1,12 +1,15 @@
 @use "../values/colors" as *;
 @use "../values/text" as font;
+@use "../values/components" as comp;
 
 :root {
   --primary-color: #{$accent};
+  --primary-hover: #{$accent-hover};
   --primary-focus: #{$accent-focus};
+  --primary-disabled: #{$accent-disabled};
+
   --secondary-color: #{$burnt-orange};
-  --tertiary-color: #{$light-pink};
-  --highlight-color: #{$bright-pink};
+  --tertiary-color: #{$bright-pink};
 
   --primary-user-color-1: #{$coral-pink};
   --primary-user-color-2: #{$green-blue};
@@ -29,6 +32,7 @@
   --primary-surface-color: #{$primary-surface};
   --secondary-surface-color: #{$secondary-surface};
   --interactive-surface-color: #{$interactive-surface};
+  --interactive-surface-hover: #{$interactive-surface-hover};
   --dividers-color: #{$dividers};
 
   --primary-text-color: #{$primary-text};
@@ -42,4 +46,14 @@
   --font-weight-medium: #{font.$font-weight-medium};
   --font-weight-semibold: #{font.$font-weight-semibold};
   --font-weight-bold: #{font.$font-weight-bold};
+
+  --border-weight: #{comp.$border-weight};
+
+  --button-height: #{comp.$button-height};
+  --button-width: #{comp.$button-width};
+  --button-border-radius: #{comp.$button-border-radius};
+  --button-shadow-spread: #{comp.$button-shadow-spread};
+
+  --card-border-radius: #{comp.$card-border-radius};
+  --card-card-padding: #{comp.$card-padding};
 }

@@ -1,13 +1,16 @@
 // Accents and colours
 $accent: #f59e0c; // FABs, primary buttons, active tabs
+$accent-hover: #d97706;
 $accent-focus: rgba(245, 158, 12, 0.2);
-$burnt-orange: #e0681e; // secondary emphasis / warm highlights
-$light-pink: #ff7f8e; // tertiary emphasis
-$bright-pink: #ff6583; // special moments
+$accent-disabled: rgba(245, 158, 12, 0.4);
+
+$burnt-orange: #e0681e; // emphasis / warm highlights
+$bright-pink: #ff6884; // special moments
 
 // User avatars and tags
-$coral-pink: #ff6884; // mum
+$coral-pink: #ff7f8e; // mum
 $green-blue: #4fa3a5; // dad
+
 $soft-peach: #f3b4a2;
 $soft-sky-blue: #bdd3e8;
 $dusty-blue: #9fb3d9;
@@ -33,13 +36,15 @@ $background: #0f1320;
 //$background: #14162f;
 
 $primary-surface: #2a293b; // cards, sheets, panels
-// $abc: #2f2e41;
+//$primary-surface: #2f2e41;
 $secondary-surface: #39374e; // nested cards, list rows
 $interactive-surface: #3f3d56;
+$interactive-surface-hover: #525066;
+//$interactive-surface-hover: #656377;
 $dividers: #504f60;
 
 // Text colours
 $primary-text: #e6e6e6; // titles, main content
 $secondary-text: #dddedf; // labels, metadata
-$tertiary-text: #8985a8; // helper text
+$tertiary-text: #c6c7c8; // helper text
 $disabled-text: #6e6d84; // low-emphasis text
