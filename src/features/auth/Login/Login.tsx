@@ -21,7 +21,7 @@ const Login = () => {
     register,
     handleSubmit,
     trigger,
-    formState: { dirtyFields, errors, isSubmitting },
+    formState: { dirtyFields, errors, isSubmitting, isValid },
   } = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -98,7 +98,7 @@ const Login = () => {
         <PrimaryButton
           type="submit"
           text={isSubmitting ? "Logging in..." : "Login"}
-          disabled={isSubmitting}
+          disabled={isSubmitting || !isValid}
         />
       </form>
     </div>
