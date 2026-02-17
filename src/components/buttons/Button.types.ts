@@ -1,5 +1,6 @@
 export type ButtonProps = {
   text: string;
-  onClick: () => void;
+  onClick?: () => void;
   disabled?: boolean;
+  type?: "button" | "submit" | "reset";
 };

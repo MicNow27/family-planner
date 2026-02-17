@@ -1,9 +1,15 @@
 import "./SecondaryButton.scss";
 import type { ButtonProps } from "@/components/buttons/Button.types.ts";
 
-const SecondaryButton = ({ text, onClick, disabled = false }: ButtonProps) => (
+const SecondaryButton = ({
+  text,
+  onClick,
+  disabled = false,
+  type = "button",
+}: ButtonProps) => (
   <button
-    className={`secondary-button secondary-button--${disabled}`}
+    className={`secondary-button ${disabled && "secondary-button--disabled"}`}
+    type={type}
     onClick={onClick}
     disabled={disabled}
   >
