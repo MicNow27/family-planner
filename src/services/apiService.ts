@@ -1,7 +1,6 @@
-// NOTE: to be used later
-// import { createClient } from "@supabase/supabase-js";
-//
-// const client = createClient(
-//   import.meta.env.VITE_SUPABASE_URL,
-//   import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
-// );
+import { createClient } from "@supabase/supabase-js";
+
+export const supabaseClient = createClient(
+  import.meta.env.VITE_SUPABASE_URL,
+  import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
+);

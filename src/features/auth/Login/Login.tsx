@@ -4,6 +4,7 @@ import {
   type LoginFormData,
   loginSchema,
 } from "@/components/forms/authForm/schemas/login.schema.ts";
+import { supabaseClient } from "@/services/apiService.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -17,6 +18,8 @@ const Login = () => {
     password: false,
   });
 
+  const [loginError, setLoginError] = useState<string | null>(null);
+
   const {
     register,
     handleSubmit,
@@ -24,22 +27,18 @@ const Login = () => {
     formState: { dirtyFields, errors, isSubmitting, isValid },
   } = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
-    defaultValues: {
-      email: "",
-      password: "",
-    },
   });
 
   const onSubmit = async (data: LoginFormData) => {
-    try {
-      console.log("Login data:", data);
-      // Example: await loginUser(data.email, data.password);
-      // Navigate to dashboard after successful login
-      navigate("/dashboard");
-    } catch (error) {
-      console.error("Login error:", error);
-      // Handle error (show toast, etc.)
-    }
+    setLoginError(null);
+
+    const { data: user, error } = await supabaseClient.auth.signInWithPassword({
+      email: data.email,
+      password: data.password,
+    });
+
+    if (error || !user) setLoginError("Email or password is incorrect");
+    else navigate("/dashboard");
   };
 
   return (
@@ -94,6 +93,8 @@ const Login = () => {
             <p className="form-error">{errors.password.message}</p>
           )}
         </div>
+
+        {loginError && <p className="form-error">{loginError}</p>}
 
         <PrimaryButton
           type="submit"
