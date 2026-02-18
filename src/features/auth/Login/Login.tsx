@@ -42,67 +42,53 @@ const Login = () => {
   };
 
   return (
-    <div className="auth-container">
-      <form onSubmit={handleSubmit(onSubmit)} className="auth-form">
-        <div className="form-field">
-          <label htmlFor="email" className="form-label">
-            Email
-          </label>
-          <input
-            id="email"
-            type="email"
-            className={`form-input ${errors.email ? "form-input--error" : ""}`}
-            {...register("email", {
-              onBlur: () => {
-                if (!dirtyFields.email) return;
-                void trigger("email");
-                setLiveValidate((prev) => ({ ...prev, email: true }));
-              },
-              onChange: () => {
-                if (!dirtyFields.email || !liveValidate.email) return;
-                void trigger("email");
-              },
-            })}
-            placeholder="Enter your email"
-          />
-          {errors.email && <p className="form-error">{errors.email.message}</p>}
-        </div>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <label htmlFor="email">Email</label>
+      <input
+        id="email"
+        type="email"
+        {...register("email", {
+          onBlur: () => {
+            if (!dirtyFields.email) return;
+            void trigger("email");
+            setLiveValidate((prev) => ({ ...prev, email: true }));
+          },
+          onChange: () => {
+            if (!dirtyFields.email || !liveValidate.email) return;
+            void trigger("email");
+          },
+        })}
+        placeholder="Enter your email"
+      />
+      {errors.email && <p>{errors.email.message}</p>}
 
-        <div className="form-field">
-          <label htmlFor="password" className="form-label">
-            Password
-          </label>
-          <input
-            id="password"
-            type="password"
-            className={`form-input ${errors.password ? "form-input--error" : ""}`}
-            {...register("password", {
-              onBlur: () => {
-                if (!dirtyFields.password) return;
-                void trigger("password");
-                setLiveValidate((prev) => ({ ...prev, password: true }));
-              },
-              onChange: () => {
-                if (!dirtyFields.password || !liveValidate.password) return;
-                void trigger("password");
-              },
-            })}
-            placeholder="Enter your password"
-          />
-          {errors.password && (
-            <p className="form-error">{errors.password.message}</p>
-          )}
-        </div>
+      <label htmlFor="password">Password</label>
+      <input
+        id="password"
+        type="password"
+        {...register("password", {
+          onBlur: () => {
+            if (!dirtyFields.password) return;
+            void trigger("password");
+            setLiveValidate((prev) => ({ ...prev, password: true }));
+          },
+          onChange: () => {
+            if (!dirtyFields.password || !liveValidate.password) return;
+            void trigger("password");
+          },
+        })}
+        placeholder="Enter your password"
+      />
+      {errors.password && <p>{errors.password.message}</p>}
 
-        {loginError && <p className="form-error">{loginError}</p>}
+      {loginError && <p>{loginError}</p>}
 
-        <PrimaryButton
-          type="submit"
-          text={isSubmitting ? "Logging in..." : "Login"}
-          disabled={isSubmitting || !isValid}
-        />
-      </form>
-    </div>
+      <PrimaryButton
+        type="submit"
+        text={isSubmitting ? "Logging in..." : "Login"}
+        disabled={isSubmitting || !isValid}
+      />
+    </form>
   );
 };
 
