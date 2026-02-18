@@ -1,3 +1,5 @@
+import AuthCallback from "@/features/auth/AuthCallback/AuthCallback.tsx";
+import CheckEmail from "@/features/auth/CheckEmail/CheckEmail.tsx";
 import SignUp from "@/features/auth/SignUp/SignUp.tsx";
 import Dashboard from "@/features/Dashboard/Dashboard.tsx";
 import Onboarding from "@/features/onboarding/Onboarding/Onboarding.tsx";
@@ -12,6 +14,14 @@ const routes: Route[] = [
   {
     path: "/",
     element: <Landing />,
+  },
+  {
+    path: "/check-email",
+    element: <CheckEmail />,
+  },
+  {
+    path: "/auth-callback",
+    element: <AuthCallback />,
   },
   {
     element: <App />,

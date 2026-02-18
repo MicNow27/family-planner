@@ -38,13 +38,15 @@ const Login = () => {
     resolver: zodResolver(loginSchema),
   });
 
-  const onSubmit = async (data: LoginFormData) => {
+  const onSubmit = async (formData: LoginFormData) => {
     setLoginError(null);
 
     const { data: user, error } = await supabaseClient.auth.signInWithPassword({
-      email: data.email,
-      password: data.password,
+      email: formData.email,
+      password: formData.password,
     });
+
+    // something with sessionID / JWT?
 
     if (error || !user) setLoginError(LOGIN_ERROR);
     else navigate("/dashboard");
@@ -52,43 +54,47 @@ const Login = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <label htmlFor="email">{EMAIL_LABEL}</label>
-      <input
-        id="email"
-        type="email"
-        {...register("email", {
-          onBlur: () => {
-            if (!dirtyFields.email) return;
-            void trigger("email");
-            setLiveValidate((prev) => ({ ...prev, email: true }));
-          },
-          onChange: () => {
-            if (!dirtyFields.email || !liveValidate.email) return;
-            void trigger("email");
-          },
-        })}
-        placeholder={EMAIL_PLACEHOLDER}
-      />
-      {errors.email && <p>{errors.email.message}</p>}
+      <div>
+        <label htmlFor="email">{EMAIL_LABEL}</label>
+        <input
+          id="email"
+          type="email"
+          {...register("email", {
+            onBlur: () => {
+              if (!dirtyFields.email) return;
+              void trigger("email");
+              setLiveValidate((prev) => ({ ...prev, email: true }));
+            },
+            onChange: () => {
+              if (!dirtyFields.email || !liveValidate.email) return;
+              void trigger("email");
+            },
+          })}
+          placeholder={EMAIL_PLACEHOLDER}
+        />
+        {errors.email && <p>{errors.email.message}</p>}
+      </div>
 
-      <label htmlFor="password">{PASSWORD_LABEL}</label>
-      <input
-        id="password"
-        type="password"
-        {...register("password", {
-          onBlur: () => {
-            if (!dirtyFields.password) return;
-            void trigger("password");
-            setLiveValidate((prev) => ({ ...prev, password: true }));
-          },
-          onChange: () => {
-            if (!dirtyFields.password || !liveValidate.password) return;
-            void trigger("password");
-          },
-        })}
-        placeholder={PASSWORD_ENTER_PLACEHOLDER}
-      />
-      {errors.password && <p>{errors.password.message}</p>}
+      <div>
+        <label htmlFor="password">{PASSWORD_LABEL}</label>
+        <input
+          id="password"
+          type="password"
+          {...register("password", {
+            onBlur: () => {
+              if (!dirtyFields.password) return;
+              void trigger("password");
+              setLiveValidate((prev) => ({ ...prev, password: true }));
+            },
+            onChange: () => {
+              if (!dirtyFields.password || !liveValidate.password) return;
+              void trigger("password");
+            },
+          })}
+          placeholder={PASSWORD_ENTER_PLACEHOLDER}
+        />
+        {errors.password && <p>{errors.password.message}</p>}
+      </div>
 
       {loginError && <p>{loginError}</p>}
 

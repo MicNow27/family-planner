@@ -1,5 +1,6 @@
 export const LOGIN_ERROR = "Email or password is incorrect";
-export const SIGN_UP_ERROR = "Email is already in use";
+export const SIGN_UP_ERROR_EMAIL_IN_USE = "Email is already in use";
+export const SIGN_UP_ERROR_GENERAL = "Problem signing up";
 
 export const LOGIN_BUTTON_WAIT = "Logging in...";
 export const SIGN_UP_BUTTON_WAIT = "Creating Account...";
@@ -25,3 +26,6 @@ export const PASSWORD_CONFIRM_LABEL = "Confirm Password";
 export const PASSWORD_CONFIRM_PLACEHOLDER = "Confirm your password";
 export const PASSWORD_CONFIRM_ERROR_LENGTH = "Please confirm your password";
 export const PASSWORD_CONFIRM_ERROR_MATCH = "Passwords do not match";
+
+export const CHECK_EMAIL =
+  "Check your inbox to verify your email before continuing.";
