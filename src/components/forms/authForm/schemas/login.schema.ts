@@ -1,11 +1,9 @@
+import { EMAIL_ERROR, PASSWORD_ERROR_LENGTH } from "@copy/auth.ts";
 import { z } from "zod";
 
 export const loginSchema = z.object({
-  email: z.email("Please enter a valid email address"),
-  password: z
-    .string()
-    .min(8, "Password must be at least 8 characters long")
-    .max(100, "Password must be at most 100 characters long"),
+  email: z.email(EMAIL_ERROR),
+  password: z.string().min(8, PASSWORD_ERROR_LENGTH),
 });
 
 export type LoginFormData = z.infer<typeof loginSchema>;

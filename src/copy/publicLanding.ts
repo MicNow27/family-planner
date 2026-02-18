@@ -1,2 +1,2 @@
-export const LOGIN = "Login";
-export const SIGN_UP = "Create Account";
+export const LOGIN_BUTTON = "Login";
+export const SIGN_UP_BUTTON = "Create Account";

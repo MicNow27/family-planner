@@ -4,7 +4,7 @@ import family from "@assets/images/family.svg";
 import logo from "@assets/images/logo.svg";
 import { APP_NAME, SLOGAN } from "@copy/general.ts";
 import "./Landing.scss";
-import { LOGIN, SIGN_UP } from "@copy/publicLanding.ts";
+import { LOGIN_BUTTON, SIGN_UP_BUTTON } from "@copy/publicLanding.ts";
 import { useNavigate } from "react-router";
 
 const Landing = () => {
@@ -24,13 +24,13 @@ const Landing = () => {
           </div>
           <div className="landing__button-stack">
             <PrimaryButton
-              text={SIGN_UP}
+              text={SIGN_UP_BUTTON}
               onClick={(): void => {
                 navigate("/sign-up");
               }}
             />
             <SecondaryButton
-              text={LOGIN}
+              text={LOGIN_BUTTON}
               onClick={(): void => {
                 navigate("/login");
               }}

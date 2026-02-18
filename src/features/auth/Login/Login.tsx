@@ -5,6 +5,15 @@ import {
   loginSchema,
 } from "@/components/forms/authForm/schemas/login.schema.ts";
 import { supabaseClient } from "@/services/apiService.ts";
+import {
+  EMAIL_LABEL,
+  EMAIL_PLACEHOLDER,
+  LOGIN_BUTTON_WAIT,
+  LOGIN_ERROR,
+  PASSWORD_ENTER_PLACEHOLDER,
+  PASSWORD_LABEL,
+} from "@copy/auth.ts";
+import { LOGIN_BUTTON } from "@copy/publicLanding.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -37,13 +46,13 @@ const Login = () => {
       password: data.password,
     });
 
-    if (error || !user) setLoginError("Email or password is incorrect");
+    if (error || !user) setLoginError(LOGIN_ERROR);
     else navigate("/dashboard");
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <label htmlFor="email">Email</label>
+      <label htmlFor="email">{EMAIL_LABEL}</label>
       <input
         id="email"
         type="email"
@@ -58,11 +67,11 @@ const Login = () => {
             void trigger("email");
           },
         })}
-        placeholder="Enter your email"
+        placeholder={EMAIL_PLACEHOLDER}
       />
       {errors.email && <p>{errors.email.message}</p>}
 
-      <label htmlFor="password">Password</label>
+      <label htmlFor="password">{PASSWORD_LABEL}</label>
       <input
         id="password"
         type="password"
@@ -77,7 +86,7 @@ const Login = () => {
             void trigger("password");
           },
         })}
-        placeholder="Enter your password"
+        placeholder={PASSWORD_ENTER_PLACEHOLDER}
       />
       {errors.password && <p>{errors.password.message}</p>}
 
@@ -85,7 +94,7 @@ const Login = () => {
 
       <PrimaryButton
         type="submit"
-        text={isSubmitting ? "Logging in..." : "Login"}
+        text={isSubmitting ? LOGIN_BUTTON_WAIT : LOGIN_BUTTON}
         disabled={isSubmitting || !isValid}
       />
     </form>

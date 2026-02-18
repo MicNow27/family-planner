@@ -1,18 +1,29 @@
+import {
+  EMAIL_ERROR,
+  PASSWORD_CONFIRM_ERROR_LENGTH,
+  PASSWORD_CONFIRM_ERROR_MATCH,
+  PASSWORD_ERROR_LENGTH,
+  PASSWORD_ERROR_LOWERCASE,
+  PASSWORD_ERROR_NUMBER,
+  PASSWORD_ERROR_SPECIAL,
+  PASSWORD_ERROR_UPPERCASE,
+} from "@copy/auth.ts";
 import { z } from "zod";
 
 export const signUpSchema = z
   .object({
-    email: z.email("Please enter a valid email address"),
+    email: z.email(EMAIL_ERROR),
     password: z
       .string()
-      .min(8, "Password must be at least 8 characters")
-      .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
-      .regex(/[a-z]/, "Password must contain at least one lowercase letter")
-      .regex(/[0-9]/, "Password must contain at least one number"),
-    confirmPassword: z.string().min(1, "Please confirm your password"),
+      .min(8, PASSWORD_ERROR_LENGTH)
+      .regex(/[A-Z]/, PASSWORD_ERROR_UPPERCASE)
+      .regex(/[a-z]/, PASSWORD_ERROR_LOWERCASE)
+      .regex(/[0-9]/, PASSWORD_ERROR_NUMBER)
+      .regex(/[^A-Za-z0-9]/, PASSWORD_ERROR_SPECIAL),
+    confirmPassword: z.string().min(1, PASSWORD_CONFIRM_ERROR_LENGTH),
   })
   .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords do not match",
+    message: PASSWORD_CONFIRM_ERROR_MATCH,
     path: ["confirmPassword"],
   });
 
