@@ -1,4 +1,6 @@
 export const LOGIN_ERROR = "Email or password is incorrect";
+export const SIGN_UP_ERROR = "Email is already in use";
+
 export const LOGIN_BUTTON_WAIT = "Logging in...";
 export const SIGN_UP_BUTTON_WAIT = "Creating Account...";
 
