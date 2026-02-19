@@ -1,3 +1,5 @@
+import RequireAuth from "@/components/routes/RequireAuth.tsx";
+import RequireGuest from "@/components/routes/RequireGuest.tsx";
 import AuthCallback from "@/features/auth/AuthCallback/AuthCallback.tsx";
 import CheckEmail from "@/features/auth/CheckEmail/CheckEmail.tsx";
 import SignUp from "@/features/auth/SignUp/SignUp.tsx";
@@ -12,72 +14,87 @@ import Login from "./features/auth/Login/Login";
 
 const routes: Route[] = [
   {
-    path: "/",
-    element: <Landing />,
-  },
-  {
-    path: "/check-email",
-    element: <CheckEmail />,
-  },
-  {
     path: "/auth-callback",
     element: <AuthCallback />,
+  },
+  {
+    element: <RequireGuest />,
+    children: [
+      {
+        path: "/",
+        element: <Landing />,
+      },
+      {
+        path: "/check-email",
+        element: <CheckEmail />,
+      },
+    ],
   },
   {
     element: <App />,
     children: [
       {
-        path: "/sign-up",
-        element: <SignUp />,
-        handle: {
-          header: {
-            title: "Create Account",
-            showBackButton: true,
+        element: <RequireGuest />,
+        children: [
+          {
+            path: "/sign-up",
+            element: <SignUp />,
+            handle: {
+              header: {
+                title: "Create Account",
+                showBackButton: true,
+              },
+            },
           },
-        },
+          {
+            path: "/login",
+            element: <Login />,
+            handle: {
+              header: {
+                title: "Login",
+                showBackButton: true,
+              },
+            },
+          },
+        ],
       },
       {
-        path: "/login",
-        element: <Login />,
-        handle: {
-          header: {
-            title: "Login",
-            showBackButton: true,
+        element: <RequireAuth />,
+        children: [
+          {
+            path: "/onboarding",
+            element: <Onboarding />,
+            handle: {
+              header: {
+                title: "Onboarding",
+                showBackButton: false,
+              },
+            },
           },
-        },
-      },
-      {
-        path: "/onboarding",
-        element: <Onboarding />,
-        handle: {
-          header: {
-            title: "Onboarding",
-            showBackButton: false,
+          {
+            path: "/dashboard",
+            element: <Dashboard />,
+            handle: {
+              header: {
+                title: "Dashboard",
+                showBackButton: false,
+                overflowMenu: "dashboard",
+              },
+            },
           },
-        },
-      },
-      {
-        path: "/dashboard",
-        element: <Dashboard />,
-        handle: {
-          header: {
-            title: "Dashboard",
-            showBackButton: false,
-            overflowMenu: "dashboard",
+          {
+            path: "/settings",
+            element: <SettingsLanding />,
+            handle: {
+              header: {
+                title: "Settings",
+                showBackButton: true,
+                backButtonRoute: "/dashboard",
+                overflowMenu: "settings",
+              },
+            },
           },
-        },
-      },
-      {
-        path: "/settings",
-        element: <SettingsLanding />,
-        handle: {
-          header: {
-            title: "Settings",
-            showBackButton: true,
-            backButtonRoute: "/dashboard",
-            overflowMenu: "settings",
-          },
-        },
+        ],
       },
     ],
   },

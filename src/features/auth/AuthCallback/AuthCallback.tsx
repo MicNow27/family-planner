@@ -8,9 +8,7 @@ const AuthCallback = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (loading) {
-      return;
-    }
+    if (loading) return;
     if (user) navigate("/onboarding", { replace: true });
     else navigate("/login", { replace: true });
   }, [user, loading, navigate]);
