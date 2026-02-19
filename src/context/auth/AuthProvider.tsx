@@ -47,6 +47,18 @@ const AuthProvider = ({ children }: AuthContextProviderProps) => {
     return { error: error?.message ?? null };
   };
 
+  const resendEmail = async (email: string): Promise<AuthError> => {
+    const { error } = await supabaseClient.auth.resend({
+      type: "signup",
+      email,
+      options: {
+        emailRedirectTo: `${BASE_URL}/auth-callback`,
+      },
+    });
+
+    return { error: error?.message ?? null };
+  };
+
   const signIn = async ({ email, password }: Auth): Promise<AuthError> => {
     const { error } = await supabaseClient.auth.signInWithPassword({
       email,
@@ -63,7 +75,9 @@ const AuthProvider = ({ children }: AuthContextProviderProps) => {
   if (loading) return <FullScreenLoader />;
 
   return (
-    <AuthContext value={{ user, session, loading, signUp, signIn, signOut }}>
+    <AuthContext
+      value={{ user, session, loading, signUp, signIn, signOut, resendEmail }}
+    >
       {children}
     </AuthContext>
   );

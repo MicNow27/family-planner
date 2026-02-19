@@ -32,6 +32,5 @@ export const CHECK_EMAIL =
 export const RESEND_EMAIL_BUTTON = "Resend Confirmation Email";
 export const RESEND_EMAIL_BUTTON_WAIT = (seconds: number) =>
   `Resend in ${seconds} seconds`;
-export const EMAIL_RESENT = "Email resent. Check your inbox.";
 export const EMAIL_RESENT_ERROR =
   "Could not resend the email. Please try again later.";
