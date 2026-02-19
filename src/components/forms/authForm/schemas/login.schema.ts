@@ -1,4 +1,5 @@
-import { EMAIL_ERROR, PASSWORD_ERROR_LENGTH } from "@copy/auth.ts";
+import { EMAIL_ERROR } from "@copy/email.ts";
+import { PASSWORD_ERROR_LENGTH } from "@copy/password.ts";
 import { z } from "zod";
 
 export const loginSchema = z.object({

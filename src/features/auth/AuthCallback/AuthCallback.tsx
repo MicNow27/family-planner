@@ -1,5 +1,6 @@
 import "./AuthCallback.scss";
 import { useAuth } from "@/context/auth/useAuth.ts";
+import { CONFIRMING_EMAIL } from "@copy/email.ts";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 
@@ -13,7 +14,7 @@ const AuthCallback = () => {
     else navigate("/login", { replace: true });
   }, [user, loading, navigate]);
 
-  return <p>Confirming your email...</p>;
+  return <p>{CONFIRMING_EMAIL}</p>;
 };
 
 export default AuthCallback;

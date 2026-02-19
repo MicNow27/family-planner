@@ -4,7 +4,8 @@ import family from "@assets/images/family.svg";
 import logo from "@assets/images/logo.svg";
 import { APP_NAME, SLOGAN } from "@copy/general.ts";
 import "./Landing.scss";
-import { LOGIN_BUTTON, SIGN_UP_BUTTON } from "@copy/publicLanding.ts";
+import { LOGIN_BUTTON } from "@copy/login.ts";
+import { SIGN_UP_BUTTON } from "@copy/signUp.ts";
 import { useNavigate } from "react-router";
 
 const Landing = () => {

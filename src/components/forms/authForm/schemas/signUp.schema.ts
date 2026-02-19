@@ -1,5 +1,5 @@
+import { EMAIL_ERROR } from "@copy/email.ts";
 import {
-  EMAIL_ERROR,
   PASSWORD_CONFIRM_ERROR_LENGTH,
   PASSWORD_CONFIRM_ERROR_MATCH,
   PASSWORD_ERROR_LENGTH,
@@ -7,7 +7,7 @@ import {
   PASSWORD_ERROR_NUMBER,
   PASSWORD_ERROR_SPECIAL,
   PASSWORD_ERROR_UPPERCASE,
-} from "@copy/auth.ts";
+} from "@copy/password.ts";
 import { z } from "zod";
 
 export const signUpSchema = z

@@ -6,7 +6,7 @@ import {
   EMAIL_RESENT_ERROR,
   RESEND_EMAIL_BUTTON,
   RESEND_EMAIL_BUTTON_WAIT,
-} from "@copy/auth.ts";
+} from "@copy/email.ts";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 

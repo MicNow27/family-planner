@@ -5,18 +5,19 @@ import {
   signUpSchema,
 } from "@/components/forms/authForm/schemas/signUp.schema.ts";
 import { useAuth } from "@/context/auth/useAuth.ts";
+import { EMAIL_LABEL, EMAIL_PLACEHOLDER } from "@copy/email.ts";
 import {
-  EMAIL_LABEL,
-  EMAIL_PLACEHOLDER,
   PASSWORD_CONFIRM_LABEL,
   PASSWORD_CONFIRM_PLACEHOLDER,
   PASSWORD_CREATE_PLACEHOLDER,
   PASSWORD_LABEL,
+} from "@copy/password.ts";
+import {
+  SIGN_UP_BUTTON,
   SIGN_UP_BUTTON_WAIT,
   SIGN_UP_ERROR_EMAIL_IN_USE,
   SIGN_UP_ERROR_GENERAL,
-} from "@copy/auth.ts";
-import { SIGN_UP_BUTTON } from "@copy/publicLanding.ts";
+} from "@copy/signUp.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
