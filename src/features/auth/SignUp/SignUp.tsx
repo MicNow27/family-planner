@@ -53,10 +53,9 @@ const SignUp = () => {
     });
 
     if (error) {
-      if (
-        error.toLowerCase().includes("already") ||
-        error.toLowerCase().includes("registered")
-      ) {
+      const lowerError = error.toLowerCase();
+
+      if (lowerError.includes("already") || lowerError.includes("registered")) {
         setSignUpError(SIGN_UP_ERROR_EMAIL_IN_USE);
       } else {
         setSignUpError(SIGN_UP_ERROR_GENERAL);

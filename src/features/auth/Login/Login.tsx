@@ -11,10 +11,11 @@ import { PASSWORD_ENTER_PLACEHOLDER, PASSWORD_LABEL } from "@copy/password.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
 
 const Login = () => {
   const { signIn } = useAuth();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const [liveValidate, setLiveValidate] = useState({
     email: false,
@@ -40,8 +41,13 @@ const Login = () => {
       password: data.password,
     });
 
-    if (error) setLoginError(LOGIN_ERROR);
-    // else navigate("/dashboard");
+    if (error) {
+      const lowerError = error.toLowerCase();
+
+      if (lowerError.includes("email not confirmed"))
+        navigate("/check-email", { state: { email: data.email } });
+      else setLoginError(LOGIN_ERROR);
+    }
   };
 
   return (
