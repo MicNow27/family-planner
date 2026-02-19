@@ -4,7 +4,7 @@ import {
   type LoginFormData,
   loginSchema,
 } from "@/components/forms/authForm/schemas/login.schema.ts";
-import { supabaseClient } from "@/services/apiService.ts";
+import { useAuth } from "@/context/auth/useAuth.ts";
 import {
   EMAIL_LABEL,
   EMAIL_PLACEHOLDER,
@@ -17,10 +17,10 @@ import { LOGIN_BUTTON } from "@copy/publicLanding.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router";
 
 const Login = () => {
-  const navigate = useNavigate();
+  const { signIn } = useAuth();
+  // const navigate = useNavigate();
 
   const [liveValidate, setLiveValidate] = useState({
     email: false,
@@ -38,18 +38,16 @@ const Login = () => {
     resolver: zodResolver(loginSchema),
   });
 
-  const onSubmit = async (formData: LoginFormData) => {
+  const onSubmit = async (data: LoginFormData) => {
     setLoginError(null);
 
-    const { data: user, error } = await supabaseClient.auth.signInWithPassword({
-      email: formData.email,
-      password: formData.password,
+    const { error } = await signIn({
+      email: data.email,
+      password: data.password,
     });
 
-    // something with sessionID / JWT?
-
-    if (error || !user) setLoginError(LOGIN_ERROR);
-    else navigate("/dashboard");
+    if (error) setLoginError(LOGIN_ERROR);
+    // else navigate("/dashboard");
   };
 
   return (

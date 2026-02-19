@@ -4,8 +4,7 @@ import {
   type SignUpFormData,
   signUpSchema,
 } from "@/components/forms/authForm/schemas/signUp.schema.ts";
-import { BASE_URL } from "@/config/dev.ts";
-import { supabaseClient } from "@/services/apiService.ts";
+import { useAuth } from "@/context/auth/useAuth.ts";
 import {
   EMAIL_LABEL,
   EMAIL_PLACEHOLDER,
@@ -24,6 +23,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 
 const SignUp = () => {
+  const { signUp } = useAuth();
   const navigate = useNavigate();
 
   const [liveValidate, setLiveValidate] = useState({
@@ -46,23 +46,23 @@ const SignUp = () => {
   const onSubmit = async (data: SignUpFormData) => {
     setSignUpError(null);
 
-    const { data: user, error } = await supabaseClient.auth.signUp({
+    const { error } = await signUp({
       email: data.email,
       password: data.password,
-      options: {
-        emailRedirectTo: `${BASE_URL}/auth-callback`,
-      },
     });
 
     if (error) {
       if (
-        error.message.toLowerCase().includes("already") ||
-        error.message.toLowerCase().includes("registered")
-      )
+        error.toLowerCase().includes("already") ||
+        error.toLowerCase().includes("registered")
+      ) {
         setSignUpError(SIGN_UP_ERROR_EMAIL_IN_USE);
-      else setSignUpError(SIGN_UP_ERROR_GENERAL);
-    } else if (!user) setSignUpError(SIGN_UP_ERROR_GENERAL);
-    else navigate("/check-email");
+      } else {
+        setSignUpError(SIGN_UP_ERROR_GENERAL);
+      }
+    } else {
+      navigate("/check-email", { state: { email: data.email } });
+    }
   };
 
   return (

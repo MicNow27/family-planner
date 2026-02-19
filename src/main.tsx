@@ -1,3 +1,4 @@
+import AuthProvider from "@/context/auth/AuthProvider.tsx";
 import { router } from "@/router.tsx";
 import "@fontsource/montserrat/700.css";
 import { StrictMode } from "react";
@@ -11,6 +12,8 @@ import "./index.scss";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>,
 );
