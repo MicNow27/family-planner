@@ -15,7 +15,6 @@ import {
 import {
   SIGN_UP_BUTTON,
   SIGN_UP_BUTTON_WAIT,
-  SIGN_UP_ERROR_EMAIL_IN_USE,
   SIGN_UP_ERROR_GENERAL,
 } from "@copy/signUp.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -53,10 +52,8 @@ const SignUp = () => {
     });
 
     if (error) {
-      const lowerError = error.toLowerCase();
-
-      if (lowerError.includes("already") || lowerError.includes("registered")) {
-        setSignUpError(SIGN_UP_ERROR_EMAIL_IN_USE);
+      if (error.toLowerCase().includes("rate limit")) {
+        navigate("/check-email", { state: { email: data.email } });
       } else {
         setSignUpError(SIGN_UP_ERROR_GENERAL);
       }
