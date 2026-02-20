@@ -2,6 +2,12 @@ import "./CheckEmail.scss";
 import PrimaryButton from "@/components/buttons/PrimaryButton/PrimaryButton.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
 import {
+  formatTime,
+  getInitialTime,
+  ONE_HOUR,
+  setOneHour,
+} from "@/features/auth/CheckEmail/timeLogic.ts";
+import {
   CHECK_EMAIL,
   EMAIL_RESENT_ERROR,
   RESEND_EMAIL_BUTTON,
@@ -16,7 +22,8 @@ const CheckEmail = () => {
 
   const { resendEmail } = useAuth();
   const navigate = useNavigate();
-  const [cooldown, setCooldown] = useState(0);
+
+  const [cooldown, setCooldown] = useState<number>(getInitialTime());
   const [resendError, setResendError] = useState<string | null>(null);
 
   const handleResend = async () => {
@@ -25,7 +32,10 @@ const CheckEmail = () => {
     const { error } = await resendEmail(email);
 
     if (error) setResendError(EMAIL_RESENT_ERROR);
-    else setCooldown(60);
+    else {
+      setOneHour();
+      setCooldown(ONE_HOUR);
+    }
   };
 
   useEffect(() => {
@@ -46,7 +56,7 @@ const CheckEmail = () => {
         disabled={cooldown > 0}
         text={
           cooldown > 0
-            ? RESEND_EMAIL_BUTTON_WAIT(cooldown)
+            ? RESEND_EMAIL_BUTTON_WAIT(formatTime(cooldown))
             : RESEND_EMAIL_BUTTON
         }
       />
