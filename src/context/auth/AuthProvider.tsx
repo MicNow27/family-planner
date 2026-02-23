@@ -1,5 +1,4 @@
 import { BASE_URL } from "@/config/dev.ts";
-import FullScreenLoader from "@/features/auth/FullScreenLoader/FullScreenLoader.tsx";
 import { supabaseClient } from "@/services/apiService.ts";
 import type { Auth, AuthError } from "@/types/auth.ts";
 import type { Session, User } from "@supabase/supabase-js";
@@ -16,19 +15,11 @@ const AuthProvider = ({ children }: AuthContextProviderProps) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const init = async () => {
-      const { data } = await supabaseClient.auth.getSession();
-      setSession(data.session);
-      setUser(data.session?.user ?? null);
-      setLoading(false);
-    };
-
-    void init();
-
     const { data } = supabaseClient.auth.onAuthStateChange(
       (_event, session) => {
         setSession(session);
         setUser(session?.user ?? null);
+        setLoading(false);
       },
     );
 
@@ -71,8 +62,6 @@ const AuthProvider = ({ children }: AuthContextProviderProps) => {
   const signOut = async (): Promise<void> => {
     await supabaseClient.auth.signOut();
   };
-
-  if (loading) return <FullScreenLoader />;
 
   return (
     <AuthContext
