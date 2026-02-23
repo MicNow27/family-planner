@@ -15,6 +15,7 @@ type UseResendCooldownReturn = {
 
 export const useResendCooldown = (email?: string): UseResendCooldownReturn => {
   const { resendEmail } = useAuth();
+
   const [cooldown, setCooldown] = useState<number>(getRemainingCooldownTime());
   const [resendError, setResendError] = useState<string | null>(null);
 

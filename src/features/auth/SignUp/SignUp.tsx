@@ -77,6 +77,7 @@ const SignUp = () => {
             },
             onChange: () => {
               if (!dirtyFields.email || !liveValidate.email) return;
+              setSignUpError(null);
               void trigger("email");
             },
           })}
@@ -98,6 +99,7 @@ const SignUp = () => {
             },
             onChange: () => {
               if (!dirtyFields.password || !liveValidate.password) return;
+              setSignUpError(null);
               void trigger("password");
             },
           })}
@@ -120,6 +122,7 @@ const SignUp = () => {
             onChange: () => {
               if (!dirtyFields.confirmPassword || !liveValidate.confirmPassword)
                 return;
+              setSignUpError(null);
               void trigger("confirmPassword");
             },
           })}

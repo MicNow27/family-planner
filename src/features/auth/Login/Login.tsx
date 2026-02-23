@@ -65,6 +65,7 @@ const Login = () => {
             },
             onChange: () => {
               if (!dirtyFields.email || !liveValidate.email) return;
+              setLoginError(null);
               void trigger("email");
             },
           })}
@@ -86,6 +87,7 @@ const Login = () => {
             },
             onChange: () => {
               if (!dirtyFields.password || !liveValidate.password) return;
+              setLoginError(null);
               void trigger("password");
             },
           })}
