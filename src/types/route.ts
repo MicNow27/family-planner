@@ -1,24 +1,13 @@
 import type { HeaderSettings } from "@/types/header.ts";
 import * as React from "react";
 
-type SimpleRoute = {
-  path: string;
-  element: React.ReactNode;
-};
-
 export type Handle = {
   header: HeaderSettings;
 };
 
-type ChildRoute = {
-  path: string;
+export type Route = {
+  path?: string;
   element: React.ReactNode;
-  handle: Handle;
+  handle?: Handle;
+  children?: Route[];
 };
-
-type MainRoute = {
-  element: React.ReactNode;
-  children: ChildRoute[];
-};
-
-export type Route = SimpleRoute | MainRoute;
