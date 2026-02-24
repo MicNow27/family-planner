@@ -73,10 +73,3 @@ const AuthProvider = ({ children }: AuthContextProviderProps) => {
 };
 
 export default AuthProvider;
-
-// const value = useMemo(
-//   () => ({ user, session, loading, signUp, signIn, signOut }),
-//   [user, session, loading],
-// );
-//
-// return <AuthContext value={value}>{children}</AuthContext>;
