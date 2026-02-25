@@ -6,12 +6,13 @@ import {
 } from "@/components/forms/authForm/schemas/login.schema.ts";
 import { useAuth } from "@/context/auth/useAuth.ts";
 import { EMAIL_LABEL, EMAIL_PLACEHOLDER } from "@copy/email.ts";
+import { FORGOT_PASSWORD } from "@copy/forgotPassword.ts";
 import { LOGIN_BUTTON, LOGIN_BUTTON_WAIT, LOGIN_ERROR } from "@copy/login.ts";
 import { PASSWORD_ENTER_PLACEHOLDER, PASSWORD_LABEL } from "@copy/password.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 const Login = () => {
   const { signIn } = useAuth();
@@ -97,6 +98,8 @@ const Login = () => {
       </div>
 
       {loginError && <p>{loginError}</p>}
+
+      <Link to="/forgot-password">{FORGOT_PASSWORD}</Link>
 
       <PrimaryButton
         type="submit"
