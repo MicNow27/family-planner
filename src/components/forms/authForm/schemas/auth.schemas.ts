@@ -1,7 +1,6 @@
 import { EMAIL_ERROR } from "@copy/email.ts";
 import {
   PASSWORD_CONFIRM_ERROR_LENGTH,
-  PASSWORD_CONFIRM_ERROR_MATCH,
   PASSWORD_ERROR_LENGTH,
   PASSWORD_ERROR_LOWERCASE,
   PASSWORD_ERROR_NUMBER,
@@ -25,16 +24,3 @@ export const strongPasswordSchema = z
 export const confirmPasswordSchema = z
   .string()
   .min(1, PASSWORD_CONFIRM_ERROR_LENGTH);
-
-type ConfirmPassword = {
-  password: string;
-  confirmPassword: string;
-};
-
-export const withPasswordConfirmation = <T extends ConfirmPassword>(
-  schema: z.ZodType<T>,
-) =>
-  schema.refine((data) => data.password === data.confirmPassword, {
-    message: PASSWORD_CONFIRM_ERROR_MATCH,
-    path: ["confirmPassword"],
-  });

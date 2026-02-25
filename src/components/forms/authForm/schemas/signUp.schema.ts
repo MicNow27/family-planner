@@ -1,17 +1,9 @@
-import {
-  confirmPasswordField,
-  emailField,
-  strongPasswordField,
-} from "@/components/forms/authForm/schemas/auth.fields.ts";
-import { withPasswordConfirmation } from "@/components/forms/authForm/schemas/auth.schemas.ts";
+import { emailField } from "@/components/forms/authForm/schemas/auth.fields.ts";
+import { passwordConfirmationSchema } from "@/components/forms/authForm/schemas/passwordConfirmation.schema.ts";
 import { z } from "zod";
 
-export const signUpSchema = withPasswordConfirmation(
-  z.object({
-    ...emailField,
-    ...strongPasswordField,
-    ...confirmPasswordField,
-  }),
-);
+export const signUpSchema = passwordConfirmationSchema.extend({
+  ...emailField,
+});
 
 export type SignUpFormData = z.infer<typeof signUpSchema>;
