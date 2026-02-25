@@ -9,4 +9,6 @@ export type AuthContextType = {
   signIn: (authCredentials: Auth) => Promise<AuthError>;
   signOut: () => Promise<void>;
   resendEmail: (email: string) => Promise<AuthError>;
+  resetPassword: (email: string) => Promise<AuthError>;
+  updatePassword: (password: string) => Promise<AuthError>;
 };
