@@ -32,7 +32,7 @@ const SignUp = () => {
     confirmPassword: false,
   });
 
-  const [signUpError, setSignUpError] = useState<string | null>(null);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const {
     register,
@@ -44,7 +44,7 @@ const SignUp = () => {
   });
 
   const onSubmit = async (data: SignUpFormData) => {
-    setSignUpError(null);
+    setSubmitError(null);
 
     const { error } = await signUp({
       email: data.email,
@@ -55,7 +55,7 @@ const SignUp = () => {
       if (error.toLowerCase().includes("rate limit")) {
         navigate("/check-email", { state: { email: data.email } });
       } else {
-        setSignUpError(SIGN_UP_ERROR_GENERAL);
+        setSubmitError(SIGN_UP_ERROR_GENERAL);
       }
     } else {
       navigate("/check-email", { state: { email: data.email } });
@@ -77,7 +77,7 @@ const SignUp = () => {
             },
             onChange: () => {
               if (!dirtyFields.email || !liveValidate.email) return;
-              setSignUpError(null);
+              setSubmitError(null);
               void trigger("email");
             },
           })}
@@ -99,7 +99,7 @@ const SignUp = () => {
             },
             onChange: () => {
               if (!dirtyFields.password || !liveValidate.password) return;
-              setSignUpError(null);
+              setSubmitError(null);
               void trigger("password");
             },
           })}
@@ -122,7 +122,7 @@ const SignUp = () => {
             onChange: () => {
               if (!dirtyFields.confirmPassword || !liveValidate.confirmPassword)
                 return;
-              setSignUpError(null);
+              setSubmitError(null);
               void trigger("confirmPassword");
             },
           })}
@@ -130,7 +130,8 @@ const SignUp = () => {
         />
         {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
       </div>
-      {signUpError && <p>{signUpError}</p>}
+
+      {submitError && <p>{submitError}</p>}
 
       <PrimaryButton
         type="submit"

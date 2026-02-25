@@ -20,7 +20,7 @@ const ForgotPassword = () => {
 
   const [liveValidate, setLiveValidate] = useState({ email: false });
 
-  const [submitMessage, setSubmitMessage] = useState<string | null>(null);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const {
     register,
@@ -32,12 +32,12 @@ const ForgotPassword = () => {
   });
 
   const onSubmit = async (data: ForgotPasswordFormData) => {
-    setSubmitMessage(null);
+    setSubmitError(null);
 
     const { error } = await resetPassword(data.email);
 
-    if (error) setSubmitMessage(FORGOT_PASSWORD_ERROR);
-    else setSubmitMessage(FORGOT_PASSWORD_SUCCESS);
+    if (error) setSubmitError(FORGOT_PASSWORD_ERROR);
+    else setSubmitError(FORGOT_PASSWORD_SUCCESS);
   };
 
   return (
@@ -55,7 +55,7 @@ const ForgotPassword = () => {
             },
             onChange: () => {
               if (!dirtyFields.email || !liveValidate.email) return;
-              setSubmitMessage(null);
+              setSubmitError(null);
               void trigger("email");
             },
           })}
@@ -65,7 +65,7 @@ const ForgotPassword = () => {
       </div>
 
       {isSubmitting && <p>Sending request...</p>}
-      {!isSubmitting && submitMessage && <p>{submitMessage}</p>}
+      {!isSubmitting && submitError && <p>{submitError}</p>}
 
       <PrimaryButton
         type="submit"

@@ -14,7 +14,7 @@ const CheckEmail = () => {
   const { state } = useLocation();
   const email: string | undefined = state?.email;
   const navigate = useNavigate();
-  const { cooldown, resend, resendError } = useResendCooldown(email);
+  const { cooldown, resend, submitError } = useResendCooldown(email);
 
   useEffect(() => {
     if (!email) navigate("/", { replace: true });
@@ -32,7 +32,7 @@ const CheckEmail = () => {
             : RESEND_EMAIL_BUTTON
         }
       />
-      {resendError && <p>{resendError}</p>}
+      {submitError && <p>{submitError}</p>}
     </>
   );
 };

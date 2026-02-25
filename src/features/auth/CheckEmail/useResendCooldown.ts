@@ -10,14 +10,14 @@ import { useEffect, useState } from "react";
 type UseResendCooldownReturn = {
   cooldown: number;
   resend: () => Promise<void>;
-  resendError: string | null;
+  submitError: string | null;
 };
 
 export const useResendCooldown = (email?: string): UseResendCooldownReturn => {
   const { resendEmail } = useAuth();
 
   const [cooldown, setCooldown] = useState<number>(getRemainingCooldownTime());
-  const [resendError, setResendError] = useState<string | null>(null);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   useEffect(() => {
     if (cooldown <= 0) return;
@@ -26,16 +26,17 @@ export const useResendCooldown = (email?: string): UseResendCooldownReturn => {
   }, [cooldown]);
 
   const resend = async () => {
+    setSubmitError(null);
     if (!email) return;
 
     const { error } = await resendEmail(email);
 
-    if (error) setResendError(EMAIL_RESENT_ERROR);
+    if (error) setSubmitError(EMAIL_RESENT_ERROR);
     else {
       setCooldownTime(ONE_HOUR);
       setCooldown(ONE_HOUR);
     }
   };
 
-  return { cooldown, resend, resendError };
+  return { cooldown, resend, submitError };
 };
