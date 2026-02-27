@@ -4,35 +4,35 @@ import {
   getRemainingCooldownTime,
   setCooldownTime,
   setNextLevel,
-} from "@/features/auth/CheckEmail/timeLogic.ts";
+} from "@/hooks/useCooldown/timeLogic.ts";
 import type { AuthError } from "@/types/auth.ts";
 import { EMAIL_RESENT_ERROR } from "@copy/email.ts";
 import { useEffect, useState } from "react";
 
-type UseCooldownActionOptions = {
+type UseCooldownOptions = {
   action: () => Promise<AuthError>;
   storageKey: string;
   cooldownSequence: number[];
 };
 
-type UseCooldownActionReturn = {
+type UseCooldownReturn = {
   cooldown: number;
   run: () => Promise<void>;
   submitError: string | null;
   setSubmitError: (error: string | null) => void;
 };
 
-type UseCooldownActionState = {
+type UseCooldownState = {
   level: number;
   cooldown: number;
 };
 
-export const useCooldownAction = ({
+export const useCooldown = ({
   action,
   storageKey,
   cooldownSequence,
-}: UseCooldownActionOptions): UseCooldownActionReturn => {
-  const [state, setState] = useState<UseCooldownActionState>(() => {
+}: UseCooldownOptions): UseCooldownReturn => {
+  const [state, setState] = useState<UseCooldownState>(() => {
     const level = getInitialLevel(storageKey);
     const cooldown = getRemainingCooldownTime(
       storageKey,

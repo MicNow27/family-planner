@@ -9,8 +9,8 @@ import {
   formatTime,
   ONE_HOUR,
   ONE_MINUTE,
-} from "@/features/auth/CheckEmail/timeLogic.ts";
-import { useCooldownAction } from "@/features/auth/CheckEmail/useCooldownAction.ts";
+} from "@/hooks/useCooldown/timeLogic.ts";
+import { useCooldown } from "@/hooks/useCooldown/useCooldown.ts";
 import {
   EMAIL_LABEL,
   EMAIL_PLACEHOLDER,
@@ -35,7 +35,7 @@ const ForgotPassword = () => {
     resolver: zodResolver(forgotPasswordSchema),
   });
 
-  const { cooldown, run, submitError, setSubmitError } = useCooldownAction({
+  const { cooldown, run, submitError, setSubmitError } = useCooldown({
     action: () => resetPassword(getValues("email")),
     storageKey: "forgotPasswordCooldown",
     cooldownSequence: [0, ONE_MINUTE, ONE_HOUR],

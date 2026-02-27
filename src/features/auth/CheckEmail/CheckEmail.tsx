@@ -5,8 +5,8 @@ import {
   formatTime,
   ONE_HOUR,
   ONE_MINUTE,
-} from "@/features/auth/CheckEmail/timeLogic.ts";
-import { useCooldownAction } from "@/features/auth/CheckEmail/useCooldownAction.ts";
+} from "@/hooks/useCooldown/timeLogic.ts";
+import { useCooldown } from "@/hooks/useCooldown/useCooldown.ts";
 import {
   CHECK_EMAIL,
   RESEND_EMAIL_BUTTON,
@@ -26,7 +26,7 @@ const CheckEmail = () => {
 
   const { resendEmail } = useAuth();
 
-  const { cooldown, run, submitError } = useCooldownAction({
+  const { cooldown, run, submitError } = useCooldown({
     action: () => resendEmail(email!),
     storageKey: "checkEmailCooldown",
     cooldownSequence: [ONE_MINUTE, ONE_HOUR],
