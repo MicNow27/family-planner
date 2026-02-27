@@ -5,11 +5,17 @@ import {
   forgotPasswordSchema,
 } from "@/components/forms/authForm/schemas/forgotPassword.schema.ts";
 import { useAuth } from "@/context/auth/useAuth.ts";
-import { EMAIL_LABEL, EMAIL_PLACEHOLDER } from "@copy/email.ts";
 import {
-  FORGOT_PASSWORD_ERROR,
-  FORGOT_PASSWORD_SUCCESS,
-} from "@copy/forgotPassword.ts";
+  formatTime,
+  ONE_HOUR,
+  ONE_MINUTE,
+} from "@/features/auth/CheckEmail/timeLogic.ts";
+import { useCooldownAction } from "@/features/auth/CheckEmail/useCooldownAction.ts";
+import {
+  EMAIL_LABEL,
+  EMAIL_PLACEHOLDER,
+  RESEND_EMAIL_BUTTON_WAIT,
+} from "@copy/email.ts";
 import { SUBMIT } from "@copy/general.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
@@ -17,27 +23,26 @@ import { useForm } from "react-hook-form";
 
 const ForgotPassword = () => {
   const { resetPassword } = useAuth();
-
   const [liveValidate, setLiveValidate] = useState({ email: false });
-
-  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const {
     register,
     handleSubmit,
     trigger,
+    getValues,
     formState: { dirtyFields, errors, isSubmitting, isValid },
   } = useForm<ForgotPasswordFormData>({
     resolver: zodResolver(forgotPasswordSchema),
   });
 
-  const onSubmit = async (data: ForgotPasswordFormData) => {
-    setSubmitError(null);
+  const { cooldown, run, submitError, setSubmitError } = useCooldownAction({
+    action: () => resetPassword(getValues("email")),
+    storageKey: "forgotPasswordCooldown",
+    cooldownSequence: [0, ONE_MINUTE, ONE_HOUR],
+  });
 
-    const { error } = await resetPassword(data.email);
-
-    if (error) setSubmitError(FORGOT_PASSWORD_ERROR);
-    else setSubmitError(FORGOT_PASSWORD_SUCCESS);
+  const onSubmit = async () => {
+    await run();
   };
 
   return (
@@ -66,11 +71,12 @@ const ForgotPassword = () => {
 
       {isSubmitting && <p>Sending request...</p>}
       {!isSubmitting && submitError && <p>{submitError}</p>}
+      {cooldown > 0 && <p>{RESEND_EMAIL_BUTTON_WAIT(formatTime(cooldown))}</p>}
 
       <PrimaryButton
         type="submit"
         text={SUBMIT}
-        disabled={isSubmitting || !isValid}
+        disabled={isSubmitting || !isValid || cooldown > 0}
       />
     </form>
   );

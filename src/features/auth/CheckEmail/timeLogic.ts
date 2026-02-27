@@ -1,27 +1,46 @@
 import type { ResendEmailTime } from "@/types/resendEmailTime.ts";
 
-const STORAGE_KEY = "checkEmailCooldown";
-export const ONE_HOUR = 200;
-const ONE_MINUTE = 60;
+export const ONE_HOUR = 60;
+export const ONE_MINUTE = 10;
 
 const getNow = (): number => Math.floor(Date.now() / 1000);
 
-export const setCooldownTime = (secondsFromNow: number): void => {
+export const setCooldownTime = (
+  storageKey: string,
+  secondsFromNow: number,
+): void => {
   const unlockTime = getNow() + secondsFromNow;
-  localStorage.setItem(STORAGE_KEY, unlockTime.toString());
+  localStorage.setItem(storageKey, unlockTime.toString());
 };
 
-const getStoredTime = (): string | null => localStorage.getItem(STORAGE_KEY);
+export const getInitialLevel = (storageKey: string): number => {
+  const level: string | null = localStorage.getItem(`${storageKey}_level`);
+  return level ? parseInt(level, 10) : 0;
+};
 
-export const getRemainingCooldownTime = (): number => {
-  const storedTime = getStoredTime();
+export const getNextLevel = (
+  currLevel: number,
+  cooldownSequence: number[],
+): number => Math.min(currLevel + 1, cooldownSequence.length - 1);
 
-  if (storedTime) {
-    const unlockTime = parseInt(storedTime, 10);
-    return Math.max(0, unlockTime - getNow());
-  } else {
-    setCooldownTime(ONE_MINUTE);
-    return ONE_MINUTE;
+export const setNextLevel = (storageKey: string, level: number): void =>
+  localStorage.setItem(`${storageKey}_level`, level.toString());
+
+const getStoredTime = (storageKey: string): number | null => {
+  const time: string | null = localStorage.getItem(storageKey);
+  return time ? parseInt(time, 10) : null;
+};
+
+export const getRemainingCooldownTime = (
+  storageKey: string,
+  initialValue: number,
+): number => {
+  const storedTime = getStoredTime(storageKey);
+
+  if (storedTime) return Math.max(0, storedTime - getNow());
+  else {
+    setCooldownTime(storageKey, initialValue);
+    return initialValue;
   }
 };
 
