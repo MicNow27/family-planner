@@ -19,7 +19,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 
 const ResetPassword = () => {
-  const { updatePassword } = useAuth();
+  const { signOut, updatePassword } = useAuth();
   const navigate = useNavigate();
 
   const [liveValidate, setLiveValidate] = useState({
@@ -43,8 +43,12 @@ const ResetPassword = () => {
 
     const { error } = await updatePassword(data.password);
 
-    if (error) setSubmitError(RESET_PASSWORD_ERROR);
-    else navigate("/login", { replace: true });
+    if (error) {
+      setSubmitError(RESET_PASSWORD_ERROR);
+    } else {
+      await signOut();
+      navigate("/login", { replace: true });
+    }
   };
 
   return (

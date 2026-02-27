@@ -20,6 +20,10 @@ const routes: Route[] = [
     element: <AuthCallback />,
   },
   {
+    path: "/reset-password",
+    element: <ResetPassword />,
+  },
+  {
     element: <RequireGuest />,
     children: [
       {
@@ -33,10 +37,6 @@ const routes: Route[] = [
       {
         path: "/forgot-password",
         element: <ForgotPassword />,
-      },
-      {
-        path: "/reset-password",
-        element: <ResetPassword />,
       },
     ],
   },
