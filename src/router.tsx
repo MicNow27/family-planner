@@ -34,10 +34,6 @@ const routes: Route[] = [
         path: "/check-email",
         element: <CheckEmail />,
       },
-      {
-        path: "/forgot-password",
-        element: <ForgotPassword />,
-      },
     ],
   },
   {
@@ -62,6 +58,16 @@ const routes: Route[] = [
             handle: {
               header: {
                 title: "Login",
+                showBackButton: true,
+              },
+            },
+          },
+          {
+            path: "/forgot-password",
+            element: <ForgotPassword />,
+            handle: {
+              header: {
+                title: "Forgot Password",
                 showBackButton: true,
               },
             },
