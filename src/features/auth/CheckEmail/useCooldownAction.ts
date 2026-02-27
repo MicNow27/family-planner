@@ -22,23 +22,40 @@ type UseCooldownActionReturn = {
   setSubmitError: (error: string | null) => void;
 };
 
+type UseCooldownActionState = {
+  level: number;
+  cooldown: number;
+};
+
 export const useCooldownAction = ({
   action,
   storageKey,
   cooldownSequence,
 }: UseCooldownActionOptions): UseCooldownActionReturn => {
-  const [level, setLevel] = useState<number>(getInitialLevel(storageKey));
-  const [cooldown, setCooldown] = useState<number>(
-    getRemainingCooldownTime(storageKey, cooldownSequence[level]),
-  );
+  const [state, setState] = useState<UseCooldownActionState>(() => {
+    const level = getInitialLevel(storageKey);
+    const cooldown = getRemainingCooldownTime(
+      storageKey,
+      cooldownSequence[level],
+    );
+
+    return { level, cooldown };
+  });
 
   const [submitError, setSubmitError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (cooldown <= 0) return;
-    const timer = setTimeout(() => setCooldown((c) => c - 1), 1000);
+    if (state.cooldown <= 0) return;
+
+    const timer = setTimeout(() => {
+      setState((prev) => ({
+        ...prev,
+        cooldown: prev.cooldown - 1,
+      }));
+    }, 1000);
+
     return () => clearTimeout(timer);
-  }, [cooldown]);
+  }, [state.cooldown]);
 
   const run = async () => {
     setSubmitError(null);
@@ -47,18 +64,20 @@ export const useCooldownAction = ({
 
     if (error) setSubmitError(EMAIL_RESENT_ERROR);
     else {
-      setLevel((prevLevel) => {
-        const nextLevel = getNextLevel(prevLevel, cooldownSequence);
+      setState((prev) => {
+        const nextLevel = getNextLevel(prev.level, cooldownSequence);
         const nextCooldown = cooldownSequence[nextLevel];
 
         setNextLevel(storageKey, nextLevel);
         setCooldownTime(storageKey, nextCooldown);
-        setCooldown(nextCooldown);
 
-        return nextLevel;
+        return {
+          level: nextLevel,
+          cooldown: nextCooldown,
+        };
       });
     }
   };
 
-  return { cooldown, run, submitError, setSubmitError };
+  return { cooldown: state.cooldown, run, submitError, setSubmitError };
 };

@@ -1,7 +1,7 @@
 import type { ResendEmailTime } from "@/types/resendEmailTime.ts";
 
-export const ONE_HOUR = 15;
-export const ONE_MINUTE = 5;
+export const ONE_HOUR = 3600;
+export const ONE_MINUTE = 60;
 
 const getNow = (): number => Math.floor(Date.now() / 1000);
 
