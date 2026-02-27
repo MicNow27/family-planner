@@ -47,13 +47,16 @@ export const useCooldownAction = ({
 
     if (error) setSubmitError(EMAIL_RESENT_ERROR);
     else {
-      const nextLevel = getNextLevel(level, cooldownSequence);
-      const nextCooldown = cooldownSequence[nextLevel];
+      setLevel((prevLevel) => {
+        const nextLevel = getNextLevel(prevLevel, cooldownSequence);
+        const nextCooldown = cooldownSequence[nextLevel];
 
-      setNextLevel(storageKey, nextLevel);
-      setLevel(nextLevel);
-      setCooldownTime(storageKey, nextCooldown);
-      setCooldown(nextCooldown);
+        setNextLevel(storageKey, nextLevel);
+        setCooldownTime(storageKey, nextCooldown);
+        setCooldown(nextCooldown);
+
+        return nextLevel;
+      });
     }
   };
 
