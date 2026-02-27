@@ -1,20 +1,17 @@
 import type { ResendEmailTime } from "@/types/resendEmailTime.ts";
 
-export const ONE_HOUR = 60;
-export const ONE_MINUTE = 10;
+export const ONE_HOUR = 15;
+export const ONE_MINUTE = 5;
 
 const getNow = (): number => Math.floor(Date.now() / 1000);
 
-export const setCooldownTime = (
-  storageKey: string,
-  secondsFromNow: number,
-): void => {
+export const setCooldownTime = (key: string, secondsFromNow: number): void => {
   const unlockTime = getNow() + secondsFromNow;
-  localStorage.setItem(storageKey, unlockTime.toString());
+  localStorage.setItem(key, unlockTime.toString());
 };
 
-export const getInitialLevel = (storageKey: string): number => {
-  const level: string | null = localStorage.getItem(`${storageKey}_level`);
+export const getInitialLevel = (key: string): number => {
+  const level: string | null = localStorage.getItem(`${key}_level`);
   return level ? parseInt(level, 10) : 0;
 };
 
@@ -23,23 +20,23 @@ export const getNextLevel = (
   cooldownSequence: number[],
 ): number => Math.min(currLevel + 1, cooldownSequence.length - 1);
 
-export const setNextLevel = (storageKey: string, level: number): void =>
-  localStorage.setItem(`${storageKey}_level`, level.toString());
+export const setNextLevel = (key: string, level: number): void =>
+  localStorage.setItem(`${key}_level`, level.toString());
 
-const getStoredTime = (storageKey: string): number | null => {
-  const time: string | null = localStorage.getItem(storageKey);
+const getStoredTime = (key: string): number | null => {
+  const time: string | null = localStorage.getItem(key);
   return time ? parseInt(time, 10) : null;
 };
 
 export const getRemainingCooldownTime = (
-  storageKey: string,
+  key: string,
   initialValue: number,
 ): number => {
-  const storedTime = getStoredTime(storageKey);
+  const storedTime = getStoredTime(key);
 
   if (storedTime) return Math.max(0, storedTime - getNow());
   else {
-    setCooldownTime(storageKey, initialValue);
+    setCooldownTime(key, initialValue);
     return initialValue;
   }
 };
