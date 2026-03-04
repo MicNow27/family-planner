@@ -6,12 +6,13 @@ import {
 } from "@/components/forms/authForm/schemas/login.schema.ts";
 import { useAuth } from "@/context/auth/useAuth.ts";
 import { EMAIL_LABEL, EMAIL_PLACEHOLDER } from "@copy/email.ts";
+import { FORGOT_PASSWORD } from "@copy/forgotPassword.ts";
 import { LOGIN_BUTTON, LOGIN_BUTTON_WAIT, LOGIN_ERROR } from "@copy/login.ts";
 import { PASSWORD_ENTER_PLACEHOLDER, PASSWORD_LABEL } from "@copy/password.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 const Login = () => {
   const { signIn } = useAuth();
@@ -22,7 +23,7 @@ const Login = () => {
     password: false,
   });
 
-  const [loginError, setLoginError] = useState<string | null>(null);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const {
     register,
@@ -34,7 +35,7 @@ const Login = () => {
   });
 
   const onSubmit = async (data: LoginFormData) => {
-    setLoginError(null);
+    setSubmitError(null);
 
     const { error } = await signIn({
       email: data.email,
@@ -46,7 +47,7 @@ const Login = () => {
 
       if (lowerError.includes("email not confirmed"))
         navigate("/check-email", { state: { email: data.email } });
-      else setLoginError(LOGIN_ERROR);
+      else setSubmitError(LOGIN_ERROR);
     }
   };
 
@@ -65,7 +66,7 @@ const Login = () => {
             },
             onChange: () => {
               if (!dirtyFields.email || !liveValidate.email) return;
-              setLoginError(null);
+              setSubmitError(null);
               void trigger("email");
             },
           })}
@@ -87,7 +88,7 @@ const Login = () => {
             },
             onChange: () => {
               if (!dirtyFields.password || !liveValidate.password) return;
-              setLoginError(null);
+              setSubmitError(null);
               void trigger("password");
             },
           })}
@@ -96,7 +97,9 @@ const Login = () => {
         {errors.password && <p>{errors.password.message}</p>}
       </div>
 
-      {loginError && <p>{loginError}</p>}
+      {submitError && <p>{submitError}</p>}
+
+      <Link to="/forgot-password">{FORGOT_PASSWORD}</Link>
 
       <PrimaryButton
         type="submit"

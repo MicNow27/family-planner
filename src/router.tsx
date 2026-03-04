@@ -2,6 +2,8 @@ import RequireAuth from "@/components/routes/RequireAuth.tsx";
 import RequireGuest from "@/components/routes/RequireGuest.tsx";
 import AuthCallback from "@/features/auth/AuthCallback/AuthCallback.tsx";
 import CheckEmail from "@/features/auth/CheckEmail/CheckEmail.tsx";
+import ForgotPassword from "@/features/auth/ForgotPassword/ForgotPassword.tsx";
+import ResetPassword from "@/features/auth/ResetPassword/ResetPassword.tsx";
 import SignUp from "@/features/auth/SignUp/SignUp.tsx";
 import Dashboard from "@/features/Dashboard/Dashboard.tsx";
 import Onboarding from "@/features/onboarding/Onboarding/Onboarding.tsx";
@@ -16,6 +18,10 @@ const routes: Route[] = [
   {
     path: "/auth-callback",
     element: <AuthCallback />,
+  },
+  {
+    path: "/reset-password",
+    element: <ResetPassword />,
   },
   {
     element: <RequireGuest />,
@@ -52,6 +58,16 @@ const routes: Route[] = [
             handle: {
               header: {
                 title: "Login",
+                showBackButton: true,
+              },
+            },
+          },
+          {
+            path: "/forgot-password",
+            element: <ForgotPassword />,
+            handle: {
+              header: {
+                title: "Forgot Password",
                 showBackButton: true,
               },
             },

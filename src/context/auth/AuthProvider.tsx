@@ -38,18 +38,6 @@ const AuthProvider = ({ children }: AuthContextProviderProps) => {
     return { error: error?.message ?? null };
   };
 
-  const resendEmail = async (email: string): Promise<AuthError> => {
-    const { error } = await supabaseClient.auth.resend({
-      type: "signup",
-      email,
-      options: {
-        emailRedirectTo: `${BASE_URL}/auth-callback`,
-      },
-    });
-
-    return { error: error?.message ?? null };
-  };
-
   const signIn = async ({ email, password }: Auth): Promise<AuthError> => {
     const { error } = await supabaseClient.auth.signInWithPassword({
       email,
@@ -63,9 +51,47 @@ const AuthProvider = ({ children }: AuthContextProviderProps) => {
     await supabaseClient.auth.signOut();
   };
 
+  const resendEmail = async (email: string): Promise<AuthError> => {
+    const { error } = await supabaseClient.auth.resend({
+      type: "signup",
+      email,
+      options: {
+        emailRedirectTo: `${BASE_URL}/auth-callback`,
+      },
+    });
+
+    return { error: error?.message ?? null };
+  };
+
+  const resetPassword = async (email: string): Promise<AuthError> => {
+    const { error } = await supabaseClient.auth.resetPasswordForEmail(email, {
+      redirectTo: `${BASE_URL}/reset-password`,
+    });
+
+    return { error: error?.message ?? null };
+  };
+
+  const updatePassword = async (password: string): Promise<AuthError> => {
+    const { error } = await supabaseClient.auth.updateUser({
+      password,
+    });
+
+    return { error: error?.message ?? null };
+  };
+
   return (
     <AuthContext
-      value={{ user, session, loading, signUp, signIn, signOut, resendEmail }}
+      value={{
+        user,
+        session,
+        loading,
+        signUp,
+        signIn,
+        signOut,
+        resendEmail,
+        resetPassword,
+        updatePassword,
+      }}
     >
       {children}
     </AuthContext>
