@@ -1,10 +1,10 @@
 import "./SignUp.scss";
 import PrimaryButton from "@/components/buttons/PrimaryButton/PrimaryButton.tsx";
+import { useAuth } from "@/context/auth/useAuth.ts";
 import {
   type SignUpFormData,
   signUpSchema,
-} from "@/components/forms/authForm/schemas/signUp.schema.ts";
-import { useAuth } from "@/context/auth/useAuth.ts";
+} from "@/schemas/auth/signUp.schema.ts";
 import { EMAIL_LABEL, EMAIL_PLACEHOLDER } from "@copy/email.ts";
 import {
   PASSWORD_CONFIRM_LABEL,

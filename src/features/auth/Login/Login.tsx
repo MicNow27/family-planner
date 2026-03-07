@@ -1,10 +1,10 @@
 import "./Login.scss";
 import PrimaryButton from "@/components/buttons/PrimaryButton/PrimaryButton.tsx";
+import { useAuth } from "@/context/auth/useAuth.ts";
 import {
   type LoginFormData,
   loginSchema,
-} from "@/components/forms/authForm/schemas/login.schema.ts";
-import { useAuth } from "@/context/auth/useAuth.ts";
+} from "@/schemas/auth/login.schema.ts";
 import { EMAIL_LABEL, EMAIL_PLACEHOLDER } from "@copy/email.ts";
 import { FORGOT_PASSWORD } from "@copy/forgotPassword.ts";
 import { LOGIN_BUTTON, LOGIN_BUTTON_WAIT, LOGIN_ERROR } from "@copy/login.ts";
