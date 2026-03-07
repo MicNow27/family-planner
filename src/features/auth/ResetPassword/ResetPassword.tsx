@@ -1,10 +1,10 @@
 import "./ResetPassword.scss";
 import PrimaryButton from "@/components/buttons/PrimaryButton/PrimaryButton.tsx";
+import { useAuth } from "@/context/auth/useAuth.ts";
 import {
   type ResetPasswordFormData,
   resetPasswordSchema,
-} from "@/components/forms/authForm/schemas/resetPassword.schema.ts";
-import { useAuth } from "@/context/auth/useAuth.ts";
+} from "@/schemas/auth/resetPassword.schema.ts";
 import { SUBMIT } from "@copy/general.ts";
 import {
   PASSWORD_CONFIRM_LABEL,

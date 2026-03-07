@@ -3,7 +3,7 @@ import {
   emailSchema,
   passwordSchema,
   strongPasswordSchema,
-} from "@/components/forms/authForm/schemas/auth.schemas.ts";
+} from "@/schemas/auth/auth.schemas.ts";
 
 export const emailField = { email: emailSchema };
 export const passwordField = { password: passwordSchema };

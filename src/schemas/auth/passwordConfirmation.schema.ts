@@ -1,7 +1,7 @@
 import {
   confirmPasswordField,
   strongPasswordField,
-} from "@/components/forms/authForm/schemas/auth.fields.ts";
+} from "@/schemas/auth/auth.fields.ts";
 import { PASSWORD_CONFIRM_ERROR_MATCH } from "@copy/password.ts";
 import { z } from "zod";
 

@@ -1,9 +1,5 @@
 import "./ForgotPassword.scss";
 import PrimaryButton from "@/components/buttons/PrimaryButton/PrimaryButton.tsx";
-import {
-  type ForgotPasswordFormData,
-  forgotPasswordSchema,
-} from "@/components/forms/authForm/schemas/forgotPassword.schema.ts";
 import { useAuth } from "@/context/auth/useAuth.ts";
 import {
   formatTime,
@@ -11,6 +7,10 @@ import {
   ONE_MINUTE,
 } from "@/hooks/useCooldown/timeLogic.ts";
 import { useCooldown } from "@/hooks/useCooldown/useCooldown.ts";
+import {
+  type ForgotPasswordFormData,
+  forgotPasswordSchema,
+} from "@/schemas/auth/forgotPassword.schema.ts";
 import {
   EMAIL_LABEL,
   EMAIL_PLACEHOLDER,
