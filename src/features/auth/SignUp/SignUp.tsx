@@ -1,6 +1,8 @@
 import "./SignUp.scss";
 import PrimaryButton from "@/components/buttons/PrimaryButton/PrimaryButton.tsx";
+import FormField from "@/components/forms/FormField/FormField.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
+import { useLiveValidation } from "@/hooks/useLiveValidation.ts";
 import {
   type SignUpFormData,
   signUpSchema,
@@ -26,12 +28,6 @@ const SignUp = () => {
   const { signUp } = useAuth();
   const navigate = useNavigate();
 
-  const [liveValidate, setLiveValidate] = useState({
-    email: false,
-    password: false,
-    confirmPassword: false,
-  });
-
   const [submitError, setSubmitError] = useState<string | null>(null);
 
   const {
@@ -41,6 +37,12 @@ const SignUp = () => {
     formState: { dirtyFields, errors, isSubmitting, isValid },
   } = useForm<SignUpFormData>({
     resolver: zodResolver(signUpSchema),
+  });
+
+  const liveValidate = useLiveValidation({
+    trigger,
+    dirtyFields,
+    clearSubmitError: () => setSubmitError(null),
   });
 
   const onSubmit = async (data: SignUpFormData) => {
@@ -64,72 +66,32 @@ const SignUp = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <label htmlFor="email">{EMAIL_LABEL}</label>
-        <input
-          id="email"
-          type="email"
-          {...register("email", {
-            onBlur: () => {
-              if (!dirtyFields.email) return;
-              void trigger("email");
-              setLiveValidate((prev) => ({ ...prev, email: true }));
-            },
-            onChange: () => {
-              if (!dirtyFields.email || !liveValidate.email) return;
-              setSubmitError(null);
-              void trigger("email");
-            },
-          })}
-          placeholder={EMAIL_PLACEHOLDER}
-        />
-        {errors.email && <p>{errors.email.message}</p>}
-      </div>
+      <FormField
+        id="email"
+        label={EMAIL_LABEL}
+        type="email"
+        placeholder={EMAIL_PLACEHOLDER}
+        register={register("email", liveValidate("email"))}
+        error={errors.email?.message}
+      />
 
-      <div>
-        <label htmlFor="password">{PASSWORD_LABEL}</label>
-        <input
-          id="password"
-          type="password"
-          {...register("password", {
-            onBlur: () => {
-              if (!dirtyFields.password) return;
-              void trigger("password");
-              setLiveValidate((prev) => ({ ...prev, password: true }));
-            },
-            onChange: () => {
-              if (!dirtyFields.password || !liveValidate.password) return;
-              setSubmitError(null);
-              void trigger("password");
-            },
-          })}
-          placeholder={PASSWORD_CREATE_PLACEHOLDER}
-        />
-        {errors.password && <p>{errors.password.message}</p>}
-      </div>
+      <FormField
+        id="password"
+        label={PASSWORD_LABEL}
+        type="password"
+        placeholder={PASSWORD_CREATE_PLACEHOLDER}
+        register={register("password", liveValidate("password"))}
+        error={errors.password?.message}
+      />
 
-      <div>
-        <label htmlFor="confirmPassword">{PASSWORD_CONFIRM_LABEL}</label>
-        <input
-          id="confirmPassword"
-          type="password"
-          {...register("confirmPassword", {
-            onBlur: () => {
-              if (!dirtyFields.confirmPassword) return;
-              void trigger("confirmPassword");
-              setLiveValidate((prev) => ({ ...prev, confirmPassword: true }));
-            },
-            onChange: () => {
-              if (!dirtyFields.confirmPassword || !liveValidate.confirmPassword)
-                return;
-              setSubmitError(null);
-              void trigger("confirmPassword");
-            },
-          })}
-          placeholder={PASSWORD_CONFIRM_PLACEHOLDER}
-        />
-        {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
-      </div>
+      <FormField
+        id="confirmPassword"
+        label={PASSWORD_CONFIRM_LABEL}
+        type="password"
+        placeholder={PASSWORD_CONFIRM_PLACEHOLDER}
+        register={register("confirmPassword", liveValidate("confirmPassword"))}
+        error={errors.confirmPassword?.message}
+      />
 
       {isSubmitting && <p>{SIGN_UP_BUTTON_WAIT}</p>}
       {!isSubmitting && submitError && <p>{submitError}</p>}
