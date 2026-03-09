@@ -1,5 +1,6 @@
 import "./ForgotPassword.scss";
 import PrimaryButton from "@/components/buttons/PrimaryButton/PrimaryButton.tsx";
+import FormField from "@/components/forms/FormField/FormField.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
 import {
   formatTime,
@@ -7,6 +8,7 @@ import {
   ONE_MINUTE,
 } from "@/hooks/useCooldown/timeLogic.ts";
 import { useCooldown } from "@/hooks/useCooldown/useCooldown.ts";
+import { useLiveValidation } from "@/hooks/useLiveValidation.ts";
 import {
   type ForgotPasswordFormData,
   forgotPasswordSchema,
@@ -19,12 +21,10 @@ import {
 import { RESET_PASSWORD_WAIT } from "@copy/forgotPassword.ts";
 import { SUBMIT } from "@copy/general.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const ForgotPassword = () => {
   const { resetPassword } = useAuth();
-  const [liveValidate, setLiveValidate] = useState({ email: false });
 
   const {
     register,
@@ -42,33 +42,24 @@ const ForgotPassword = () => {
     cooldownSequence: [0, ONE_MINUTE, ONE_HOUR],
   });
 
-  const onSubmit = async () => {
-    await run();
-  };
+  const liveValidate = useLiveValidation({
+    trigger,
+    dirtyFields,
+    clearSubmitError: () => setSubmitError(null),
+  });
+
+  const onSubmit = async () => await run();
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <label htmlFor="email">{EMAIL_LABEL}</label>
-        <input
-          id="email"
-          type="email"
-          {...register("email", {
-            onBlur: () => {
-              if (!dirtyFields.email) return;
-              void trigger("email");
-              setLiveValidate((prev) => ({ ...prev, email: true }));
-            },
-            onChange: () => {
-              if (!dirtyFields.email || !liveValidate.email) return;
-              setSubmitError(null);
-              void trigger("email");
-            },
-          })}
-          placeholder={EMAIL_PLACEHOLDER}
-        />
-        {errors.email && <p>{errors.email.message}</p>}
-      </div>
+      <FormField
+        id="email"
+        label={EMAIL_LABEL}
+        type="email"
+        placeholder={EMAIL_PLACEHOLDER}
+        register={register("email", liveValidate("email"))}
+        error={errors.email?.message}
+      />
 
       {isSubmitting && <p>{RESET_PASSWORD_WAIT}</p>}
       {!isSubmitting && submitError && <p>{submitError}</p>}
