@@ -16,6 +16,7 @@ import {
   EMAIL_PLACEHOLDER,
   RESEND_EMAIL_BUTTON_WAIT,
 } from "@copy/email.ts";
+import { RESET_PASSWORD_WAIT } from "@copy/forgotPassword.ts";
 import { SUBMIT } from "@copy/general.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
@@ -69,7 +70,7 @@ const ForgotPassword = () => {
         {errors.email && <p>{errors.email.message}</p>}
       </div>
 
-      {isSubmitting && <p>Sending request...</p>}
+      {isSubmitting && <p>{RESET_PASSWORD_WAIT}</p>}
       {!isSubmitting && submitError && <p>{submitError}</p>}
       {cooldown > 0 && <p>{RESEND_EMAIL_BUTTON_WAIT(formatTime(cooldown))}</p>}
 

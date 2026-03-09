@@ -5,6 +5,10 @@ import {
   type ResetPasswordFormData,
   resetPasswordSchema,
 } from "@/schemas/auth/resetPassword.schema.ts";
+import {
+  RESET_PASSWORD_ERROR,
+  RESET_PASSWORD_WAIT,
+} from "@copy/forgotPassword.ts";
 import { SUBMIT } from "@copy/general.ts";
 import {
   PASSWORD_CONFIRM_LABEL,
@@ -12,7 +16,6 @@ import {
   PASSWORD_CREATE_PLACEHOLDER,
   PASSWORD_LABEL,
 } from "@copy/password.ts";
-import { RESET_PASSWORD_ERROR } from "@copy/resetPassword.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -98,7 +101,7 @@ const ResetPassword = () => {
         {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
       </div>
 
-      {isSubmitting && <p>Sending request...</p>}
+      {isSubmitting && <p>{RESET_PASSWORD_WAIT}</p>}
       {!isSubmitting && submitError && <p>{submitError}</p>}
 
       <PrimaryButton

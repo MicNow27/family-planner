@@ -131,11 +131,12 @@ const SignUp = () => {
         {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
       </div>
 
-      {submitError && <p>{submitError}</p>}
+      {isSubmitting && <p>{SIGN_UP_BUTTON_WAIT}</p>}
+      {!isSubmitting && submitError && <p>{submitError}</p>}
 
       <PrimaryButton
         type="submit"
-        text={isSubmitting ? SIGN_UP_BUTTON_WAIT : SIGN_UP_BUTTON}
+        text={SIGN_UP_BUTTON}
         disabled={isSubmitting || !isValid}
       />
     </form>

@@ -35,16 +35,15 @@ const CheckEmail = () => {
   return (
     <>
       <p>{CHECK_EMAIL}</p>
+
+      {submitError && <p>{submitError}</p>}
+      {cooldown > 0 && <p>{RESEND_EMAIL_BUTTON_WAIT(formatTime(cooldown))}</p>}
+
       <PrimaryButton
         onClick={run}
         disabled={cooldown > 0}
-        text={
-          cooldown > 0
-            ? RESEND_EMAIL_BUTTON_WAIT(formatTime(cooldown))
-            : RESEND_EMAIL_BUTTON
-        }
+        text={RESEND_EMAIL_BUTTON}
       />
-      {submitError && <p>{submitError}</p>}
     </>
   );
 };
