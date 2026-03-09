@@ -95,7 +95,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 To maintain a clean and consistent history, please follow these rules for commit messages:
 
-- **Commit Message**: Use the imperative voice and lower case (except for proper nouns). It must start with one of the following types:
+- **Commit Message**: Use the imperative voice and lower case (except for proper nouns). Try and keep the description close to 72 characters. It must start with one of the following types:
   - `feat`: new feature
   - `fix`: bug fix
   - `docs`: documentation change
@@ -104,13 +104,13 @@ To maintain a clean and consistent history, please follow these rules for commit
   - `test`: adding or fixing tests
   - `chore`: build process, dependencies, other maintenance
 
-- **Commit Description**: Use the present simple tense and normal sentence structure. Try and keep the description close to 72 characters.
+- **Commit Description**: Use the imperative voice and normal sentence structure.
 
 Example: 
 ```text
 chore: add initial project README
 
-Adds a README file to outline the project's key features, structure, and guidelines.
+Add a README file to outline the project's key features, structure, and guidelines.
 ```
 
 ## 📄 License

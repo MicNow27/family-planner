@@ -97,13 +97,14 @@ const Login = () => {
         {errors.password && <p>{errors.password.message}</p>}
       </div>
 
-      {submitError && <p>{submitError}</p>}
+      {isSubmitting && <p>{LOGIN_BUTTON_WAIT}</p>}
+      {!isSubmitting && submitError && <p>{submitError}</p>}
 
       <Link to="/forgot-password">{FORGOT_PASSWORD}</Link>
 
       <PrimaryButton
         type="submit"
-        text={isSubmitting ? LOGIN_BUTTON_WAIT : LOGIN_BUTTON}
+        text={LOGIN_BUTTON}
         disabled={isSubmitting || !isValid}
       />
     </form>
