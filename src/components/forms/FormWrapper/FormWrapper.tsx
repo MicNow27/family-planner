@@ -25,12 +25,8 @@ const FormWrapper = <T extends FieldValues>({
   const { handleSubmit, formState } = form;
   const { isSubmitting, isValid } = formState;
 
-  const submit = async (data: T) => {
-    await onSubmit(data);
-  };
-
   return (
-    <form onSubmit={handleSubmit(submit)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       {children}
 
       {isSubmitting && <p>{submittingText}</p>}
