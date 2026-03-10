@@ -46,7 +46,7 @@ const ForgotPassword = () => {
   const liveValidate = useLiveValidation({
     trigger,
     dirtyFields,
-    clearSubmitError: () => clearError(),
+    clearSubmitError: clearError,
   });
 
   const onSubmit = async () => await run();
