@@ -36,7 +36,7 @@ const ForgotPassword = () => {
     resolver: zodResolver(forgotPasswordSchema),
   });
 
-  const { cooldown, run, submitError, setSubmitError } = useCooldown({
+  const { cooldown, run, submitError, clearError } = useCooldown({
     action: () => resetPassword(getValues("email")),
     storageKey: "forgotPasswordCooldown",
     cooldownSequence: [0, ONE_MINUTE, ONE_HOUR],
@@ -45,7 +45,7 @@ const ForgotPassword = () => {
   const liveValidate = useLiveValidation({
     trigger,
     dirtyFields,
-    clearSubmitError: () => setSubmitError(null),
+    clearSubmitError: () => clearError(),
   });
 
   const onSubmit = async () => await run();
