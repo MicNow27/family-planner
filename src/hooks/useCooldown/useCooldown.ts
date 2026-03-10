@@ -19,7 +19,7 @@ type UseCooldownReturn = {
   cooldown: number;
   run: () => Promise<void>;
   submitError: string | null;
-  setSubmitError: (error: string | null) => void;
+  clearError: () => void;
 };
 
 type UseCooldownState = {
@@ -44,6 +44,8 @@ export const useCooldown = ({
 
   const [submitError, setSubmitError] = useState<string | null>(null);
 
+  const clearError = () => setSubmitError(null);
+
   useEffect(() => {
     if (state.cooldown <= 0) return;
 
@@ -58,7 +60,7 @@ export const useCooldown = ({
   }, [state.cooldown]);
 
   const run = async () => {
-    setSubmitError(null);
+    clearError();
 
     const { error } = await action();
 
@@ -79,5 +81,5 @@ export const useCooldown = ({
     }
   };
 
-  return { cooldown: state.cooldown, run, submitError, setSubmitError };
+  return { cooldown: state.cooldown, run, submitError, clearError };
 };

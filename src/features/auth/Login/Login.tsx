@@ -1,6 +1,8 @@
 import "./Login.scss";
-import PrimaryButton from "@/components/buttons/PrimaryButton/PrimaryButton.tsx";
+import FormField from "@/components/forms/FormField/FormField.tsx";
+import FormWrapper from "@/components/forms/FormWrapper/FormWrapper.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
+import { useLiveValidation } from "@/hooks/useLiveValidation.ts";
 import {
   type LoginFormData,
   loginSchema,
@@ -17,21 +19,22 @@ import { Link, useNavigate } from "react-router";
 const Login = () => {
   const { signIn } = useAuth();
   const navigate = useNavigate();
-
-  const [liveValidate, setLiveValidate] = useState({
-    email: false,
-    password: false,
-  });
-
   const [submitError, setSubmitError] = useState<string | null>(null);
+
+  const form = useForm<LoginFormData>({
+    resolver: zodResolver(loginSchema),
+  });
 
   const {
     register,
-    handleSubmit,
     trigger,
-    formState: { dirtyFields, errors, isSubmitting, isValid },
-  } = useForm<LoginFormData>({
-    resolver: zodResolver(loginSchema),
+    formState: { errors, dirtyFields },
+  } = form;
+
+  const liveValidate = useLiveValidation({
+    trigger,
+    dirtyFields,
+    clearSubmitError: () => setSubmitError(null),
   });
 
   const onSubmit = async (data: LoginFormData) => {
@@ -52,62 +55,34 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <label htmlFor="email">{EMAIL_LABEL}</label>
-        <input
+    <>
+      <FormWrapper
+        form={form}
+        onSubmit={onSubmit}
+        submitError={submitError}
+        submitButtonText={LOGIN_BUTTON}
+        submittingText={LOGIN_BUTTON_WAIT}
+      >
+        <FormField
           id="email"
+          label={EMAIL_LABEL}
           type="email"
-          {...register("email", {
-            onBlur: () => {
-              if (!dirtyFields.email) return;
-              void trigger("email");
-              setLiveValidate((prev) => ({ ...prev, email: true }));
-            },
-            onChange: () => {
-              if (!dirtyFields.email || !liveValidate.email) return;
-              setSubmitError(null);
-              void trigger("email");
-            },
-          })}
           placeholder={EMAIL_PLACEHOLDER}
+          register={register("email", liveValidate("email"))}
+          error={errors.email?.message}
         />
-        {errors.email && <p>{errors.email.message}</p>}
-      </div>
 
-      <div>
-        <label htmlFor="password">{PASSWORD_LABEL}</label>
-        <input
+        <FormField
           id="password"
+          label={PASSWORD_LABEL}
           type="password"
-          {...register("password", {
-            onBlur: () => {
-              if (!dirtyFields.password) return;
-              void trigger("password");
-              setLiveValidate((prev) => ({ ...prev, password: true }));
-            },
-            onChange: () => {
-              if (!dirtyFields.password || !liveValidate.password) return;
-              setSubmitError(null);
-              void trigger("password");
-            },
-          })}
           placeholder={PASSWORD_ENTER_PLACEHOLDER}
+          register={register("password", liveValidate("password"))}
+          error={errors.password?.message}
         />
-        {errors.password && <p>{errors.password.message}</p>}
-      </div>
-
-      {isSubmitting && <p>{LOGIN_BUTTON_WAIT}</p>}
-      {!isSubmitting && submitError && <p>{submitError}</p>}
-
+      </FormWrapper>
       <Link to="/forgot-password">{FORGOT_PASSWORD}</Link>
-
-      <PrimaryButton
-        type="submit"
-        text={LOGIN_BUTTON}
-        disabled={isSubmitting || !isValid}
-      />
-    </form>
+    </>
   );
 };
 

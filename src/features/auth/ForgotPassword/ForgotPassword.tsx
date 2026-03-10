@@ -1,5 +1,6 @@
 import "./ForgotPassword.scss";
-import PrimaryButton from "@/components/buttons/PrimaryButton/PrimaryButton.tsx";
+import FormField from "@/components/forms/FormField/FormField.tsx";
+import FormWrapper from "@/components/forms/FormWrapper/FormWrapper.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
 import {
   formatTime,
@@ -7,6 +8,7 @@ import {
   ONE_MINUTE,
 } from "@/hooks/useCooldown/timeLogic.ts";
 import { useCooldown } from "@/hooks/useCooldown/useCooldown.ts";
+import { useLiveValidation } from "@/hooks/useLiveValidation.ts";
 import {
   type ForgotPasswordFormData,
   forgotPasswordSchema,
@@ -19,67 +21,56 @@ import {
 import { RESET_PASSWORD_WAIT } from "@copy/forgotPassword.ts";
 import { SUBMIT } from "@copy/general.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const ForgotPassword = () => {
   const { resetPassword } = useAuth();
-  const [liveValidate, setLiveValidate] = useState({ email: false });
 
-  const {
-    register,
-    handleSubmit,
-    trigger,
-    getValues,
-    formState: { dirtyFields, errors, isSubmitting, isValid },
-  } = useForm<ForgotPasswordFormData>({
+  const form = useForm<ForgotPasswordFormData>({
     resolver: zodResolver(forgotPasswordSchema),
   });
 
-  const { cooldown, run, submitError, setSubmitError } = useCooldown({
+  const {
+    register,
+    trigger,
+    getValues,
+    formState: { dirtyFields, errors },
+  } = form;
+
+  const { cooldown, run, submitError, clearError } = useCooldown({
     action: () => resetPassword(getValues("email")),
     storageKey: "forgotPasswordCooldown",
     cooldownSequence: [0, ONE_MINUTE, ONE_HOUR],
   });
 
-  const onSubmit = async () => {
-    await run();
-  };
+  const liveValidate = useLiveValidation({
+    trigger,
+    dirtyFields,
+    clearSubmitError: clearError,
+  });
+
+  const onSubmit = async () => await run();
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <label htmlFor="email">{EMAIL_LABEL}</label>
-        <input
-          id="email"
-          type="email"
-          {...register("email", {
-            onBlur: () => {
-              if (!dirtyFields.email) return;
-              void trigger("email");
-              setLiveValidate((prev) => ({ ...prev, email: true }));
-            },
-            onChange: () => {
-              if (!dirtyFields.email || !liveValidate.email) return;
-              setSubmitError(null);
-              void trigger("email");
-            },
-          })}
-          placeholder={EMAIL_PLACEHOLDER}
-        />
-        {errors.email && <p>{errors.email.message}</p>}
-      </div>
-
-      {isSubmitting && <p>{RESET_PASSWORD_WAIT}</p>}
-      {!isSubmitting && submitError && <p>{submitError}</p>}
-      {cooldown > 0 && <p>{RESEND_EMAIL_BUTTON_WAIT(formatTime(cooldown))}</p>}
-
-      <PrimaryButton
-        type="submit"
-        text={SUBMIT}
-        disabled={isSubmitting || !isValid || cooldown > 0}
+    <FormWrapper
+      form={form}
+      onSubmit={onSubmit}
+      submitError={submitError}
+      submitButtonText={SUBMIT}
+      submittingText={RESET_PASSWORD_WAIT}
+      disableSubmit={cooldown > 0}
+    >
+      <FormField
+        id="email"
+        label={EMAIL_LABEL}
+        type="email"
+        placeholder={EMAIL_PLACEHOLDER}
+        register={register("email", liveValidate("email"))}
+        error={errors.email?.message}
       />
-    </form>
+
+      {cooldown > 0 && <p>{RESEND_EMAIL_BUTTON_WAIT(formatTime(cooldown))}</p>}
+    </FormWrapper>
   );
 };
 
