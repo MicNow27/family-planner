@@ -1,6 +1,6 @@
 import "./ForgotPassword.scss";
-import PrimaryButton from "@/components/buttons/PrimaryButton/PrimaryButton.tsx";
 import FormField from "@/components/forms/FormField/FormField.tsx";
+import FormWrapper from "@/components/forms/FormWrapper/FormWrapper.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
 import {
   formatTime,
@@ -26,15 +26,16 @@ import { useForm } from "react-hook-form";
 const ForgotPassword = () => {
   const { resetPassword } = useAuth();
 
-  const {
-    register,
-    handleSubmit,
-    trigger,
-    getValues,
-    formState: { dirtyFields, errors, isSubmitting, isValid },
-  } = useForm<ForgotPasswordFormData>({
+  const form = useForm<ForgotPasswordFormData>({
     resolver: zodResolver(forgotPasswordSchema),
   });
+
+  const {
+    register,
+    trigger,
+    getValues,
+    formState: { dirtyFields, errors },
+  } = form;
 
   const { cooldown, run, submitError, clearError } = useCooldown({
     action: () => resetPassword(getValues("email")),
@@ -51,7 +52,14 @@ const ForgotPassword = () => {
   const onSubmit = async () => await run();
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <FormWrapper
+      form={form}
+      onSubmit={onSubmit}
+      submitError={submitError}
+      submitButtonText={SUBMIT}
+      submittingText={RESET_PASSWORD_WAIT}
+      disableSubmit={cooldown > 0}
+    >
       <FormField
         id="email"
         label={EMAIL_LABEL}
@@ -61,16 +69,8 @@ const ForgotPassword = () => {
         error={errors.email?.message}
       />
 
-      {isSubmitting && <p>{RESET_PASSWORD_WAIT}</p>}
-      {!isSubmitting && submitError && <p>{submitError}</p>}
       {cooldown > 0 && <p>{RESEND_EMAIL_BUTTON_WAIT(formatTime(cooldown))}</p>}
-
-      <PrimaryButton
-        type="submit"
-        text={SUBMIT}
-        disabled={isSubmitting || !isValid || cooldown > 0}
-      />
-    </form>
+    </FormWrapper>
   );
 };
 

@@ -1,6 +1,6 @@
 import "./Login.scss";
-import PrimaryButton from "@/components/buttons/PrimaryButton/PrimaryButton.tsx";
 import FormField from "@/components/forms/FormField/FormField.tsx";
+import FormWrapper from "@/components/forms/FormWrapper/FormWrapper.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
 import { useLiveValidation } from "@/hooks/useLiveValidation.ts";
 import {
@@ -19,17 +19,17 @@ import { Link, useNavigate } from "react-router";
 const Login = () => {
   const { signIn } = useAuth();
   const navigate = useNavigate();
-
   const [submitError, setSubmitError] = useState<string | null>(null);
+
+  const form = useForm<LoginFormData>({
+    resolver: zodResolver(loginSchema),
+  });
 
   const {
     register,
-    handleSubmit,
     trigger,
-    formState: { dirtyFields, errors, isSubmitting, isValid },
-  } = useForm<LoginFormData>({
-    resolver: zodResolver(loginSchema),
-  });
+    formState: { errors, dirtyFields },
+  } = form;
 
   const liveValidate = useLiveValidation({
     trigger,
@@ -55,36 +55,34 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <FormField
-        id="email"
-        label={EMAIL_LABEL}
-        type="email"
-        placeholder={EMAIL_PLACEHOLDER}
-        register={register("email", liveValidate("email"))}
-        error={errors.email?.message}
-      />
+    <>
+      <FormWrapper
+        form={form}
+        onSubmit={onSubmit}
+        submitError={submitError}
+        submitButtonText={LOGIN_BUTTON}
+        submittingText={LOGIN_BUTTON_WAIT}
+      >
+        <FormField
+          id="email"
+          label={EMAIL_LABEL}
+          type="email"
+          placeholder={EMAIL_PLACEHOLDER}
+          register={register("email", liveValidate("email"))}
+          error={errors.email?.message}
+        />
 
-      <FormField
-        id="password"
-        label={PASSWORD_LABEL}
-        type="password"
-        placeholder={PASSWORD_ENTER_PLACEHOLDER}
-        register={register("password", liveValidate("password"))}
-        error={errors.password?.message}
-      />
-
-      {isSubmitting && <p>{LOGIN_BUTTON_WAIT}</p>}
-      {!isSubmitting && submitError && <p>{submitError}</p>}
-
+        <FormField
+          id="password"
+          label={PASSWORD_LABEL}
+          type="password"
+          placeholder={PASSWORD_ENTER_PLACEHOLDER}
+          register={register("password", liveValidate("password"))}
+          error={errors.password?.message}
+        />
+      </FormWrapper>
       <Link to="/forgot-password">{FORGOT_PASSWORD}</Link>
-
-      <PrimaryButton
-        type="submit"
-        text={LOGIN_BUTTON}
-        disabled={isSubmitting || !isValid}
-      />
-    </form>
+    </>
   );
 };
 

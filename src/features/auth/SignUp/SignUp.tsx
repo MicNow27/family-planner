@@ -1,6 +1,6 @@
 import "./SignUp.scss";
-import PrimaryButton from "@/components/buttons/PrimaryButton/PrimaryButton.tsx";
 import FormField from "@/components/forms/FormField/FormField.tsx";
+import FormWrapper from "@/components/forms/FormWrapper/FormWrapper.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
 import { useLiveValidation } from "@/hooks/useLiveValidation.ts";
 import {
@@ -27,17 +27,17 @@ import { useNavigate } from "react-router";
 const SignUp = () => {
   const { signUp } = useAuth();
   const navigate = useNavigate();
-
   const [submitError, setSubmitError] = useState<string | null>(null);
+
+  const form = useForm<SignUpFormData>({
+    resolver: zodResolver(signUpSchema),
+  });
 
   const {
     register,
-    handleSubmit,
     trigger,
-    formState: { dirtyFields, errors, isSubmitting, isValid },
-  } = useForm<SignUpFormData>({
-    resolver: zodResolver(signUpSchema),
-  });
+    formState: { errors, dirtyFields },
+  } = form;
 
   const liveValidate = useLiveValidation({
     trigger,
@@ -65,7 +65,13 @@ const SignUp = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <FormWrapper
+      form={form}
+      onSubmit={onSubmit}
+      submitError={submitError}
+      submitButtonText={SIGN_UP_BUTTON}
+      submittingText={SIGN_UP_BUTTON_WAIT}
+    >
       <FormField
         id="email"
         label={EMAIL_LABEL}
@@ -92,16 +98,7 @@ const SignUp = () => {
         register={register("confirmPassword", liveValidate("confirmPassword"))}
         error={errors.confirmPassword?.message}
       />
-
-      {isSubmitting && <p>{SIGN_UP_BUTTON_WAIT}</p>}
-      {!isSubmitting && submitError && <p>{submitError}</p>}
-
-      <PrimaryButton
-        type="submit"
-        text={SIGN_UP_BUTTON}
-        disabled={isSubmitting || !isValid}
-      />
-    </form>
+    </FormWrapper>
   );
 };
 

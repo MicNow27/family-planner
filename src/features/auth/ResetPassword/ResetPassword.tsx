@@ -1,6 +1,6 @@
 import "./ResetPassword.scss";
-import PrimaryButton from "@/components/buttons/PrimaryButton/PrimaryButton.tsx";
 import FormField from "@/components/forms/FormField/FormField.tsx";
+import FormWrapper from "@/components/forms/FormWrapper/FormWrapper.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
 import { useLiveValidation } from "@/hooks/useLiveValidation.ts";
 import {
@@ -26,17 +26,17 @@ import { useNavigate } from "react-router";
 const ResetPassword = () => {
   const { signOut, updatePassword } = useAuth();
   const navigate = useNavigate();
-
   const [submitError, setSubmitError] = useState<string | null>(null);
+
+  const form = useForm<ResetPasswordFormData>({
+    resolver: zodResolver(resetPasswordSchema),
+  });
 
   const {
     register,
-    handleSubmit,
     trigger,
-    formState: { dirtyFields, errors, isSubmitting, isValid },
-  } = useForm<ResetPasswordFormData>({
-    resolver: zodResolver(resetPasswordSchema),
-  });
+    formState: { errors, dirtyFields },
+  } = form;
 
   const liveValidate = useLiveValidation({
     trigger,
@@ -58,7 +58,13 @@ const ResetPassword = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <FormWrapper
+      form={form}
+      onSubmit={onSubmit}
+      submitError={submitError}
+      submitButtonText={SUBMIT}
+      submittingText={RESET_PASSWORD_WAIT}
+    >
       <FormField
         id="password"
         label={PASSWORD_LABEL}
@@ -76,16 +82,7 @@ const ResetPassword = () => {
         register={register("confirmPassword", liveValidate("confirmPassword"))}
         error={errors.confirmPassword?.message}
       />
-
-      {isSubmitting && <p>{RESET_PASSWORD_WAIT}</p>}
-      {!isSubmitting && submitError && <p>{submitError}</p>}
-
-      <PrimaryButton
-        type="submit"
-        text={SUBMIT}
-        disabled={isSubmitting || !isValid}
-      />
-    </form>
+    </FormWrapper>
   );
 };
 
