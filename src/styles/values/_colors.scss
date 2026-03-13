@@ -1,50 +1,51 @@
-// Accents and colours
-$accent: #f59e0c; // FABs, primary buttons, active tabs
-$accent-hover: #d97706;
-$accent-focus: rgba(245, 158, 12, 0.2);
-$accent-disabled: rgba(245, 158, 12, 0.4);
+:root {
+  --primary: #f59e0c; // FABs, primary buttons, active tabs
+  --primary-hover: #d97706;
+  --primary-focus: rgba(245, 158, 12, 0.2);
+  --primary-disabled: rgba(245, 158, 12, 0.4);
 
-$burnt-orange: #e0681e; // emphasis / warm highlights
-$bright-pink: #ff6884; // special moments
+  --secondary: #e0681e; // emphasis / warm highlights
+  --tertiary: #ff6884; // special moments
 
-// User avatars and tags
-$coral-pink: #ff7f8e; // mum
-$green-blue: #4fa3a5; // dad
+  --primary-user-1: #ff7f8e; // mum
+  --primary-user-2: #4fa3a5; // dad
 
-$soft-peach: #f3b4a2;
-$soft-sky-blue: #bdd3e8;
-$dusty-blue: #9fb3d9;
-$soft-lavender: #b9a7ff;
-$muted-mauve: #c7b2c9;
-$sage-green: #a8c7b0;
-$soft-teal: #8fbac6;
+  --child-1: #f3b4a2;
+  --child-2: #bdd3e8;
+  --child-3: #9fb3d9;
+  --child-4: #b9a7ff;
+  --child-5: #c7b2c9;
+  --child-6: #a8c7b0;
+  --child-7: #8fbac6;
 
-// States
-$success: #3fa37a; // saved changes, completed tasks, confirmations
-$warning: #e9a23b; // upcoming deadlines, schedule conflicts, non-blocking attention-needed
-$error: #c7364a; // failed actions, invalid input, destructive confirmations
-$info: #70c1e3;
+  // States
+  --success: #3fa37a; // saved changes, completed tasks, confirmations
+  --warning: #e9a23b; // upcoming deadlines, schedule conflicts, non-blocking attention-needed
+  --error: #c7364a; // failed actions, invalid input, destructive confirmations
+  --info: #70c1e3;
 
-// Background colours
-//$background: #090814;
-//$background: #0c0b18;
-$background: #0f1320;
-//$background: #0e0e1f;
-//$background: #0f1022;
-//$background: #111126;
-//$background: #14142d;
-//$background: #14162f;
+  // Backgrounds
+  --background: #0f1320;
+  //$background: #090814;
+  //$background: #0c0b18;
+  //$background: #0e0e1f;
+  //$background: #0f1022;
+  //$background: #111126;
+  //$background: #14142d;
+  //$background: #14162f;
 
-$primary-surface: #2a293b; // cards, sheets, panels
-//$primary-surface: #2f2e41;
-$secondary-surface: #39374e; // nested cards, list rows
-$interactive-surface: #3f3d56;
-$interactive-surface-hover: #525066;
-//$interactive-surface-hover: #656377;
-$dividers: #504f60;
+  --primary-surface: #2a293b; // cards, sheets, panels
+  //$primary-surface: #2f2e41;
 
-// Text colours
-$primary-text: #e6e6e6; // titles, main content
-$secondary-text: #dddedf; // labels, metadata
-$tertiary-text: #c6c7c8; // helper text
-$disabled-text: #6e6d84; // low-emphasis text
+  --secondary-surface: #39374e; // nested cards, list rows
+  --interactive-surface: #3f3d56;
+  --interactive-surface-hover: #525066;
+  //$interactive-surface-hover: #656377;
+  --dividers: #504f60;
+
+  // Text
+  --primary-text: #e6e6e6; // titles, main content
+  --secondary-text: #dddedf; // labels, metadata
+  --tertiary-text: #c6c7c8; // helper text
+  --disabled-text: #6e6d84; // low-emphasis text
+}

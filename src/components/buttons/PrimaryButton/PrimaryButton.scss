@@ -4,8 +4,8 @@
   @include button-defaults();
 
   border: none;
-  background-color: var(--primary-color);
-  color: var(--primary-surface-color);
+  background-color: var(--primary);
+  color: var(--primary-surface);
 
   &:hover {
     background-color: var(--primary-hover);
