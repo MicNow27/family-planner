@@ -8,7 +8,7 @@ import "@fontsource/montserrat/500.css";
 import "@fontsource/montserrat/600.css";
 import { createRoot } from "react-dom/client";
 import { RouterProvider } from "react-router";
-import "./index.scss";
+import "./index.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
