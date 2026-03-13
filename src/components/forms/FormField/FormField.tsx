@@ -1,4 +1,3 @@
-import "./FormField.scss";
 import type { UseFormRegisterReturn } from "react-hook-form";
 
 type FormFieldProps = {

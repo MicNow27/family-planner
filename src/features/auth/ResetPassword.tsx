@@ -1,4 +1,3 @@
-import "./ResetPassword.scss";
 import FormField from "@/components/forms/FormField/FormField.tsx";
 import FormWrapper from "@/components/forms/FormWrapper/FormWrapper.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";

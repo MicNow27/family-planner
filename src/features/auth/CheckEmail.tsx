@@ -1,4 +1,3 @@
-import "./CheckEmail.scss";
 import PrimaryButton from "@/components/buttons/PrimaryButton/PrimaryButton.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
 import {

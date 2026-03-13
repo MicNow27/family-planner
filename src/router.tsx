@@ -1,18 +1,18 @@
 import RequireAuth from "@/components/routes/RequireAuth.tsx";
 import RequireGuest from "@/components/routes/RequireGuest.tsx";
-import AuthCallback from "@/features/auth/AuthCallback/AuthCallback.tsx";
-import CheckEmail from "@/features/auth/CheckEmail/CheckEmail.tsx";
-import ForgotPassword from "@/features/auth/ForgotPassword/ForgotPassword.tsx";
-import ResetPassword from "@/features/auth/ResetPassword/ResetPassword.tsx";
-import SignUp from "@/features/auth/SignUp/SignUp.tsx";
+import AuthCallback from "@/features/auth/AuthCallback.tsx";
+import CheckEmail from "@/features/auth/CheckEmail.tsx";
+import ForgotPassword from "@/features/auth/ForgotPassword.tsx";
+import ResetPassword from "@/features/auth/ResetPassword.tsx";
+import SignUp from "@/features/auth/SignUp.tsx";
 import Dashboard from "@/features/Dashboard/Dashboard.tsx";
-import Onboarding from "@/features/onboarding/Onboarding/Onboarding.tsx";
-import SettingsLanding from "@/features/settings/SettingsLanding/SettingsLanding.tsx";
+import Onboarding from "@/features/onboarding/Onboarding.tsx";
+import SettingsLanding from "@/features/settings/SettingsLanding.tsx";
 import App from "@/layouts/App/App.tsx";
 import Landing from "@/layouts/Landing/Landing.tsx";
 import type { Route } from "@/types/route.ts";
 import { createBrowserRouter } from "react-router";
-import Login from "./features/auth/Login/Login";
+import Login from "./features/auth/Login.tsx";
 
 const routes: Route[] = [
   {

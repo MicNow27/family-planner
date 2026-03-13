@@ -1,5 +1,5 @@
 import { useAuth } from "@/context/auth/useAuth.ts";
-import FullScreenLoader from "@/features/auth/FullScreenLoader/FullScreenLoader.tsx";
+import FullScreenLoader from "@/features/auth/FullScreenLoader.tsx";
 import { Navigate, Outlet } from "react-router";
 
 const RequireGuest = () => {

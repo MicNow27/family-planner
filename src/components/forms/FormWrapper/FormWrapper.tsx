@@ -1,4 +1,3 @@
-import "./FormWrapper.scss";
 import type { ReactNode } from "react";
 import type { FieldValues, UseFormReturn } from "react-hook-form";
 import PrimaryButton from "../../buttons/PrimaryButton/PrimaryButton";

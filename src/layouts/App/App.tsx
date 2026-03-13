@@ -1,4 +1,3 @@
-import "./App.scss";
 import Header from "@/components/Header/Header.tsx";
 import { Outlet } from "react-router";
 

@@ -1,4 +1,3 @@
-import "./AuthCallback.scss";
 import { useAuth } from "@/context/auth/useAuth.ts";
 import { CONFIRMING_EMAIL } from "@copy/email.ts";
 import { useEffect } from "react";
