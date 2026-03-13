@@ -51,13 +51,13 @@
 
   &__title {
     @include typo.xxl-text();
-    color: var(--primary-text-color);
+    color: var(--primary-text);
   }
 
   &__slogan {
     @include typo.m-text();
     font-weight: var(--font-weight-medium);
-    color: var(--tertiary-text-color);
+    color: var(--tertiary-text);
     font-style: italic;
   }
 

@@ -3,15 +3,15 @@
 .secondary-button {
   @include button-defaults();
 
-  border: solid var(--border-weight) var(--dividers-color);
-  background-color: var(--interactive-surface-color);
-  color: var(--primary-text-color);
+  border: solid var(--border-weight) var(--dividers);
+  background-color: var(--interactive-surface);
+  color: var(--primary-text);
 
   &:hover {
     background-color: var(--interactive-surface-hover);
   }
 
   &:disabled {
-    background-color: var(--primary-surface-color);
+    background-color: var(--primary-surface);
   }
 }

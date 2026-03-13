@@ -1,31 +1,31 @@
 :root {
-  --primary-color: #f59e0c; // FABs, primary buttons, active tabs
+  --primary: #f59e0c; // FABs, primary buttons, active tabs
   --primary-hover: #d97706;
   --primary-focus: rgba(245, 158, 12, 0.2);
   --primary-disabled: rgba(245, 158, 12, 0.4);
 
-  --secondary-color: #e0681e; // emphasis / warm highlights
-  --tertiary-color: #ff6884; // special moments
+  --secondary: #e0681e; // emphasis / warm highlights
+  --tertiary: #ff6884; // special moments
 
-  --primary-user-color-1: #ff7f8e; // mum
-  --primary-user-color-2: #4fa3a5; // dad
+  --primary-user-1: #ff7f8e; // mum
+  --primary-user-2: #4fa3a5; // dad
 
-  --child-color-1: #f3b4a2;
-  --child-color-2: #bdd3e8;
-  --child-color-3: #9fb3d9;
-  --child-color-4: #b9a7ff;
-  --child-color-5: #c7b2c9;
-  --child-color-6: #a8c7b0;
-  --child-color-7: #8fbac6;
+  --child-1: #f3b4a2;
+  --child-2: #bdd3e8;
+  --child-3: #9fb3d9;
+  --child-4: #b9a7ff;
+  --child-5: #c7b2c9;
+  --child-6: #a8c7b0;
+  --child-7: #8fbac6;
 
   // States
-  --success-color: #3fa37a; // saved changes, completed tasks, confirmations
-  --warning-color: #e9a23b; // upcoming deadlines, schedule conflicts, non-blocking attention-needed
-  --error-color: #c7364a; // failed actions, invalid input, destructive confirmations
-  --info-color: #70c1e3;
+  --success: #3fa37a; // saved changes, completed tasks, confirmations
+  --warning: #e9a23b; // upcoming deadlines, schedule conflicts, non-blocking attention-needed
+  --error: #c7364a; // failed actions, invalid input, destructive confirmations
+  --info: #70c1e3;
 
-  // Background colours
-  --background-color: #0f1320;
+  // Backgrounds
+  --background: #0f1320;
   //$background: #090814;
   //$background: #0c0b18;
   //$background: #0e0e1f;
@@ -34,18 +34,18 @@
   //$background: #14142d;
   //$background: #14162f;
 
-  --primary-surface-color: #2a293b; // cards, sheets, panels
+  --primary-surface: #2a293b; // cards, sheets, panels
   //$primary-surface: #2f2e41;
 
-  --secondary-surface-color: #39374e; // nested cards, list rows
-  --interactive-surface-color: #3f3d56;
+  --secondary-surface: #39374e; // nested cards, list rows
+  --interactive-surface: #3f3d56;
   --interactive-surface-hover: #525066;
   //$interactive-surface-hover: #656377;
-  --dividers-color: #504f60;
+  --dividers: #504f60;
 
-  // Text colours
-  --primary-text-color: #e6e6e6; // titles, main content
-  --secondary-text-color: #dddedf; // labels, metadata
-  --tertiary-text-color: #c6c7c8; // helper text
-  --disabled-text-color: #6e6d84; // low-emphasis text
+  // Text
+  --primary-text: #e6e6e6; // titles, main content
+  --secondary-text: #dddedf; // labels, metadata
+  --tertiary-text: #c6c7c8; // helper text
+  --disabled-text: #6e6d84; // low-emphasis text
 }
