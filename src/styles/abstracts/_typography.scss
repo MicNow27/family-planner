@@ -1,43 +1,41 @@
-@use "../values/text" as *;
-
 @mixin xxs-text {
-  font-size: $font-size-xxs;
-  line-height: $line-height-xxs;
-  letter-spacing: $letter-spacing-xxs;
+  font-size: var(--font-size-xxs);
+  line-height: var(--line-height-xxs);
+  letter-spacing: var(--letter-spacing-xxs);
 }
 
 @mixin xs-text {
-  font-size: $font-size-xs;
-  line-height: $line-height-xs;
-  letter-spacing: $letter-spacing-xs;
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-xs);
+  letter-spacing: var(--letter-spacing-xs);
 }
 
 @mixin s-text {
-  font-size: $font-size-s;
-  line-height: $line-height-s;
-  letter-spacing: $letter-spacing-s;
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-s);
+  letter-spacing: var(--letter-spacing-s);
 }
 
 @mixin m-text {
-  font-size: $font-size-m;
-  line-height: $line-height-m;
-  letter-spacing: $letter-spacing-m;
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
+  letter-spacing: var(--letter-spacing-m);
 }
 
 @mixin l-text {
-  font-size: $font-size-l;
-  line-height: $line-height-l;
-  letter-spacing: $letter-spacing-l;
+  font-size: var(--font-size-l);
+  line-height: var(--line-height-l);
+  letter-spacing: var(--letter-spacing-l);
 }
 
 @mixin xl-text {
-  font-size: $font-size-xl;
-  line-height: $line-height-xl;
-  letter-spacing: $letter-spacing-xl;
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-xl);
+  letter-spacing: var(--letter-spacing-xl);
 }
 
 @mixin xxl-text {
-  font-size: $font-size-xxl;
-  line-height: $line-height-xxl;
-  letter-spacing: $letter-spacing-xxl;
+  font-size: var(--font-size-xxl);
+  line-height: var(--line-height-xxl);
+  letter-spacing: var(--letter-spacing-xxl);
 }

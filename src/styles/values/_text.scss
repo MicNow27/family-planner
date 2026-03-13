@@ -1,42 +1,41 @@
-$font: "Montserrat", sans-serif;
+:root {
+  --font-family: "Montserrat", sans-serif;
 
-$font-weight-light: 300;
-$font-weight-regular: 400;
-$font-weight-medium: 500;
-$font-weight-semibold: 600;
-$font-weight-bold: 700;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --font-size-xxs: 0.625rem; // 10px
+  --font-size-xs: 0.75rem; // 12px
+  --font-size-s: 0.875rem; // 14px
+  --font-size-m: 1rem; // 16px
+  --font-size-l: 1.125rem; // 18px
+  --font-size-xl: 1.25rem; // 20px
+  --font-size-xxl: 1.75rem; // 28px
+
+  --line-height-xxs: 1.2;
+  --line-height-xs: 1.3;
+  --line-height-s: 1.4;
+  --line-height-m: 1.5;
+  --line-height-l: 1.4;
+  --line-height-xl: 1.3;
+  --line-height-xxl: 1.2;
+
+  --letter-spacing-xxs: 0.02em;
+  --letter-spacing-xs: 0.015em;
+  --letter-spacing-s: 0.01em;
+  --letter-spacing-m: 0.02em;
+  --letter-spacing-l: 0.01em;
+  --letter-spacing-xl: 0.015em;
+  --letter-spacing-xxl: 0.1em;
+}
 
 // XXS: micro labels, helper text
-$font-size-xxs: 0.625rem; // 10px
-$line-height-xxs: 1.2;
-$letter-spacing-xxs: 0.02em;
-
 // XS: captions, meta text
-$font-size-xs: 0.75rem; // 12px
-$line-height-xs: 1.3;
-$letter-spacing-xs: 0.015em;
-
 // S: secondary body
-$font-size-s: 0.875rem; // 14px
-$line-height-s: 1.4;
-$letter-spacing-s: 0.01em;
-
 // M: primary body
-$font-size-m: 1rem; // 16px
-$line-height-m: 1.5;
-$letter-spacing-m: 0.02em;
-
 // L: H3
-$font-size-l: 1.125rem; // 18px
-$line-height-l: 1.4;
-$letter-spacing-l: 0.01em;
-
 // XL: H2
-$font-size-xl: 1.25rem; // 20px
-$line-height-xl: 1.3;
-$letter-spacing-xl: 0.015em;
-
 // XXL: H1
-$font-size-xxl: 1.75rem; // 28px
-$line-height-xxl: 1.2;
-$letter-spacing-xxl: 0.1em;
