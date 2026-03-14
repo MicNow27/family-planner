@@ -1,0 +1,46 @@
+@theme {
+  --color-primary: #f59e0c;
+  --color-primary-hover: #d97706;
+  --color-primary-focus: rgba(245, 158, 12, 0.2);
+  --color-primary-disabled: rgba(245, 158, 12, 0.4);
+
+  --color-secondary: #e0681e; /* emphasis / warm highlights */
+  --color-tertiary: #ff6884; /* special moments */
+
+  --color-primary-user-1: #ff7f8e; /* mum */
+  --color-primary-user-2: #4fa3a5; /* dad */
+
+  --color-child-1: #f3b4a2;
+  --color-child-2: #bdd3e8;
+  --color-child-3: #9fb3d9;
+  --color-child-4: #b9a7ff;
+  --color-child-5: #c7b2c9;
+  --color-child-6: #a8c7b0;
+  --color-child-7: #8fbac6;
+
+  --color-success: #3fa37a; /* saved changes, completed tasks, confirmations */
+  --color-warning: #e9a23b; /* upcoming deadlines, schedule conflicts, non-blocking attention-needed */
+  --color-error: #c7364a; /* failed actions, invalid input, destructive confirmations */
+  --color-info: #70c1e3;
+
+  --color-background: #0f1320;
+  /* background: #090814;
+    background: #0c0b18;
+    background: #0e0e1f;
+    background: #0f1022;
+    background: #111126;
+    background: #14142d;
+    background: #14162f; */
+
+  --color-primary-surface: #2a293b; /* cards, sheets, panels */
+  /* primary-surface: #2f2e41; */
+  --color-secondary-surface: #39374e; /* nested cards, list rows */
+  --color-interactive-surface: #3f3d56;
+  --color-interactive-surface-hover: #525066;
+  --color-dividers: #504f60;
+
+  --color-primary-text: #e6e6e6; /* titles, main content */
+  --color-secondary-text: #dddedf; /* labels, metadata */
+  --color-tertiary-text: #c6c7c8; /* helper text */
+  --color-disabled-text: #6e6d84; /* low-emphasis text */
+}
