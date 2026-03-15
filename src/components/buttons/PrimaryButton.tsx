@@ -1,14 +1,13 @@
-import "./SecondaryButton.scss";
 import type { ButtonProps } from "@/components/buttons/Button.types.ts";
 
-const SecondaryButton = ({
+const PrimaryButton = ({
   text,
   onClick,
   disabled = false,
   type = "button",
 }: ButtonProps) => (
   <button
-    className={`secondary-button ${disabled && "secondary-button--disabled"}`}
+    className="btn-default bg-primary text-primary-surface hover:bg-primary-hover disabled:bg-primary-disabled border-none"
     type={type}
     onClick={onClick}
     disabled={disabled}
@@ -17,4 +16,4 @@ const SecondaryButton = ({
   </button>
 );
 
-export default SecondaryButton;
+export default PrimaryButton;

@@ -2,7 +2,7 @@ import type { HeaderSettings } from "@/types/header.ts";
 import type { Handle } from "@/types/route.ts";
 import * as React from "react";
 import { type UIMatch, useMatches, useNavigate } from "react-router";
-import "./Header.scss";
+import "./Header.css";
 
 const DEFAULT_SETTINGS: HeaderSettings = {
   title: "Family Planner",

@@ -1,4 +1,4 @@
-import PrimaryButton from "@/components/buttons/PrimaryButton/PrimaryButton.tsx";
+import PrimaryButton from "@/components/buttons/PrimaryButton.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
 import {
   formatTime,

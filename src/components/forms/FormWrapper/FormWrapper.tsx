@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import type { FieldValues, UseFormReturn } from "react-hook-form";
-import PrimaryButton from "../../buttons/PrimaryButton/PrimaryButton";
+import PrimaryButton from "../../buttons/PrimaryButton.tsx";
 
 interface FormWrapperProps<T extends FieldValues> {
   form: UseFormReturn<T>;
