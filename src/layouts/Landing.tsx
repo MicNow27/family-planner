@@ -18,11 +18,9 @@ const Landing = () => {
       <div className="flex items-center lg:flex-2">
         <div className="flex flex-col items-center gap-5">
           <img src={logo} alt="logo" className="h-40" />
-          <div className="flex flex-col items-center gap-1">
-            <h1 className="text-primary-text text-2xl">{APP_NAME}</h1>
-            <p className="text-tertiary-text text-base font-medium italic">
-              {SLOGAN}
-            </p>
+          <div className="flex flex-col items-center">
+            <p className="text-primary-text text-3xl font-medium">{APP_NAME}</p>
+            <p className="text-tertiary-text text-base italic">{SLOGAN}</p>
           </div>
           <div className="flex flex-col gap-3">
             <PrimaryButton
