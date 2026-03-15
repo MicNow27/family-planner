@@ -11,7 +11,7 @@ const Landing = () => {
   const navigate = useNavigate();
 
   return (
-    <main className="flex h-screen justify-center">
+    <main className="flex h-full justify-center">
       <div className="hidden lg:flex lg:flex-3 lg:items-center lg:justify-end lg:pr-[20vw]">
         <img src={family} alt="family" className="lg:h-1/2" />
       </div>
