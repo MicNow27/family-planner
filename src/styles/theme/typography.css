@@ -1,0 +1,39 @@
+@theme {
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+
+  /* use: text-xxs */
+  --text-xxs: 0.625rem; /* 10px */
+  --text-xxs--line-height: 1.2;
+  --text-xxs--letter-spacing: 0.02em;
+
+  /* use: text-xs */
+  --text-xs--line-height: 1.3;
+  --text-xs--letter-spacing: 0.015em;
+
+  --text-sm--line-height: 1.4;
+  --text-sm--letter-spacing: 0.01em;
+
+  --text-base--line-height: 1.5;
+  --text-base--letter-spacing: 0.02em;
+
+  --text-lg--line-height: 1.4;
+  --text-lg--letter-spacing: 0.01em;
+
+  --text-xl--line-height: 1.3;
+  --text-xl--letter-spacing: 0.015em;
+
+  --text-2xl--line-height: 1.4;
+  --text-2xl--letter-spacing: 0.1em;
+
+  --text-3xl--line-height: 1.2;
+  --text-3xl--letter-spacing: 0.1em;
+}
+
+/*
+ XXS: micro labels, helper text
+ XS: captions, meta text
+ SM: secondary body
+ M: primary body
+ LG: H3
+ XL: H2
+ 2XL: H1 */

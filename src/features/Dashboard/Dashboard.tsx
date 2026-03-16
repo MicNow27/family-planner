@@ -1,5 +1,3 @@
-import "./Dashboard.scss";
-
 const Dashboard = () => {
   return <div>Dashboard</div>;
 };
