@@ -9,6 +9,7 @@ import Onboarding from "@/features/onboarding/Onboarding.tsx";
 import SettingsLanding from "@/features/settings/SettingsLanding.tsx";
 import App from "@/layouts/App.tsx";
 import Landing from "@/layouts/Landing.tsx";
+import StartingUp from "@/layouts/StartingUp.tsx";
 import type { Route } from "@/types/route.ts";
 import { createBrowserRouter } from "react-router";
 import Login from "./features/auth/Login.tsx";
@@ -24,77 +25,63 @@ const auth = (children: Route[]): Route => ({
 });
 
 const routes: Route[] = [
+  // TODO: check if this should be under guest.
   {
     path: "/auth-callback",
     element: <AuthCallback />,
   },
-  {
-    path: "/reset-password",
-    element: <ResetPassword />,
-  },
+
   guest([
     {
       path: "/",
       element: <Landing />,
     },
     {
-      path: "/check-email",
-      element: <CheckEmail />,
-    },
-  ]),
-  {
-    element: <App />,
-    children: [
-      guest([
+      element: <StartingUp />,
+      children: [
         {
           path: "/sign-up",
           element: <SignUp />,
-          handle: {
-            header: {
-              title: "Create Account",
-              showBackButton: true,
-            },
-          },
+          handle: { header: { showBackButton: true } },
         },
         {
           path: "/login",
           element: <Login />,
-          handle: {
-            header: {
-              title: "Login",
-              showBackButton: true,
-            },
-          },
+          handle: { header: { showBackButton: true } },
         },
         {
           path: "/forgot-password",
           element: <ForgotPassword />,
-          handle: {
-            header: {
-              title: "Forgot Password",
-              showBackButton: true,
-            },
-          },
+          handle: { header: { showBackButton: true } },
         },
-      ]),
-      auth([
+        {
+          path: "/check-email",
+          element: <CheckEmail />,
+        },
+        {
+          path: "/reset-password",
+          element: <ResetPassword />,
+          handle: { header: { showBackButton: true } },
+        },
+      ],
+    },
+  ]),
+
+  auth([
+    {
+      element: <App />,
+      children: [
         {
           path: "/onboarding",
           element: <Onboarding />,
-          handle: {
-            header: {
-              title: "Onboarding",
-              showBackButton: false,
-            },
-          },
+          handle: { header: { title: "Let's Get Started" } },
         },
         {
           path: "/dashboard",
           element: <Dashboard />,
           handle: {
             header: {
-              title: "Dashboard",
-              showBackButton: false,
+              title: "Hello, Margot", // TODO: replace with user's name
               overflowMenu: "dashboard",
             },
           },
@@ -111,9 +98,9 @@ const routes: Route[] = [
             },
           },
         },
-      ]),
-    ],
-  },
+      ],
+    },
+  ]),
 ];
 
 export const router = createBrowserRouter(routes);

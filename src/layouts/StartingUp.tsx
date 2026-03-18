@@ -1,8 +1,9 @@
+import StartUpHeader from "@/features/navigation/StartUpHeader.tsx";
 import { Outlet } from "react-router";
 
 const StartingUp = () => (
   <>
-    <header>Family Planner</header>
+    <StartUpHeader />
     <main>
       <Outlet />
     </main>

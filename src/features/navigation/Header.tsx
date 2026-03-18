@@ -16,19 +16,24 @@ const Header = () => {
   const matches = useMatches() as UIMatch<unknown, Handle>[];
   const navigate = useNavigate();
 
-  const settings: HeaderSettings =
-    matches.reverse().find((m) => m.handle?.header)?.handle.header ||
-    DEFAULT_SETTINGS;
+  const lastMatchWithHeader = [...matches]
+    .reverse()
+    .find((m) => m.handle?.header);
+
+  const {
+    showBackButton,
+    backButtonRoute,
+    title,
+    overflowMenu,
+  }: HeaderSettings = lastMatchWithHeader?.handle.header || DEFAULT_SETTINGS;
 
   return (
     <header className="header">
       <div className="header-left">
-        {settings.showBackButton && (
+        {showBackButton && (
           <button
             onClick={() =>
-              settings.backButtonRoute
-                ? navigate(settings.backButtonRoute)
-                : navigate(-1)
+              backButtonRoute ? navigate(backButtonRoute) : navigate(-1)
             }
             className="back-button"
           >
@@ -37,10 +42,10 @@ const Header = () => {
         )}
       </div>
       <div className="header-center">
-        <h1>{settings.title}</h1>
+        <h1>{title}</h1>
       </div>
       <div className="header-right">
-        {settings.overflowMenu && overflowMenus[settings.overflowMenu]}
+        {overflowMenu && overflowMenus[overflowMenu]}
       </div>
     </header>
   );
