@@ -1,5 +1,4 @@
-import RequireAuth from "@/components/routes/RequireAuth.tsx";
-import RequireGuest from "@/components/routes/RequireGuest.tsx";
+import AuthGate from "@/components/routes/AuthGate.tsx";
 import AuthCallback from "@/features/auth/AuthCallback.tsx";
 import CheckEmail from "@/features/auth/CheckEmail.tsx";
 import ForgotPassword from "@/features/auth/ForgotPassword.tsx";
@@ -14,6 +13,16 @@ import type { Route } from "@/types/route.ts";
 import { createBrowserRouter } from "react-router";
 import Login from "./features/auth/Login.tsx";
 
+const guest = (children: Route[]): Route => ({
+  element: <AuthGate requireAuth={false} />,
+  children,
+});
+
+const auth = (children: Route[]): Route => ({
+  element: <AuthGate requireAuth={true} />,
+  children,
+});
+
 const routes: Route[] = [
   {
     path: "/auth-callback",
@@ -23,95 +32,86 @@ const routes: Route[] = [
     path: "/reset-password",
     element: <ResetPassword />,
   },
-  {
-    element: <RequireGuest />,
-    children: [
-      {
-        path: "/",
-        element: <Landing />,
-      },
-      {
-        path: "/check-email",
-        element: <CheckEmail />,
-      },
-    ],
-  },
+  guest([
+    {
+      path: "/",
+      element: <Landing />,
+    },
+    {
+      path: "/check-email",
+      element: <CheckEmail />,
+    },
+  ]),
   {
     element: <App />,
     children: [
-      {
-        element: <RequireGuest />,
-        children: [
-          {
-            path: "/sign-up",
-            element: <SignUp />,
-            handle: {
-              header: {
-                title: "Create Account",
-                showBackButton: true,
-              },
+      guest([
+        {
+          path: "/sign-up",
+          element: <SignUp />,
+          handle: {
+            header: {
+              title: "Create Account",
+              showBackButton: true,
             },
           },
-          {
-            path: "/login",
-            element: <Login />,
-            handle: {
-              header: {
-                title: "Login",
-                showBackButton: true,
-              },
+        },
+        {
+          path: "/login",
+          element: <Login />,
+          handle: {
+            header: {
+              title: "Login",
+              showBackButton: true,
             },
           },
-          {
-            path: "/forgot-password",
-            element: <ForgotPassword />,
-            handle: {
-              header: {
-                title: "Forgot Password",
-                showBackButton: true,
-              },
+        },
+        {
+          path: "/forgot-password",
+          element: <ForgotPassword />,
+          handle: {
+            header: {
+              title: "Forgot Password",
+              showBackButton: true,
             },
           },
-        ],
-      },
-      {
-        element: <RequireAuth />,
-        children: [
-          {
-            path: "/onboarding",
-            element: <Onboarding />,
-            handle: {
-              header: {
-                title: "Onboarding",
-                showBackButton: false,
-              },
+        },
+      ]),
+      auth([
+        {
+          path: "/onboarding",
+          element: <Onboarding />,
+          handle: {
+            header: {
+              title: "Onboarding",
+              showBackButton: false,
             },
           },
-          {
-            path: "/dashboard",
-            element: <Dashboard />,
-            handle: {
-              header: {
-                title: "Dashboard",
-                showBackButton: false,
-                overflowMenu: "dashboard",
-              },
+        },
+        {
+          path: "/dashboard",
+          element: <Dashboard />,
+          handle: {
+            header: {
+              title: "Dashboard",
+              showBackButton: false,
+              overflowMenu: "dashboard",
             },
           },
-          {
-            path: "/settings",
-            element: <SettingsLanding />,
-            handle: {
-              header: {
-                title: "Settings",
-                showBackButton: true,
-                backButtonRoute: "/dashboard",
-                overflowMenu: "settings",
-              },
+        },
+        {
+          path: "/settings",
+          element: <SettingsLanding />,
+          handle: {
+            header: {
+              title: "Settings",
+              showBackButton: true,
+              backButtonRoute: "/dashboard",
+              overflowMenu: "settings",
             },
           },
-        ],
-      },
+        },
+      ]),
     ],
   },
 ];

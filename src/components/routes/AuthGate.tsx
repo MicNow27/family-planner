@@ -2,14 +2,19 @@ import { useAuth } from "@/context/auth/useAuth.ts";
 import FullScreenLoader from "@/features/auth/FullScreenLoader.tsx";
 import { Navigate, Outlet } from "react-router";
 
-const RequireGuest = () => {
+type AuthGateProps = {
+  requireAuth: boolean;
+};
+
+const AuthGate = ({ requireAuth }: AuthGateProps) => {
   const { user, loading } = useAuth();
 
   if (loading) return <FullScreenLoader />;
 
-  if (user) return <Navigate to="/dashboard" replace />;
+  if (requireAuth && !user) return <Navigate to="/" replace />;
+  if (!requireAuth && user) return <Navigate to="/dashboard" replace />;
 
   return <Outlet />;
 };
 
-export default RequireGuest;
+export default AuthGate;

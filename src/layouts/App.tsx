@@ -1,4 +1,4 @@
-import Header from "@/components/Header/Header.tsx";
+import Header from "@/features/navigation/Header.tsx";
 import { Outlet } from "react-router";
 
 const App = () => (
