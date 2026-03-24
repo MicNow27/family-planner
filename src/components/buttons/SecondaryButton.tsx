@@ -7,7 +7,7 @@ const SecondaryButton = ({
   type = "button",
 }: ButtonProps) => (
   <button
-    className="btn-default border-dividers bg-interactive-surface text-primary-text hover:bg-interactive-surface-hover disabled:bg-primary-surface border"
+    className="btn-default border-divider bg-interactive-surface text-primary-text hover:bg-interactive-surface-hover disabled:bg-primary-surface border"
     type={type}
     onClick={onClick}
     disabled={disabled}
