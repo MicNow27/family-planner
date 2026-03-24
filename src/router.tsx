@@ -11,6 +11,7 @@ import App from "@/layouts/App.tsx";
 import Landing from "@/layouts/Landing.tsx";
 import StartingUp from "@/layouts/StartingUp.tsx";
 import type { Route } from "@/types/route.ts";
+import { GET_STARTED, MY_FAMILY, SETTINGS } from "@copy/general.ts";
 import { createBrowserRouter } from "react-router";
 import Login from "./features/auth/Login.tsx";
 
@@ -73,14 +74,14 @@ const routes: Route[] = [
         {
           path: "/onboarding",
           element: <Onboarding />,
-          handle: { header: { title: "Let's Get Started" } },
+          handle: { header: { title: GET_STARTED } },
         },
         {
           path: "/my-family",
           element: <MyFamily />,
           handle: {
             header: {
-              title: "Hello, Margot", // TODO: replace with user's name
+              title: MY_FAMILY,
               // overflowMenu: "dashboard",
             },
           },
@@ -90,7 +91,7 @@ const routes: Route[] = [
           element: <SettingsLanding />,
           handle: {
             header: {
-              title: "Settings",
+              title: SETTINGS,
               // showBackButton: true,
               // backButtonRoute: "/dashboard",
               // overflowMenu: "settings",
