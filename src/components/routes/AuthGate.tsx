@@ -12,7 +12,7 @@ const AuthGate = ({ requireAuth }: AuthGateProps) => {
   if (loading) return <FullScreenLoader />;
 
   if (requireAuth && !user) return <Navigate to="/" replace />;
-  if (!requireAuth && user) return <Navigate to="/dashboard" replace />;
+  if (!requireAuth && user) return <Navigate to="/my-family" replace />;
 
   return <Outlet />;
 };
