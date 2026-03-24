@@ -37,7 +37,7 @@
   --color-secondary-surface: #39374e; /* nested cards, list rows */
   --color-interactive-surface: #3f3d56;
   --color-interactive-surface-hover: #525066;
-  --color-dividers: #504f60;
+  --color-divider: #504f60;
 
   --color-primary-text: #e6e6e6; /* titles, main content */
   --color-secondary-text: #dddedf; /* labels, metadata */

@@ -1,119 +1,106 @@
-import RequireAuth from "@/components/routes/RequireAuth.tsx";
-import RequireGuest from "@/components/routes/RequireGuest.tsx";
+import AuthGate from "@/components/routes/AuthGate.tsx";
 import AuthCallback from "@/features/auth/AuthCallback.tsx";
 import CheckEmail from "@/features/auth/CheckEmail.tsx";
 import ForgotPassword from "@/features/auth/ForgotPassword.tsx";
 import ResetPassword from "@/features/auth/ResetPassword.tsx";
 import SignUp from "@/features/auth/SignUp.tsx";
-import Dashboard from "@/features/Dashboard/Dashboard.tsx";
+import MyFamily from "@/features/MyFamily/MyFamily.tsx";
 import Onboarding from "@/features/onboarding/Onboarding.tsx";
 import SettingsLanding from "@/features/settings/SettingsLanding.tsx";
 import App from "@/layouts/App.tsx";
 import Landing from "@/layouts/Landing.tsx";
+import StartingUp from "@/layouts/StartingUp.tsx";
 import type { Route } from "@/types/route.ts";
+import { GET_STARTED, MY_FAMILY, SETTINGS } from "@copy/general.ts";
 import { createBrowserRouter } from "react-router";
 import Login from "./features/auth/Login.tsx";
+
+const guest = (children: Route[]): Route => ({
+  element: <AuthGate requireAuth={false} />,
+  children,
+});
+
+const auth = (children: Route[]): Route => ({
+  element: <AuthGate requireAuth={true} />,
+  children,
+});
 
 const routes: Route[] = [
   {
     path: "/auth-callback",
     element: <AuthCallback />,
   },
-  {
-    path: "/reset-password",
-    element: <ResetPassword />,
-  },
-  {
-    element: <RequireGuest />,
-    children: [
-      {
-        path: "/",
-        element: <Landing />,
-      },
-      {
-        path: "/check-email",
-        element: <CheckEmail />,
-      },
-    ],
-  },
-  {
-    element: <App />,
-    children: [
-      {
-        element: <RequireGuest />,
-        children: [
-          {
-            path: "/sign-up",
-            element: <SignUp />,
-            handle: {
-              header: {
-                title: "Create Account",
-                showBackButton: true,
-              },
+
+  guest([
+    {
+      path: "/",
+      element: <Landing />,
+    },
+    {
+      element: <StartingUp />,
+      children: [
+        {
+          path: "/sign-up",
+          element: <SignUp />,
+          handle: { header: { showBackButton: true } },
+        },
+        {
+          path: "/login",
+          element: <Login />,
+          handle: { header: { showBackButton: true } },
+        },
+        {
+          path: "/forgot-password",
+          element: <ForgotPassword />,
+          handle: { header: { showBackButton: true } },
+        },
+        {
+          path: "/check-email",
+          element: <CheckEmail />,
+        },
+        {
+          path: "/reset-password",
+          element: <ResetPassword />,
+          handle: { header: { showBackButton: true } },
+        },
+      ],
+    },
+  ]),
+
+  auth([
+    {
+      element: <App />,
+      children: [
+        {
+          path: "/onboarding",
+          element: <Onboarding />,
+          handle: { header: { title: GET_STARTED } },
+        },
+        {
+          path: "/my-family",
+          element: <MyFamily />,
+          handle: {
+            header: {
+              title: MY_FAMILY,
+              // overflowMenu: "dashboard",
             },
           },
-          {
-            path: "/login",
-            element: <Login />,
-            handle: {
-              header: {
-                title: "Login",
-                showBackButton: true,
-              },
+        },
+        {
+          path: "/settings",
+          element: <SettingsLanding />,
+          handle: {
+            header: {
+              title: SETTINGS,
+              // showBackButton: true,
+              // backButtonRoute: "/dashboard",
+              // overflowMenu: "settings",
             },
           },
-          {
-            path: "/forgot-password",
-            element: <ForgotPassword />,
-            handle: {
-              header: {
-                title: "Forgot Password",
-                showBackButton: true,
-              },
-            },
-          },
-        ],
-      },
-      {
-        element: <RequireAuth />,
-        children: [
-          {
-            path: "/onboarding",
-            element: <Onboarding />,
-            handle: {
-              header: {
-                title: "Onboarding",
-                showBackButton: false,
-              },
-            },
-          },
-          {
-            path: "/dashboard",
-            element: <Dashboard />,
-            handle: {
-              header: {
-                title: "Dashboard",
-                showBackButton: false,
-                overflowMenu: "dashboard",
-              },
-            },
-          },
-          {
-            path: "/settings",
-            element: <SettingsLanding />,
-            handle: {
-              header: {
-                title: "Settings",
-                showBackButton: true,
-                backButtonRoute: "/dashboard",
-                overflowMenu: "settings",
-              },
-            },
-          },
-        ],
-      },
-    ],
-  },
+        },
+      ],
+    },
+  ]),
 ];
 
 export const router = createBrowserRouter(routes);

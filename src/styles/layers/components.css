@@ -6,4 +6,8 @@
   .card-default {
     @apply rounded-card p-card;
   }
+
+  .lucide {
+    @apply text-primary-text h-8 w-8 transition-all hover:scale-110;
+  }
 }
