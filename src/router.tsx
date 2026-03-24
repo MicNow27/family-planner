@@ -4,7 +4,7 @@ import CheckEmail from "@/features/auth/CheckEmail.tsx";
 import ForgotPassword from "@/features/auth/ForgotPassword.tsx";
 import ResetPassword from "@/features/auth/ResetPassword.tsx";
 import SignUp from "@/features/auth/SignUp.tsx";
-import Dashboard from "@/features/Dashboard/Dashboard.tsx";
+import MyFamily from "@/features/MyFamily/MyFamily.tsx";
 import Onboarding from "@/features/onboarding/Onboarding.tsx";
 import SettingsLanding from "@/features/settings/SettingsLanding.tsx";
 import App from "@/layouts/App.tsx";
@@ -25,7 +25,6 @@ const auth = (children: Route[]): Route => ({
 });
 
 const routes: Route[] = [
-  // TODO: check if this should be under guest.
   {
     path: "/auth-callback",
     element: <AuthCallback />,
@@ -77,12 +76,12 @@ const routes: Route[] = [
           handle: { header: { title: "Let's Get Started" } },
         },
         {
-          path: "/dashboard",
-          element: <Dashboard />,
+          path: "/my-family",
+          element: <MyFamily />,
           handle: {
             header: {
               title: "Hello, Margot", // TODO: replace with user's name
-              overflowMenu: "dashboard",
+              // overflowMenu: "dashboard",
             },
           },
         },
@@ -92,9 +91,9 @@ const routes: Route[] = [
           handle: {
             header: {
               title: "Settings",
-              showBackButton: true,
-              backButtonRoute: "/dashboard",
-              overflowMenu: "settings",
+              // showBackButton: true,
+              // backButtonRoute: "/dashboard",
+              // overflowMenu: "settings",
             },
           },
         },
