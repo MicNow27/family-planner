@@ -1,4 +1,6 @@
 import type { Handle } from "@/types/route.ts";
+import logo from "@assets/images/logo.svg";
+import { APP_NAME } from "@copy/general.ts";
 import { type UIMatch, useMatches, useNavigate } from "react-router";
 
 const StartUpHeader = () => {
@@ -11,18 +13,20 @@ const StartUpHeader = () => {
 
   const showBackButton = lastMatchWithHeader?.handle.header.showBackButton;
 
+  const handleClick = () => navigate(-1);
+
   return (
-    <header className="header">
-      <div className="header-left">
-        {showBackButton && (
-          <button onClick={() => navigate(-1)} className="back-button">
-            Back
-          </button>
-        )}
+    <header className="bg-primary-surface border-b-divider grid h-20 grid-cols-[2rem_1fr_2rem] items-center border-b px-6">
+      {showBackButton && (
+        <button className="" onClick={handleClick}>
+          TODO: Lucide icon
+        </button>
+      )}
+      <div className="flex items-center justify-center gap-4">
+        <img src={logo} alt="logo" className="h-12 md:h-15" />
+        <p className="text-primary-text text-xl md:text-3xl">{APP_NAME}</p>
       </div>
-      <div className="header-center">
-        <h1>Family Planner</h1>
-      </div>
+      <div />
     </header>
   );
 };
