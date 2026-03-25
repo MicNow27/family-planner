@@ -33,7 +33,8 @@
     background: #14162f; */
 
   --color-primary-surface: #2a293b; /* cards, sheets, panels */
-  /* primary-surface: #2f2e41; */
+  /*primary-surface: #2f2e41;*/
+  /*primary-surface: #3b3a6a;*/
   --color-secondary-surface: #39374e; /* nested cards, list rows */
   --color-interactive-surface: #3f3d56;
   --color-interactive-surface-hover: #525066;
