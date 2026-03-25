@@ -17,13 +17,17 @@ const StartUpHeader = () => {
   const handleClick = () => navigate(-1);
 
   return (
-    <header className="bg-primary-surface border-b-divider grid h-20 grid-cols-[2rem_1fr_2rem] items-center border-b px-6">
-      {showBackButton && <BackButton onClick={handleClick} />}
+    <header className="bg-primary-surface border-b-divider relative flex h-20 items-center justify-center border-b">
+      {showBackButton && (
+        <BackButton
+          onClick={handleClick}
+          className="absolute left-6 lg:hidden"
+        />
+      )}
       <div className="flex items-center justify-center gap-4">
         <img src={logo} alt="logo" className="h-12 md:h-15" />
         <p className="text-primary-text text-xl md:text-3xl">{APP_NAME}</p>
       </div>
-      <div />
     </header>
   );
 };
