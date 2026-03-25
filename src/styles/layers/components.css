@@ -1,6 +1,6 @@
 @layer components {
   .btn-default {
-    @apply h-button-h w-button-w rounded-button focus:shadow-button disabled:text-disabled-text cursor-pointer items-center text-base font-semibold disabled:cursor-not-allowed;
+    @apply h-button-h w-button-w rounded-button focus:ring-primary-focus disabled:text-disabled-text cursor-pointer items-center text-base font-semibold transition-all outline-none focus:ring-4 disabled:cursor-not-allowed;
   }
 
   .card-default {
