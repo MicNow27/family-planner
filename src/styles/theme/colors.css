@@ -21,6 +21,7 @@
   --color-success: #3fa37a; /* saved changes, completed tasks, confirmations */
   --color-warning: #e9a23b; /* upcoming deadlines, schedule conflicts, non-blocking attention-needed */
   --color-error: #c7364a; /* failed actions, invalid input, destructive confirmations */
+  --color-error-focus: rgba(207, 54, 74, 0.4);
   --color-info: #70c1e3;
 
   --color-background: #0f1320;

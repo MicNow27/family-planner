@@ -17,12 +17,25 @@ const FormField = ({
   register,
   error,
 }: FormFieldProps) => (
-  <div>
-    <label htmlFor={id}>{label}</label>
+  <div className="flex flex-col gap-1">
+    <label
+      className="text-secondary-text ml-2 text-base font-medium"
+      htmlFor={id}
+    >
+      {label}
+    </label>
 
-    <input id={id} type={type} placeholder={placeholder} {...register} />
+    <input
+      className={`h-button-h w-input-w rounded-button bg-interactive-surface text-secondary-text placeholder:text-disabled-text focus-visible:border-primary focus-visible:ring-primary-focus border-divider border px-3 text-base transition-all outline-none focus-visible:ring-4 ${error && "border-error! focus-visible:ring-error-focus!"}`}
+      id={id}
+      type={type}
+      placeholder={placeholder}
+      {...register}
+    />
 
-    {error && <p>{error}</p>}
+    <div className="h-4">
+      {error && <p className="text-error ml-2 text-xs">{error}</p>}
+    </div>
   </div>
 );
 
