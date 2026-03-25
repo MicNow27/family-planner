@@ -19,10 +19,7 @@ const StartUpHeader = () => {
   return (
     <header className="bg-primary-surface border-b-divider relative flex h-20 items-center justify-center border-b">
       {showBackButton && (
-        <BackButton
-          onClick={handleClick}
-          className="absolute left-6 lg:hidden"
-        />
+        <BackButton onClick={handleClick} className="absolute left-4" />
       )}
       <div className="flex items-center justify-center gap-4">
         <img src={logo} alt="logo" className="h-12 md:h-15" />
