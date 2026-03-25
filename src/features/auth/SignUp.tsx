@@ -35,7 +35,7 @@ const SignUp = () => {
   const {
     register,
     trigger,
-    formState: { errors, dirtyFields },
+    formState: { errors, dirtyFields, isSubmitting },
   } = form;
 
   const liveValidate = useLiveValidation({
@@ -78,6 +78,7 @@ const SignUp = () => {
         placeholder={EMAIL_PLACEHOLDER}
         register={register("email", liveValidate("email"))}
         error={errors.email?.message}
+        disabled={isSubmitting}
       />
 
       <FormField
@@ -87,6 +88,7 @@ const SignUp = () => {
         placeholder={PASSWORD_CREATE_PLACEHOLDER}
         register={register("password", liveValidate("password"))}
         error={errors.password?.message}
+        disabled={isSubmitting}
       />
 
       <FormField
@@ -96,6 +98,7 @@ const SignUp = () => {
         placeholder={PASSWORD_CONFIRM_PLACEHOLDER}
         register={register("confirmPassword", liveValidate("confirmPassword"))}
         error={errors.confirmPassword?.message}
+        disabled={isSubmitting}
       />
     </FormWrapper>
   );

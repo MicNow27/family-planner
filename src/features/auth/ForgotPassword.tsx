@@ -33,7 +33,7 @@ const ForgotPassword = () => {
     register,
     trigger,
     getValues,
-    formState: { dirtyFields, errors },
+    formState: { dirtyFields, errors, isSubmitting },
   } = form;
 
   const { cooldown, run, submitError, clearError } = useCooldown({
@@ -66,6 +66,7 @@ const ForgotPassword = () => {
         placeholder={EMAIL_PLACEHOLDER}
         register={register("email", liveValidate("email"))}
         error={errors.email?.message}
+        disabled={isSubmitting}
       />
 
       {cooldown > 0 && <p>{RESEND_EMAIL_BUTTON_WAIT(formatTime(cooldown))}</p>}

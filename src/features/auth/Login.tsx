@@ -27,7 +27,7 @@ const Login = () => {
   const {
     register,
     trigger,
-    formState: { errors, dirtyFields },
+    formState: { errors, dirtyFields, isSubmitting },
   } = form;
 
   const liveValidate = useLiveValidation({
@@ -69,6 +69,7 @@ const Login = () => {
           placeholder={EMAIL_PLACEHOLDER}
           register={register("email", liveValidate("email"))}
           error={errors.email?.message}
+          disabled={isSubmitting}
         />
 
         <FormField
@@ -78,6 +79,7 @@ const Login = () => {
           placeholder={PASSWORD_ENTER_PLACEHOLDER}
           register={register("password", liveValidate("password"))}
           error={errors.password?.message}
+          disabled={isSubmitting}
         />
       </FormWrapper>
       <Link to="/forgot-password">{FORGOT_PASSWORD}</Link>
