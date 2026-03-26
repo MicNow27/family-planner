@@ -27,8 +27,18 @@ const auth = (children: Route[]): Route => ({
 
 const routes: Route[] = [
   {
-    path: "/auth-callback",
-    element: <AuthCallback />,
+    element: <StartingUp />,
+    children: [
+      {
+        path: "/auth-callback",
+        element: <AuthCallback />,
+      },
+      {
+        path: "/reset-password",
+        element: <ResetPassword />,
+        handle: { header: { showBackButton: true } },
+      },
+    ],
   },
 
   guest([
@@ -57,11 +67,6 @@ const routes: Route[] = [
         {
           path: "/check-email",
           element: <CheckEmail />,
-        },
-        {
-          path: "/reset-password",
-          element: <ResetPassword />,
-          handle: { header: { showBackButton: true } },
         },
       ],
     },
