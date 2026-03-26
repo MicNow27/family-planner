@@ -1,6 +1,5 @@
 import type { HeaderSettings } from "@/types/header.ts";
 import type { Handle } from "@/types/route.ts";
-import logo from "@assets/images/logo.svg";
 import { type UIMatch, useMatches, useNavigate } from "react-router";
 
 const DEFAULT_SETTINGS: HeaderSettings = {
@@ -29,8 +28,8 @@ const Header = () => {
     <header>
       {showBackButton && <button onClick={handleClick}>Back</button>}
       <div>
-        <img src={logo} alt="logo" />
-        <p>{title}</p>
+        {/*<img src={logo} alt="logo" />*/}
+        <p className="text-primary-text">{title}</p>
       </div>
       {overflowMenu && <div>TODO: specific menus</div>}
     </header>
