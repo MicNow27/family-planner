@@ -6,7 +6,7 @@ export const EMAIL_ERROR = "Please enter a valid email address";
 
 export const CHECK_EMAIL =
   "Check your inbox to verify your email before continuing.";
-export const RESEND_EMAIL_BUTTON = "Resend Confirmation Email";
+export const RESEND_EMAIL_BUTTON = "Resend Email";
 
 export const RESEND_EMAIL_BUTTON_WAIT = ({
   minutes,
