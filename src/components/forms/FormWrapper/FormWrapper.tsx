@@ -10,6 +10,7 @@ interface FormWrapperProps<T extends FieldValues> {
   submitButtonText: string;
   disableSubmit?: boolean;
   children: ReactNode;
+  feedbackText?: string;
 }
 
 const FormWrapper = <T extends FieldValues>({
@@ -20,6 +21,7 @@ const FormWrapper = <T extends FieldValues>({
   submitButtonText,
   disableSubmit,
   children,
+  feedbackText,
 }: FormWrapperProps<T>) => {
   const { handleSubmit, formState } = form;
   const { isSubmitting, isValid } = formState;
@@ -39,13 +41,19 @@ const FormWrapper = <T extends FieldValues>({
         >
           {submittingText}
         </p>
-
         <p
           className={`text-error text-sm transition-opacity ${
             !isSubmitting && submitError ? "opacity-100" : "hidden opacity-0"
           }`}
         >
           {submitError}
+        </p>
+        <p
+          className={`text-tertiary-text text-sm transition-opacity ${
+            feedbackText ? "opacity-100" : "hidden opacity-0"
+          }`}
+        >
+          {feedbackText}
         </p>
       </div>
 

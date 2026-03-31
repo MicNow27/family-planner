@@ -58,6 +58,11 @@ const ForgotPassword = () => {
       submitButtonText={SUBMIT}
       submittingText={RESET_PASSWORD_WAIT}
       disableSubmit={cooldown > 0}
+      feedbackText={
+        cooldown > 0
+          ? RESEND_EMAIL_BUTTON_WAIT(formatTime(cooldown))
+          : undefined
+      }
     >
       <FormField
         id="email"
@@ -68,8 +73,6 @@ const ForgotPassword = () => {
         error={errors.email?.message}
         disabled={isSubmitting}
       />
-
-      {cooldown > 0 && <p>{RESEND_EMAIL_BUTTON_WAIT(formatTime(cooldown))}</p>}
     </FormWrapper>
   );
 };
