@@ -25,11 +25,29 @@ const FormWrapper = <T extends FieldValues>({
   const { isSubmitting, isValid } = formState;
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="border-divider rounded-button bg-primary-surface max-w-form-w mx-auto flex flex-col items-center gap-4 border p-6"
+    >
       {children}
 
-      {isSubmitting && <p>{submittingText}</p>}
-      {!isSubmitting && submitError && <p>{submitError}</p>}
+      <div className="h-5">
+        <p
+          className={`text-tertiary-text text-sm transition-opacity ${
+            isSubmitting ? "opacity-100" : "hidden opacity-0"
+          }`}
+        >
+          {submittingText}
+        </p>
+
+        <p
+          className={`text-error text-sm transition-opacity ${
+            !isSubmitting && submitError ? "opacity-100" : "hidden opacity-0"
+          }`}
+        >
+          {submitError}
+        </p>
+      </div>
 
       <PrimaryButton
         type="submit"

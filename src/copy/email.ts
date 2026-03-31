@@ -16,7 +16,6 @@ export const RESEND_EMAIL_BUTTON_WAIT = ({
   else return `Resend in ${seconds} seconds`;
 };
 
-export const EMAIL_RESENT_ERROR =
-  "Could not resend the email. Please try again later.";
+export const EMAIL_RESENT_ERROR = "Could not resend the email.";
 
 export const CONFIRMING_EMAIL = "Confirming your email...";
