@@ -1,0 +1,21 @@
+@layer base {
+  @keyframes autofill-fix {
+    to {
+      background: var(--color-primary-surface);
+    }
+  }
+
+  input:-webkit-autofill {
+    animation-name: autofill-fix;
+    animation-fill-mode: both;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px var(--color-interactive-surface) inset !important;
+    -webkit-text-fill-color: var(--color-secondary-text) !important;
+    caret-color: var(--color-secondary-text) !important;
+  }
+}
