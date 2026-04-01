@@ -1,5 +1,5 @@
 import FormField from "@/components/forms/FormField/FormField.tsx";
-import FormWrapper from "@/components/forms/FormWrapper/FormWrapper.tsx";
+import Form from "@/components/forms/FormWrapper/Form.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
 import {
   formatTime,
@@ -52,7 +52,7 @@ const ForgotPassword = () => {
 
   return (
     <>
-      <FormWrapper
+      <Form
         form={form}
         onSubmit={onSubmit}
         submitError={submitError}
@@ -69,7 +69,7 @@ const ForgotPassword = () => {
           error={errors.email?.message}
           disabled={isSubmitting}
         />
-      </FormWrapper>
+      </Form>
       {cooldown > 0 && (
         <p className="text-tertiary-text text-sm">
           {RESEND_EMAIL_BUTTON_WAIT(formatTime(cooldown))}

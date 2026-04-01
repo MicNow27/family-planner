@@ -1,5 +1,5 @@
 import FormField from "@/components/forms/FormField/FormField.tsx";
-import FormWrapper from "@/components/forms/FormWrapper/FormWrapper.tsx";
+import Form from "@/components/forms/FormWrapper/Form.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
 import { useLiveValidation } from "@/hooks/useLiveValidation.ts";
 import {
@@ -57,7 +57,7 @@ const ResetPassword = () => {
   };
 
   return (
-    <FormWrapper
+    <Form
       form={form}
       onSubmit={onSubmit}
       submitError={submitError}
@@ -83,7 +83,7 @@ const ResetPassword = () => {
         error={errors.confirmPassword?.message}
         disabled={isSubmitting}
       />
-    </FormWrapper>
+    </Form>
   );
 };
 

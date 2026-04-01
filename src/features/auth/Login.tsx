@@ -1,5 +1,5 @@
 import FormField from "@/components/forms/FormField/FormField.tsx";
-import FormWrapper from "@/components/forms/FormWrapper/FormWrapper.tsx";
+import Form from "@/components/forms/FormWrapper/Form.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
 import { useLiveValidation } from "@/hooks/useLiveValidation.ts";
 import {
@@ -54,10 +54,11 @@ const Login = () => {
   };
 
   return (
-    <div className="center-content">
+    // NOTE: this might need to become a wrapper component
+    <section className="center-content">
       <h1 className="text-primary-text mb-6 font-medium">Login</h1>
       <div className="form-card">
-        <FormWrapper
+        <Form
           form={form}
           onSubmit={onSubmit}
           submitError={submitError}
@@ -83,10 +84,10 @@ const Login = () => {
             error={errors.password?.message}
             disabled={isSubmitting}
           />
-        </FormWrapper>
+        </Form>
         <Link to="/forgot-password">{FORGOT_PASSWORD}</Link>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -12,7 +12,7 @@ interface FormWrapperProps<T extends FieldValues> {
   children: ReactNode;
 }
 
-const FormWrapper = <T extends FieldValues>({
+const Form = <T extends FieldValues>({
   form,
   onSubmit,
   submittingText,
@@ -57,4 +57,4 @@ const FormWrapper = <T extends FieldValues>({
   );
 };
 
-export default FormWrapper;
+export default Form;
