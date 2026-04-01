@@ -4,7 +4,7 @@ import { Outlet } from "react-router";
 const StartingUp = () => (
   <>
     <StartUpHeader />
-    <main className="h-full w-full p-6 md:px-24">
+    <main className="h-full w-full p-6">
       <Outlet />
     </main>
   </>

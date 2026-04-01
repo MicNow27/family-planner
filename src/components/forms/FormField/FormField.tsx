@@ -27,7 +27,7 @@ const FormField = ({
       {label}
     </label>
     <input
-      className={`h-button-h rounded-button bg-interactive-surface text-secondary-text placeholder:text-disabled-text focus-visible:border-primary focus-visible:ring-primary-focus border-divider max-w-input-w border px-3 text-base transition-all outline-none focus-visible:ring-4 disabled:cursor-not-allowed ${error && "border-error! focus-visible:ring-error-focus!"}`}
+      className={`h-button-h rounded-button bg-interactive-surface text-secondary-text placeholder:text-disabled-text focus-visible:border-primary focus-visible:ring-primary-focus border-divider border px-3 text-base transition-all outline-none focus-visible:ring-4 disabled:cursor-not-allowed ${error && "border-error! focus-visible:ring-error-focus!"}`}
       id={id}
       type={type}
       placeholder={placeholder}

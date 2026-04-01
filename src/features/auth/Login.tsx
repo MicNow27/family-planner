@@ -54,36 +54,39 @@ const Login = () => {
   };
 
   return (
-    <>
-      <FormWrapper
-        form={form}
-        onSubmit={onSubmit}
-        submitError={submitError}
-        submitButtonText={LOGIN_BUTTON}
-        submittingText={LOGIN_BUTTON_WAIT}
-      >
-        <FormField
-          id="email"
-          label={EMAIL_LABEL}
-          type="email"
-          placeholder={EMAIL_PLACEHOLDER}
-          register={register("email", liveValidate("email"))}
-          error={errors.email?.message}
-          disabled={isSubmitting}
-        />
+    <div className="center-content">
+      <h1 className="text-primary-text mb-6 font-medium">Login</h1>
+      <div className="form-card">
+        <FormWrapper
+          form={form}
+          onSubmit={onSubmit}
+          submitError={submitError}
+          submitButtonText={LOGIN_BUTTON}
+          submittingText={LOGIN_BUTTON_WAIT}
+        >
+          <FormField
+            id="email"
+            label={EMAIL_LABEL}
+            type="email"
+            placeholder={EMAIL_PLACEHOLDER}
+            register={register("email", liveValidate("email"))}
+            error={errors.email?.message}
+            disabled={isSubmitting}
+          />
 
-        <FormField
-          id="password"
-          label={PASSWORD_LABEL}
-          type="password"
-          placeholder={PASSWORD_ENTER_PLACEHOLDER}
-          register={register("password", liveValidate("password"))}
-          error={errors.password?.message}
-          disabled={isSubmitting}
-        />
-      </FormWrapper>
-      <Link to="/forgot-password">{FORGOT_PASSWORD}</Link>
-    </>
+          <FormField
+            id="password"
+            label={PASSWORD_LABEL}
+            type="password"
+            placeholder={PASSWORD_ENTER_PLACEHOLDER}
+            register={register("password", liveValidate("password"))}
+            error={errors.password?.message}
+            disabled={isSubmitting}
+          />
+        </FormWrapper>
+        <Link to="/forgot-password">{FORGOT_PASSWORD}</Link>
+      </div>
+    </div>
   );
 };
 

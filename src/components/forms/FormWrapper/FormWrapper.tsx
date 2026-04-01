@@ -10,7 +10,6 @@ interface FormWrapperProps<T extends FieldValues> {
   submitButtonText: string;
   disableSubmit?: boolean;
   children: ReactNode;
-  feedbackText?: string;
 }
 
 const FormWrapper = <T extends FieldValues>({
@@ -21,18 +20,23 @@ const FormWrapper = <T extends FieldValues>({
   submitButtonText,
   disableSubmit,
   children,
-  feedbackText,
 }: FormWrapperProps<T>) => {
   const { handleSubmit, formState } = form;
   const { isSubmitting, isValid } = formState;
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="border-divider rounded-button bg-primary-surface max-w-form-w mx-auto flex flex-col items-center gap-4 border p-6"
-    >
-      {children}
+    <>
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-8">
+        <div className="flex flex-col gap-4">{children}</div>
 
+        <PrimaryButton
+          type="submit"
+          text={submitButtonText}
+          disabled={isSubmitting || !isValid || disableSubmit}
+        />
+      </form>
+
+      {/* TODO: make this better */}
       <div className="h-5">
         <p
           className={`text-tertiary-text text-sm transition-opacity ${
@@ -48,21 +52,8 @@ const FormWrapper = <T extends FieldValues>({
         >
           {submitError}
         </p>
-        <p
-          className={`text-tertiary-text text-sm transition-opacity ${
-            feedbackText ? "opacity-100" : "hidden opacity-0"
-          }`}
-        >
-          {feedbackText}
-        </p>
       </div>
-
-      <PrimaryButton
-        type="submit"
-        text={submitButtonText}
-        disabled={isSubmitting || !isValid || disableSubmit}
-      />
-    </form>
+    </>
   );
 };
 

@@ -1,4 +1,8 @@
 @layer components {
+  .lucide {
+    @apply text-primary-text h-8 w-8 transition-all hover:scale-110;
+  }
+
   .btn-default {
     @apply h-button-h rounded-button focus:ring-primary-focus disabled:text-disabled-text w-full cursor-pointer items-center text-base font-semibold transition-all outline-none focus:ring-4 disabled:cursor-not-allowed;
   }
@@ -7,7 +11,11 @@
     @apply rounded-card p-card;
   }
 
-  .lucide {
-    @apply text-primary-text h-8 w-8 transition-all hover:scale-110;
+  .form-card {
+    @apply md:border-divider md:rounded-button md:bg-primary-surface md:border md:p-6;
+  }
+
+  .center-content {
+    @apply md:max-w-form-w md:mx-auto;
   }
 }
