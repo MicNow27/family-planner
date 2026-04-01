@@ -51,29 +51,31 @@ const ForgotPassword = () => {
   const onSubmit = async () => await run();
 
   return (
-    <FormWrapper
-      form={form}
-      onSubmit={onSubmit}
-      submitError={submitError}
-      submitButtonText={SUBMIT}
-      submittingText={RESET_PASSWORD_WAIT}
-      disableSubmit={cooldown > 0}
-      feedbackText={
-        cooldown > 0
-          ? RESEND_EMAIL_BUTTON_WAIT(formatTime(cooldown))
-          : undefined
-      }
-    >
-      <FormField
-        id="email"
-        label={EMAIL_LABEL}
-        type="email"
-        placeholder={EMAIL_PLACEHOLDER}
-        register={register("email", liveValidate("email"))}
-        error={errors.email?.message}
-        disabled={isSubmitting}
-      />
-    </FormWrapper>
+    <>
+      <FormWrapper
+        form={form}
+        onSubmit={onSubmit}
+        submitError={submitError}
+        submitButtonText={SUBMIT}
+        submittingText={RESET_PASSWORD_WAIT}
+        disableSubmit={cooldown > 0}
+      >
+        <FormField
+          id="email"
+          label={EMAIL_LABEL}
+          type="email"
+          placeholder={EMAIL_PLACEHOLDER}
+          register={register("email", liveValidate("email"))}
+          error={errors.email?.message}
+          disabled={isSubmitting}
+        />
+      </FormWrapper>
+      {cooldown > 0 && (
+        <p className="text-tertiary-text text-sm">
+          {RESEND_EMAIL_BUTTON_WAIT(formatTime(cooldown))}
+        </p>
+      )}
+    </>
   );
 };
 

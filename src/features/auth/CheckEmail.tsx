@@ -33,10 +33,16 @@ const CheckEmail = () => {
 
   return (
     <>
-      <p>{CHECK_EMAIL}</p>
+      <p className="text-primary-text text-base">{CHECK_EMAIL}</p>
 
-      {submitError && <p>{submitError}</p>}
-      {cooldown > 0 && <p>{RESEND_EMAIL_BUTTON_WAIT(formatTime(cooldown))}</p>}
+      <div className="h-5">
+        {cooldown > 0 && (
+          <p className="text-tertiary-text text-sm">
+            {RESEND_EMAIL_BUTTON_WAIT(formatTime(cooldown))}
+          </p>
+        )}
+        {submitError && <p className="text-error text-sm">{submitError}</p>}
+      </div>
 
       <PrimaryButton
         onClick={run}
