@@ -22,7 +22,7 @@ const Landing = () => {
             <p className="text-primary-text text-3xl font-medium">{APP_NAME}</p>
             <p className="text-tertiary-text text-base italic">{SLOGAN}</p>
           </div>
-          <div className="flex flex-col gap-3">
+          <div className="flex w-full flex-col gap-3">
             <PrimaryButton
               text={SIGN_UP_BUTTON}
               onClick={(): void => {
