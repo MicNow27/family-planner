@@ -1,3 +1,4 @@
+import FormFeedback from "@/components/forms/FormFeedback.tsx";
 import type { ReactNode } from "react";
 import type { FieldValues, UseFormReturn } from "react-hook-form";
 import PrimaryButton from "../../buttons/PrimaryButton.tsx";
@@ -36,22 +37,14 @@ const Form = <T extends FieldValues>({
         />
       </form>
 
-      {/* TODO: make this better */}
-      <div className="h-5">
-        <p
-          className={`text-tertiary-text text-sm transition-opacity ${
-            isSubmitting ? "opacity-100" : "hidden opacity-0"
-          }`}
-        >
-          {submittingText}
-        </p>
-        <p
-          className={`text-error text-sm transition-opacity ${
-            !isSubmitting && submitError ? "opacity-100" : "hidden opacity-0"
-          }`}
-        >
-          {submitError}
-        </p>
+      {/* TODO: move this to components */}
+      <div className="relative h-5">
+        <FormFeedback text={submittingText} condition={isSubmitting} />
+        <FormFeedback
+          type={"error"}
+          text={submitError ?? ""}
+          condition={!isSubmitting && typeof submitError === "string"}
+        />
       </div>
     </>
   );
