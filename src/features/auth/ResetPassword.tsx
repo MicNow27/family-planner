@@ -1,3 +1,4 @@
+import FormFeedback from "@/components/forms/FormFeedback.tsx";
 import FormField from "@/components/forms/FormField/FormField.tsx";
 import Form from "@/components/forms/FormWrapper/Form.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
@@ -7,6 +8,7 @@ import {
   resetPasswordSchema,
 } from "@/schemas/auth/resetPassword.schema.ts";
 import {
+  RESET_PASSWORD,
   RESET_PASSWORD_ERROR,
   RESET_PASSWORD_WAIT,
 } from "@copy/forgotPassword.ts";
@@ -57,33 +59,44 @@ const ResetPassword = () => {
   };
 
   return (
-    <Form
-      form={form}
-      onSubmit={onSubmit}
-      submitError={submitError}
-      submitButtonText={SUBMIT}
-      submittingText={RESET_PASSWORD_WAIT}
-    >
-      <FormField
-        id="password"
-        label={PASSWORD_LABEL}
-        type="password"
-        placeholder={PASSWORD_CREATE_PLACEHOLDER}
-        register={register("password", liveValidate("password"))}
-        error={errors.password?.message}
-        disabled={isSubmitting}
-      />
+    <section className="center-content">
+      <h1 className="text-primary-text mb-6 font-medium">{RESET_PASSWORD}</h1>
+      <div className="form-card">
+        <Form form={form} onSubmit={onSubmit} submitButtonText={SUBMIT}>
+          <FormField
+            id="password"
+            label={PASSWORD_LABEL}
+            type="password"
+            placeholder={PASSWORD_CREATE_PLACEHOLDER}
+            register={register("password", liveValidate("password"))}
+            error={errors.password?.message}
+            disabled={isSubmitting}
+          />
 
-      <FormField
-        id="confirmPassword"
-        label={PASSWORD_CONFIRM_LABEL}
-        type="password"
-        placeholder={PASSWORD_CONFIRM_PLACEHOLDER}
-        register={register("confirmPassword", liveValidate("confirmPassword"))}
-        error={errors.confirmPassword?.message}
-        disabled={isSubmitting}
-      />
-    </Form>
+          <FormField
+            id="confirmPassword"
+            label={PASSWORD_CONFIRM_LABEL}
+            type="password"
+            placeholder={PASSWORD_CONFIRM_PLACEHOLDER}
+            register={register(
+              "confirmPassword",
+              liveValidate("confirmPassword"),
+            )}
+            error={errors.confirmPassword?.message}
+            disabled={isSubmitting}
+          />
+        </Form>
+
+        <div className="relative flex h-6 items-center">
+          <FormFeedback text={RESET_PASSWORD_WAIT} condition={isSubmitting} />
+          <FormFeedback
+            type={"error"}
+            text={submitError ?? ""}
+            condition={!isSubmitting && typeof submitError === "string"}
+          />
+        </div>
+      </div>
+    </section>
   );
 };
 
