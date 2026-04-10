@@ -7,7 +7,7 @@ import { APP_NAME } from "@copy/general.ts";
 import { type UIMatch, useMatches, useNavigate } from "react-router";
 
 const DEFAULT_SETTINGS: HeaderSettings = {
-  title: "Family Planner",
+  title: APP_NAME,
 };
 
 const StartUpHeader = () => {
