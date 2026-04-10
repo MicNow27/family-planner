@@ -36,7 +36,7 @@ const routes: Route[] = [
       {
         path: "/reset-password",
         element: <ResetPassword />,
-        handle: { header: { showBackButton: true } },
+        handle: { header: { showBackButton: true, backButtonRoute: "/" } },
       },
     ],
   },
@@ -52,17 +52,19 @@ const routes: Route[] = [
         {
           path: "/sign-up",
           element: <SignUp />,
-          handle: { header: { showBackButton: true } },
+          handle: { header: { showBackButton: true, backButtonRoute: "/" } },
         },
         {
           path: "/login",
           element: <Login />,
-          handle: { header: { showBackButton: true } },
+          handle: { header: { showBackButton: true, backButtonRoute: "/" } },
         },
         {
           path: "/forgot-password",
           element: <ForgotPassword />,
-          handle: { header: { showBackButton: true } },
+          handle: {
+            header: { showBackButton: true, backButtonRoute: "/login" },
+          },
         },
         {
           path: "/check-email",

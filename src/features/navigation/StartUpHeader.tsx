@@ -1,9 +1,14 @@
 import BackButton from "@/components/buttons/BackButton.tsx";
+import type { HeaderSettings } from "@/types/header.ts";
 import type { Handle } from "@/types/route.ts";
 import { isInstalledApp } from "@/utils/isInstalledApp.ts";
 import logo from "@assets/images/logo.svg";
 import { APP_NAME } from "@copy/general.ts";
 import { type UIMatch, useMatches, useNavigate } from "react-router";
+
+const DEFAULT_SETTINGS: HeaderSettings = {
+  title: "Family Planner",
+};
 
 const StartUpHeader = () => {
   const matches = useMatches() as UIMatch<unknown, Handle>[];
@@ -13,9 +18,11 @@ const StartUpHeader = () => {
     .reverse()
     .find((m) => m.handle?.header);
 
-  const showBackButton = lastMatchWithHeader?.handle.header.showBackButton;
+  const { showBackButton, backButtonRoute }: HeaderSettings =
+    lastMatchWithHeader?.handle.header || DEFAULT_SETTINGS;
 
-  const handleClick = () => navigate(-1);
+  const handleClick = () =>
+    backButtonRoute ? navigate(backButtonRoute) : navigate(-1);
 
   return (
     <header className="bg-primary-surface border-b-divider relative flex h-20 items-center justify-center border-b">
