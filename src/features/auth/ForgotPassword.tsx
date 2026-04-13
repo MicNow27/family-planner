@@ -72,7 +72,7 @@ const ForgotPassword = () => {
           />
         </Form>
 
-        <div className="relative flex h-6 items-center">
+        <div className="relative flex h-6 items-center pt-2">
           <FormFeedback text={RESET_PASSWORD_WAIT} condition={isSubmitting} />
           <FormFeedback
             type={"error"}

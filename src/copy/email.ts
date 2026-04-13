@@ -4,8 +4,10 @@ export const EMAIL_LABEL = "Email";
 export const EMAIL_PLACEHOLDER = "Enter your email";
 export const EMAIL_ERROR = "Please enter a valid email address";
 
-export const CHECK_EMAIL =
-  "Check your inbox to verify your email before continuing.";
+export const CHECK_EMAIL = "Check your email";
+export const CHECK_EMAIL_INSTRUCTION = (email: string) =>
+  `We've sent a confirmation email to ${email}. Please check your inbox and click the link to verify your email address.`;
+
 export const RESEND_EMAIL_BUTTON = "Resend Email";
 
 export const RESEND_EMAIL_BUTTON_WAIT = ({

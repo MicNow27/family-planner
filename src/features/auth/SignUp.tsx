@@ -103,7 +103,7 @@ const SignUp = () => {
           />
         </Form>
 
-        <div className="relative flex h-6 items-center">
+        <div className="relative flex h-6 items-center pt-2">
           <FormFeedback text={SIGN_UP_BUTTON_WAIT} condition={isSubmitting} />
           <FormFeedback
             type={"error"}

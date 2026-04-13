@@ -81,13 +81,13 @@ const Login = () => {
         </Form>
 
         <Link
-          className="text-secondary-text block w-full pt-1 pr-2 text-right font-medium italic"
+          className="text-secondary-text block w-full pt-1 pr-2 text-right text-xs italic"
           to="/forgot-password"
         >
           {FORGOT_PASSWORD}
         </Link>
 
-        <div className="relative flex h-6 items-center">
+        <div className="relative flex h-6 items-center pt-2">
           <FormFeedback text={LOGIN_BUTTON_WAIT} condition={isSubmitting} />
           <FormFeedback
             type={"error"}

@@ -1,4 +1,5 @@
 import PrimaryButton from "@/components/buttons/PrimaryButton.tsx";
+import FormFeedback from "@/components/forms/FormFeedback.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
 import {
   formatTime,
@@ -8,6 +9,7 @@ import {
 import { useCooldown } from "@/hooks/useCooldown/useCooldown.ts";
 import {
   CHECK_EMAIL,
+  CHECK_EMAIL_INSTRUCTION,
   RESEND_EMAIL_BUTTON,
   RESEND_EMAIL_BUTTON_WAIT,
 } from "@copy/email.ts";
@@ -32,24 +34,32 @@ const CheckEmail = () => {
   });
 
   return (
-    <>
-      <p className="text-primary-text text-base">{CHECK_EMAIL}</p>
+    <section className="center-content">
+      <h1 className="text-primary-text mb-6 font-medium">{CHECK_EMAIL}</h1>
+      <div className="form-card">
+        <p className="text-secondary-text mb-7">
+          {CHECK_EMAIL_INSTRUCTION(email!)}
+        </p>
 
-      <div className="h-5">
-        {cooldown > 0 && (
-          <p className="text-tertiary-text text-sm">
-            {RESEND_EMAIL_BUTTON_WAIT(formatTime(cooldown))}
-          </p>
-        )}
-        {submitError && <p className="text-error text-sm">{submitError}</p>}
+        <PrimaryButton
+          onClick={run}
+          disabled={cooldown > 0}
+          text={RESEND_EMAIL_BUTTON}
+        />
+
+        <div className="relative flex h-6 items-center pt-2">
+          <FormFeedback
+            type={"error"}
+            text={submitError ?? ""}
+            condition={typeof submitError === "string"}
+          />
+          <FormFeedback
+            text={RESEND_EMAIL_BUTTON_WAIT(formatTime(cooldown))}
+            condition={cooldown > 0}
+          />
+        </div>
       </div>
-
-      <PrimaryButton
-        onClick={run}
-        disabled={cooldown > 0}
-        text={RESEND_EMAIL_BUTTON}
-      />
-    </>
+    </section>
   );
 };
 

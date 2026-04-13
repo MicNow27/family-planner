@@ -69,6 +69,7 @@ const routes: Route[] = [
         {
           path: "/check-email",
           element: <CheckEmail />,
+          handle: { header: { showBackButton: true, backButtonRoute: "/" } },
         },
       ],
     },
