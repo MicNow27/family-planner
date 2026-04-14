@@ -1,4 +1,5 @@
 import { useAuth } from "@/context/auth/useAuth.ts";
+import email from "@assets/images/email.svg";
 import { CONFIRMING_EMAIL } from "@copy/email.ts";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
@@ -13,7 +14,14 @@ const AuthCallback = () => {
     else navigate("/login", { replace: true });
   }, [user, loading, navigate]);
 
-  return <p>{CONFIRMING_EMAIL}</p>;
+  return (
+    <section className="center-content">
+      <h1 className="text-primary-text mb-6 font-medium">{CONFIRMING_EMAIL}</h1>
+      <div className="flex justify-center">
+        <img src={email} alt="logo" className="h-72" />
+      </div>
+    </section>
+  );
 };
 
 export default AuthCallback;

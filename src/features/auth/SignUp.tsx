@@ -1,5 +1,6 @@
+import FormFeedback from "@/components/forms/FormFeedback.tsx";
 import FormField from "@/components/forms/FormField/FormField.tsx";
-import FormWrapper from "@/components/forms/FormWrapper/FormWrapper.tsx";
+import Form from "@/components/forms/FormWrapper/Form.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
 import { useLiveValidation } from "@/hooks/useLiveValidation.ts";
 import {
@@ -14,7 +15,7 @@ import {
   PASSWORD_LABEL,
 } from "@copy/password.ts";
 import {
-  SIGN_UP_BUTTON,
+  SIGN_UP,
   SIGN_UP_BUTTON_WAIT,
   SIGN_UP_ERROR_GENERAL,
 } from "@copy/signUp.ts";
@@ -35,7 +36,7 @@ const SignUp = () => {
   const {
     register,
     trigger,
-    formState: { errors, dirtyFields },
+    formState: { errors, dirtyFields, isSubmitting },
   } = form;
 
   const liveValidate = useLiveValidation({
@@ -64,40 +65,54 @@ const SignUp = () => {
   };
 
   return (
-    <FormWrapper
-      form={form}
-      onSubmit={onSubmit}
-      submitError={submitError}
-      submitButtonText={SIGN_UP_BUTTON}
-      submittingText={SIGN_UP_BUTTON_WAIT}
-    >
-      <FormField
-        id="email"
-        label={EMAIL_LABEL}
-        type="email"
-        placeholder={EMAIL_PLACEHOLDER}
-        register={register("email", liveValidate("email"))}
-        error={errors.email?.message}
-      />
+    <section className="center-content">
+      <h1 className="text-primary-text mb-6 font-medium">{SIGN_UP}</h1>
+      <div className="form-card">
+        <Form form={form} onSubmit={onSubmit} submitButtonText={SIGN_UP}>
+          <FormField
+            id="email"
+            label={EMAIL_LABEL}
+            type="email"
+            placeholder={EMAIL_PLACEHOLDER}
+            register={register("email", liveValidate("email"))}
+            error={errors.email?.message}
+            disabled={isSubmitting}
+          />
 
-      <FormField
-        id="password"
-        label={PASSWORD_LABEL}
-        type="password"
-        placeholder={PASSWORD_CREATE_PLACEHOLDER}
-        register={register("password", liveValidate("password"))}
-        error={errors.password?.message}
-      />
+          <FormField
+            id="password"
+            label={PASSWORD_LABEL}
+            type="password"
+            placeholder={PASSWORD_CREATE_PLACEHOLDER}
+            register={register("password", liveValidate("password"))}
+            error={errors.password?.message}
+            disabled={isSubmitting}
+          />
 
-      <FormField
-        id="confirmPassword"
-        label={PASSWORD_CONFIRM_LABEL}
-        type="password"
-        placeholder={PASSWORD_CONFIRM_PLACEHOLDER}
-        register={register("confirmPassword", liveValidate("confirmPassword"))}
-        error={errors.confirmPassword?.message}
-      />
-    </FormWrapper>
+          <FormField
+            id="confirmPassword"
+            label={PASSWORD_CONFIRM_LABEL}
+            type="password"
+            placeholder={PASSWORD_CONFIRM_PLACEHOLDER}
+            register={register(
+              "confirmPassword",
+              liveValidate("confirmPassword"),
+            )}
+            error={errors.confirmPassword?.message}
+            disabled={isSubmitting}
+          />
+        </Form>
+
+        <div className="relative flex h-6 items-center pt-2">
+          <FormFeedback text={SIGN_UP_BUTTON_WAIT} condition={isSubmitting} />
+          <FormFeedback
+            type={"error"}
+            text={submitError ?? ""}
+            condition={!isSubmitting && typeof submitError === "string"}
+          />
+        </div>
+      </div>
+    </section>
   );
 };
 

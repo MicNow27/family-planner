@@ -5,18 +5,14 @@ import PrimaryButton from "../../buttons/PrimaryButton.tsx";
 interface FormWrapperProps<T extends FieldValues> {
   form: UseFormReturn<T>;
   onSubmit: (data: T) => Promise<void>;
-  submittingText: string;
-  submitError?: string | null;
   submitButtonText: string;
   disableSubmit?: boolean;
   children: ReactNode;
 }
 
-const FormWrapper = <T extends FieldValues>({
+const Form = <T extends FieldValues>({
   form,
   onSubmit,
-  submittingText,
-  submitError,
   submitButtonText,
   disableSubmit,
   children,
@@ -25,11 +21,8 @@ const FormWrapper = <T extends FieldValues>({
   const { isSubmitting, isValid } = formState;
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      {children}
-
-      {isSubmitting && <p>{submittingText}</p>}
-      {!isSubmitting && submitError && <p>{submitError}</p>}
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-7">
+      <div className="flex flex-col gap-4">{children}</div>
 
       <PrimaryButton
         type="submit"
@@ -40,4 +33,4 @@ const FormWrapper = <T extends FieldValues>({
   );
 };
 
-export default FormWrapper;
+export default Form;

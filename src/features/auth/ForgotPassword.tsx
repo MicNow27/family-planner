@@ -1,5 +1,6 @@
+import FormFeedback from "@/components/forms/FormFeedback.tsx";
 import FormField from "@/components/forms/FormField/FormField.tsx";
-import FormWrapper from "@/components/forms/FormWrapper/FormWrapper.tsx";
+import Form from "@/components/forms/FormWrapper/Form.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
 import {
   formatTime,
@@ -17,7 +18,7 @@ import {
   EMAIL_PLACEHOLDER,
   RESEND_EMAIL_BUTTON_WAIT,
 } from "@copy/email.ts";
-import { RESET_PASSWORD_WAIT } from "@copy/forgotPassword.ts";
+import { FORGOT_PASSWORD, RESET_PASSWORD_WAIT } from "@copy/forgotPassword.ts";
 import { SUBMIT } from "@copy/general.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -33,7 +34,7 @@ const ForgotPassword = () => {
     register,
     trigger,
     getValues,
-    formState: { dirtyFields, errors },
+    formState: { dirtyFields, errors, isSubmitting },
   } = form;
 
   const { cooldown, run, submitError, clearError } = useCooldown({
@@ -51,25 +52,40 @@ const ForgotPassword = () => {
   const onSubmit = async () => await run();
 
   return (
-    <FormWrapper
-      form={form}
-      onSubmit={onSubmit}
-      submitError={submitError}
-      submitButtonText={SUBMIT}
-      submittingText={RESET_PASSWORD_WAIT}
-      disableSubmit={cooldown > 0}
-    >
-      <FormField
-        id="email"
-        label={EMAIL_LABEL}
-        type="email"
-        placeholder={EMAIL_PLACEHOLDER}
-        register={register("email", liveValidate("email"))}
-        error={errors.email?.message}
-      />
+    <section className="center-content">
+      <h1 className="text-primary-text mb-6 font-medium">{FORGOT_PASSWORD}</h1>
+      <div className="form-card">
+        <Form
+          form={form}
+          onSubmit={onSubmit}
+          submitButtonText={SUBMIT}
+          disableSubmit={cooldown > 0}
+        >
+          <FormField
+            id="email"
+            label={EMAIL_LABEL}
+            type="email"
+            placeholder={EMAIL_PLACEHOLDER}
+            register={register("email", liveValidate("email"))}
+            error={errors.email?.message}
+            disabled={isSubmitting}
+          />
+        </Form>
 
-      {cooldown > 0 && <p>{RESEND_EMAIL_BUTTON_WAIT(formatTime(cooldown))}</p>}
-    </FormWrapper>
+        <div className="relative flex h-6 items-center pt-2">
+          <FormFeedback text={RESET_PASSWORD_WAIT} condition={isSubmitting} />
+          <FormFeedback
+            type={"error"}
+            text={submitError ?? ""}
+            condition={!isSubmitting && typeof submitError === "string"}
+          />
+          <FormFeedback
+            text={RESEND_EMAIL_BUTTON_WAIT(formatTime(cooldown))}
+            condition={cooldown > 0}
+          />
+        </div>
+      </div>
+    </section>
   );
 };
 

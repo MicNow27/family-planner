@@ -3,8 +3,8 @@ import SecondaryButton from "@/components/buttons/SecondaryButton.tsx";
 import family from "@assets/images/family.svg";
 import logo from "@assets/images/logo.svg";
 import { APP_NAME, SLOGAN } from "@copy/general.ts";
-import { LOGIN_BUTTON } from "@copy/login.ts";
-import { SIGN_UP_BUTTON } from "@copy/signUp.ts";
+import { LOGIN } from "@copy/login.ts";
+import { SIGN_UP } from "@copy/signUp.ts";
 import { useNavigate } from "react-router";
 
 const Landing = () => {
@@ -22,15 +22,15 @@ const Landing = () => {
             <p className="text-primary-text text-3xl font-medium">{APP_NAME}</p>
             <p className="text-tertiary-text text-base italic">{SLOGAN}</p>
           </div>
-          <div className="flex flex-col gap-3">
+          <div className="flex w-full flex-col gap-3">
             <PrimaryButton
-              text={SIGN_UP_BUTTON}
+              text={SIGN_UP}
               onClick={(): void => {
                 navigate("/sign-up");
               }}
             />
             <SecondaryButton
-              text={LOGIN_BUTTON}
+              text={LOGIN}
               onClick={(): void => {
                 navigate("/login");
               }}

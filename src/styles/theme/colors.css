@@ -21,6 +21,7 @@
   --color-success: #3fa37a; /* saved changes, completed tasks, confirmations */
   --color-warning: #e9a23b; /* upcoming deadlines, schedule conflicts, non-blocking attention-needed */
   --color-error: #c7364a; /* failed actions, invalid input, destructive confirmations */
+  --color-error-focus: rgba(207, 54, 74, 0.4);
   --color-info: #70c1e3;
 
   --color-background: #0f1320;
@@ -33,7 +34,8 @@
     background: #14162f; */
 
   --color-primary-surface: #2a293b; /* cards, sheets, panels */
-  /* primary-surface: #2f2e41; */
+  /*primary-surface: #2f2e41;*/
+  /*primary-surface: #3b3a6a;*/
   --color-secondary-surface: #39374e; /* nested cards, list rows */
   --color-interactive-surface: #3f3d56;
   --color-interactive-surface-hover: #525066;

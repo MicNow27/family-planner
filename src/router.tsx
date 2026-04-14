@@ -27,8 +27,18 @@ const auth = (children: Route[]): Route => ({
 
 const routes: Route[] = [
   {
-    path: "/auth-callback",
-    element: <AuthCallback />,
+    element: <StartingUp />,
+    children: [
+      {
+        path: "/auth-callback",
+        element: <AuthCallback />,
+      },
+      {
+        path: "/reset-password",
+        element: <ResetPassword />,
+        handle: { header: { showBackButton: true, backButtonRoute: "/" } },
+      },
+    ],
   },
 
   guest([
@@ -42,26 +52,24 @@ const routes: Route[] = [
         {
           path: "/sign-up",
           element: <SignUp />,
-          handle: { header: { showBackButton: true } },
+          handle: { header: { showBackButton: true, backButtonRoute: "/" } },
         },
         {
           path: "/login",
           element: <Login />,
-          handle: { header: { showBackButton: true } },
+          handle: { header: { showBackButton: true, backButtonRoute: "/" } },
         },
         {
           path: "/forgot-password",
           element: <ForgotPassword />,
-          handle: { header: { showBackButton: true } },
+          handle: {
+            header: { showBackButton: true, backButtonRoute: "/login" },
+          },
         },
         {
           path: "/check-email",
           element: <CheckEmail />,
-        },
-        {
-          path: "/reset-password",
-          element: <ResetPassword />,
-          handle: { header: { showBackButton: true } },
+          handle: { header: { showBackButton: true, backButtonRoute: "/" } },
         },
       ],
     },

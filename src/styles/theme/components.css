@@ -1,9 +1,9 @@
 @theme {
   --spacing-button-h: 3rem; /* use: h-button-h */
-  --spacing-button-w: 14rem; /* use: w-button-w */
+  /*--spacing-button-w: 14rem; !* use: w-button-w *!*/
+  /*--spacing-input-w: 20rem; !* use: w-input-w *!*/
+  --spacing-form-w: 25rem;
   --radius-button: 0.75rem; /* use: rounded-button */
-
-  --shadow-button: 0 0 0 0.25rem rgba(245, 158, 12, 0.2); /* use: shadow-button */
 
   --radius-card: 0.5rem; /* use: rounded-card */
   --spacing-card: 1rem; /* use: p-card */

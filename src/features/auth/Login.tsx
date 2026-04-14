@@ -1,5 +1,6 @@
+import FormFeedback from "@/components/forms/FormFeedback.tsx";
 import FormField from "@/components/forms/FormField/FormField.tsx";
-import FormWrapper from "@/components/forms/FormWrapper/FormWrapper.tsx";
+import Form from "@/components/forms/FormWrapper/Form.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
 import { useLiveValidation } from "@/hooks/useLiveValidation.ts";
 import {
@@ -8,7 +9,7 @@ import {
 } from "@/schemas/auth/login.schema.ts";
 import { EMAIL_LABEL, EMAIL_PLACEHOLDER } from "@copy/email.ts";
 import { FORGOT_PASSWORD } from "@copy/forgotPassword.ts";
-import { LOGIN_BUTTON, LOGIN_BUTTON_WAIT, LOGIN_ERROR } from "@copy/login.ts";
+import { LOGIN, LOGIN_BUTTON_WAIT, LOGIN_ERROR } from "@copy/login.ts";
 import { PASSWORD_ENTER_PLACEHOLDER, PASSWORD_LABEL } from "@copy/password.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
@@ -27,7 +28,7 @@ const Login = () => {
   const {
     register,
     trigger,
-    formState: { errors, dirtyFields },
+    formState: { errors, dirtyFields, isSubmitting },
   } = form;
 
   const liveValidate = useLiveValidation({
@@ -54,34 +55,48 @@ const Login = () => {
   };
 
   return (
-    <>
-      <FormWrapper
-        form={form}
-        onSubmit={onSubmit}
-        submitError={submitError}
-        submitButtonText={LOGIN_BUTTON}
-        submittingText={LOGIN_BUTTON_WAIT}
-      >
-        <FormField
-          id="email"
-          label={EMAIL_LABEL}
-          type="email"
-          placeholder={EMAIL_PLACEHOLDER}
-          register={register("email", liveValidate("email"))}
-          error={errors.email?.message}
-        />
+    <section className="center-content">
+      <h1 className="text-primary-text mb-6 font-medium">{LOGIN}</h1>
+      <div className="form-card">
+        <Form form={form} onSubmit={onSubmit} submitButtonText={LOGIN}>
+          <FormField
+            id="email"
+            label={EMAIL_LABEL}
+            type="email"
+            placeholder={EMAIL_PLACEHOLDER}
+            register={register("email", liveValidate("email"))}
+            error={errors.email?.message}
+            disabled={isSubmitting}
+          />
 
-        <FormField
-          id="password"
-          label={PASSWORD_LABEL}
-          type="password"
-          placeholder={PASSWORD_ENTER_PLACEHOLDER}
-          register={register("password", liveValidate("password"))}
-          error={errors.password?.message}
-        />
-      </FormWrapper>
-      <Link to="/forgot-password">{FORGOT_PASSWORD}</Link>
-    </>
+          <FormField
+            id="password"
+            label={PASSWORD_LABEL}
+            type="password"
+            placeholder={PASSWORD_ENTER_PLACEHOLDER}
+            register={register("password", liveValidate("password"))}
+            error={errors.password?.message}
+            disabled={isSubmitting}
+          />
+        </Form>
+
+        <Link
+          className="text-secondary-text block w-full pt-1 pr-2 text-right text-xs italic"
+          to="/forgot-password"
+        >
+          {FORGOT_PASSWORD}
+        </Link>
+
+        <div className="relative flex h-6 items-center pt-2">
+          <FormFeedback text={LOGIN_BUTTON_WAIT} condition={isSubmitting} />
+          <FormFeedback
+            type={"error"}
+            text={submitError ?? ""}
+            condition={!isSubmitting && typeof submitError === "string"}
+          />
+        </div>
+      </div>
+    </section>
   );
 };
 
