@@ -35,6 +35,7 @@ const ResetPassword = () => {
 
   const {
     register,
+    watch,
     trigger,
     formState: { errors, dirtyFields, isSubmitting },
   } = form;
@@ -68,6 +69,7 @@ const ResetPassword = () => {
             label={PASSWORD_LABEL}
             placeholder={PASSWORD_CREATE_PLACEHOLDER}
             register={register("password", liveValidate("password"))}
+            value={watch("password")}
             error={errors.password?.message}
             disabled={isSubmitting}
           />
@@ -80,6 +82,7 @@ const ResetPassword = () => {
               "confirmPassword",
               liveValidate("confirmPassword"),
             )}
+            value={watch("confirmPassword")}
             error={errors.confirmPassword?.message}
             disabled={isSubmitting}
           />

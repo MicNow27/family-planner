@@ -8,8 +8,10 @@ const PasswordFormField = ({
   register,
   error,
   disabled,
+  value,
 }: PasswordFormFieldProps) => {
   const [showPassword, setShowPassword] = useState(false);
+  const hasValue = !!value;
 
   return (
     <div className={`flex w-full flex-col gap-1 ${disabled && "opacity-50"}`}>
@@ -28,15 +30,17 @@ const PasswordFormField = ({
           disabled={disabled}
           {...register}
         />
-        <button
-          type="button"
-          className="text-secondary-text hover:text-primary absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer text-sm font-medium disabled:cursor-not-allowed"
-          onClick={() => setShowPassword((current) => !current)}
-          disabled={disabled}
-          aria-label={showPassword ? "Hide password" : "Show password"}
-        >
-          {showPassword ? "Hide" : "Show"}
-        </button>
+        {hasValue && (
+          <button
+            type="button"
+            className="text-secondary-text hover:text-primary absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer text-sm font-medium disabled:cursor-not-allowed"
+            onClick={() => setShowPassword((current) => !current)}
+            disabled={disabled}
+            aria-label={showPassword ? "Hide password" : "Show password"}
+          >
+            {showPassword ? "Hide" : "Show"}
+          </button>
+        )}
       </div>
       <div className="h-4">
         {error && <p className="text-error ml-2 text-xs">{error}</p>}

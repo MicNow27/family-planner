@@ -28,6 +28,7 @@ const Login = () => {
 
   const {
     register,
+    watch,
     trigger,
     formState: { errors, dirtyFields, isSubmitting },
   } = form;
@@ -75,6 +76,7 @@ const Login = () => {
             label={PASSWORD_LABEL}
             placeholder={PASSWORD_ENTER_PLACEHOLDER}
             register={register("password", liveValidate("password"))}
+            value={watch("password")}
             error={errors.password?.message}
             disabled={isSubmitting}
           />

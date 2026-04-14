@@ -10,4 +10,6 @@ export type FormFieldProps = {
   disabled?: boolean;
 };
 
-export type PasswordFormFieldProps = Omit<FormFieldProps, "type">;
+export type PasswordFormFieldProps = Omit<FormFieldProps, "type"> & {
+  value?: string;
+};
