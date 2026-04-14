@@ -1,5 +1,6 @@
 import FormFeedback from "@/components/forms/FormFeedback.tsx";
 import FormField from "@/components/forms/FormField/FormField.tsx";
+import PasswordFormField from "@/components/forms/FormField/PasswordFormField.tsx";
 import Form from "@/components/forms/FormWrapper/Form.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
 import { useLiveValidation } from "@/hooks/useLiveValidation.ts";
@@ -79,20 +80,18 @@ const SignUp = () => {
             disabled={isSubmitting}
           />
 
-          <FormField
+          <PasswordFormField
             id="password"
             label={PASSWORD_LABEL}
-            type="password"
             placeholder={PASSWORD_CREATE_PLACEHOLDER}
             register={register("password", liveValidate("password"))}
             error={errors.password?.message}
             disabled={isSubmitting}
           />
 
-          <FormField
+          <PasswordFormField
             id="confirmPassword"
             label={PASSWORD_CONFIRM_LABEL}
-            type="password"
             placeholder={PASSWORD_CONFIRM_PLACEHOLDER}
             register={register(
               "confirmPassword",

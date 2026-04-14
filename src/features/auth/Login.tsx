@@ -1,5 +1,6 @@
 import FormFeedback from "@/components/forms/FormFeedback.tsx";
 import FormField from "@/components/forms/FormField/FormField.tsx";
+import PasswordFormField from "@/components/forms/FormField/PasswordFormField.tsx";
 import Form from "@/components/forms/FormWrapper/Form.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
 import { useLiveValidation } from "@/hooks/useLiveValidation.ts";
@@ -69,10 +70,9 @@ const Login = () => {
             disabled={isSubmitting}
           />
 
-          <FormField
+          <PasswordFormField
             id="password"
             label={PASSWORD_LABEL}
-            type="password"
             placeholder={PASSWORD_ENTER_PLACEHOLDER}
             register={register("password", liveValidate("password"))}
             error={errors.password?.message}
@@ -81,7 +81,7 @@ const Login = () => {
         </Form>
 
         <Link
-          className="text-secondary-text block w-full pt-1 pr-2 text-right text-xs italic"
+          className="text-secondary-text hover:text-primary block w-full pt-1 pr-2 text-right text-xs italic"
           to="/forgot-password"
         >
           {FORGOT_PASSWORD}
