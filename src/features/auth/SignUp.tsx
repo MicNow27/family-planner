@@ -110,7 +110,7 @@ const SignUp = () => {
           <FormFeedback
             type={"error"}
             text={submitError ?? ""}
-            condition={!isSubmitting && typeof submitError === "string"}
+            condition={!isSubmitting && !!submitError}
           />
         </div>
       </div>
