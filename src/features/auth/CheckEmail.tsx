@@ -51,7 +51,7 @@ const CheckEmail = () => {
           <FormFeedback
             type={"error"}
             text={submitError ?? ""}
-            condition={typeof submitError === "string"}
+            condition={!!submitError}
           />
           <FormFeedback
             text={RESEND_EMAIL_BUTTON_WAIT(formatTime(cooldown))}

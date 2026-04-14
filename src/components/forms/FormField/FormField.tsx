@@ -1,14 +1,4 @@
-import type { UseFormRegisterReturn } from "react-hook-form";
-
-type FormFieldProps = {
-  id: string;
-  label: string;
-  type: "email" | "password";
-  placeholder?: string;
-  register: UseFormRegisterReturn;
-  error?: string | undefined;
-  disabled?: boolean;
-};
+import type { FormFieldProps } from "@/components/forms/FormField/types.ts";
 
 const FormField = ({
   id,

@@ -77,7 +77,7 @@ const ForgotPassword = () => {
           <FormFeedback
             type={"error"}
             text={submitError ?? ""}
-            condition={!isSubmitting && typeof submitError === "string"}
+            condition={!isSubmitting && !!submitError}
           />
           <FormFeedback
             text={RESEND_EMAIL_BUTTON_WAIT(formatTime(cooldown))}

@@ -1,5 +1,6 @@
 import FormFeedback from "@/components/forms/FormFeedback.tsx";
 import FormField from "@/components/forms/FormField/FormField.tsx";
+import PasswordFormField from "@/components/forms/FormField/PasswordFormField.tsx";
 import Form from "@/components/forms/FormWrapper/Form.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
 import { useLiveValidation } from "@/hooks/useLiveValidation.ts";
@@ -35,6 +36,7 @@ const SignUp = () => {
 
   const {
     register,
+    watch,
     trigger,
     formState: { errors, dirtyFields, isSubmitting },
   } = form;
@@ -79,25 +81,25 @@ const SignUp = () => {
             disabled={isSubmitting}
           />
 
-          <FormField
+          <PasswordFormField
             id="password"
             label={PASSWORD_LABEL}
-            type="password"
             placeholder={PASSWORD_CREATE_PLACEHOLDER}
             register={register("password", liveValidate("password"))}
+            value={watch("password")}
             error={errors.password?.message}
             disabled={isSubmitting}
           />
 
-          <FormField
+          <PasswordFormField
             id="confirmPassword"
             label={PASSWORD_CONFIRM_LABEL}
-            type="password"
             placeholder={PASSWORD_CONFIRM_PLACEHOLDER}
             register={register(
               "confirmPassword",
               liveValidate("confirmPassword"),
             )}
+            value={watch("confirmPassword")}
             error={errors.confirmPassword?.message}
             disabled={isSubmitting}
           />
@@ -108,7 +110,7 @@ const SignUp = () => {
           <FormFeedback
             type={"error"}
             text={submitError ?? ""}
-            condition={!isSubmitting && typeof submitError === "string"}
+            condition={!isSubmitting && !!submitError}
           />
         </div>
       </div>
