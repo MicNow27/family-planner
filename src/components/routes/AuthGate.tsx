@@ -1,5 +1,5 @@
+import FullScreenLoader from "@/components/loaders/FullScreenLoader/FullScreenLoader.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
-import FullScreenLoader from "@/features/auth/FullScreenLoader.tsx";
 import { Navigate, Outlet } from "react-router";
 
 type AuthGateProps = {
