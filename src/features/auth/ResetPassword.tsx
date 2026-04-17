@@ -1,6 +1,6 @@
 import FormFeedback from "@/components/forms/FormFeedback.tsx";
-import PasswordFormField from "@/components/forms/FormField/PasswordFormField.tsx";
-import Form from "@/components/forms/FormWrapper/Form.tsx";
+import PasswordFormField from "@/components/forms/formFields/PasswordFormField.tsx";
+import FormWrapper from "@/components/forms/FormWrapper.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
 import { useLiveValidation } from "@/hooks/useLiveValidation.ts";
 import {
@@ -63,7 +63,7 @@ const ResetPassword = () => {
     <section className="center-content">
       <h1 className="text-primary-text mb-6 font-medium">{RESET_PASSWORD}</h1>
       <div className="form-card">
-        <Form form={form} onSubmit={onSubmit} submitButtonText={SUBMIT}>
+        <FormWrapper form={form} onSubmit={onSubmit} submitButtonText={SUBMIT}>
           <PasswordFormField
             id="password"
             label={PASSWORD_LABEL}
@@ -86,7 +86,7 @@ const ResetPassword = () => {
             error={errors.confirmPassword?.message}
             disabled={isSubmitting}
           />
-        </Form>
+        </FormWrapper>
 
         <div className="relative flex h-6 items-center pt-2">
           <FormFeedback text={RESET_PASSWORD_WAIT} condition={isSubmitting} />

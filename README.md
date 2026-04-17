@@ -4,18 +4,19 @@ A React-based web application designed to help families organize their schedules
 
 ## 🚀 Features
 
-- **[Placeholder] Feature Name**: Feature description.
-- **[Placeholder] Feature Name**: Feature description.
-- **[Placeholder] Feature Name**: Feature description.
-- **[Placeholder] Feature Name**: Feature description.
-- **[Placeholder] Feature Name**: Feature description.
+- [x] **Authentication**: User authentication system.
+- [x] **Login and Sign Up**: User registration and login.
+- [ ] **Onboarding**: Guide users through the application setup process.
+- [ ] **[Placeholder] Feature Name**: Feature description.
+- [ ] **[Placeholder] Feature Name**: Feature description.
+- [ ] **[Placeholder] Feature Name**: Feature description.
 
 ## 🛠️ Tech Stack
 
 - **Framework**: [React 19](https://react.dev/)
 - **Build Tool**: [Vite](https://vitejs.dev/)
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **Styling**: [Sass (SCSS)](https://sass-lang.com/)
+- **Styling**: [TailwindCSS 4](https://sass-lang.com/)
 - **Linting**: [ESLint](https://eslint.org/)
 
 ## 🏁 Getting Started
@@ -65,21 +66,43 @@ npm run lint
 
 ```text
 family-planner/
-├── public/          # Static assets
+├── public/            # Static assets
 ├── src/
 │   ├── assets/        # Images, icons, etc.
 │   ├── components/    # Reusable React components
-│   ├── styles/        # SCSS styles
-│   │   ├── abstracts/
-│   │   ├── base/
-│   │   └── values/
-│   ├── App.scss       # Root component styles
-│   ├── App.tsx        # Main application component
-│   ├── index.scss     # Global styles and entry point for SCSS
-│   └── main.tsx       # Application entry point
+│   │   ├── buttons/
+│   │   ├── forms/
+│   │   └── loaders/
+│   ├── config/
+│   ├── context/    
+│   │   └── auth/
+│   ├── copy/
+│   ├── features/
+│   │   ├── auth/
+│   │   └── navigation/
+│   ├── hooks/
+│   ├── layouts/       # Page layouts
+│   ├── schemas/       # Form validation schemas
+│   │   └── auth/
+│   ├── services/
+│   ├── styles/
+│   │   ├── layers/
+│   │   └── theme/
+│   ├── types/
+│   ├── utils/
+│   ├── index.scss     # Global styles and entry point for CSS
+│   ├── main.tsx       # Application entry point
+│   └── router.tsx     # React Router configuration
+├── .gitignore
+├── .prettierrc
 ├── eslint.config.js   # ESLint configuration
 ├── index.html         # HTML template
+├── package.json       # Node.js dependencies and scripts
+├── package-lock.json  # Locks the versions of dependencies
+├── README.md          # Project documentation
+├── tsconfig.app.json  # TypeScript configuration for the application
 ├── tsconfig.json      # TypeScript configuration
+├── tsconfig.node.json # TypeScript configuration for Node.js
 └── vite.config.ts     # Vite configuration
 ```
 
