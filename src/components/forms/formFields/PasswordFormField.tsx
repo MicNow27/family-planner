@@ -1,4 +1,4 @@
-import type { PasswordFormFieldProps } from "@/components/forms/FormField/types.ts";
+import type { PasswordFormFieldProps } from "@/components/forms/formFields/types.ts";
 import { useState } from "react";
 
 const PasswordFormField = ({

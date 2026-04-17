@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import type { FieldValues, UseFormReturn } from "react-hook-form";
-import PrimaryButton from "../../buttons/PrimaryButton.tsx";
+import PrimaryButton from "../buttons/PrimaryButton.tsx";
 
 interface FormWrapperProps<T extends FieldValues> {
   form: UseFormReturn<T>;
@@ -10,7 +10,7 @@ interface FormWrapperProps<T extends FieldValues> {
   children: ReactNode;
 }
 
-const Form = <T extends FieldValues>({
+const FormWrapper = <T extends FieldValues>({
   form,
   onSubmit,
   submitButtonText,
@@ -33,4 +33,4 @@ const Form = <T extends FieldValues>({
   );
 };
 
-export default Form;
+export default FormWrapper;

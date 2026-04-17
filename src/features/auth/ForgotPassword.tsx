@@ -1,6 +1,6 @@
 import FormFeedback from "@/components/forms/FormFeedback.tsx";
-import FormField from "@/components/forms/FormField/FormField.tsx";
-import Form from "@/components/forms/FormWrapper/Form.tsx";
+import FormField from "@/components/forms/formFields/FormField.tsx";
+import FormWrapper from "@/components/forms/FormWrapper.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
 import {
   formatTime,
@@ -55,7 +55,7 @@ const ForgotPassword = () => {
     <section className="center-content">
       <h1 className="text-primary-text mb-6 font-medium">{FORGOT_PASSWORD}</h1>
       <div className="form-card">
-        <Form
+        <FormWrapper
           form={form}
           onSubmit={onSubmit}
           submitButtonText={SUBMIT}
@@ -70,7 +70,7 @@ const ForgotPassword = () => {
             error={errors.email?.message}
             disabled={isSubmitting}
           />
-        </Form>
+        </FormWrapper>
 
         <div className="relative flex h-6 items-center pt-2">
           <FormFeedback text={RESET_PASSWORD_WAIT} condition={isSubmitting} />
