@@ -2,12 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link href="/loader.css" rel="stylesheet" />
     <link href="/logo.svg" rel="icon" type="image/svg+xml" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Family Planner</title>
   </head>
   <body style="background-color: #0f1320">
-    <div id="root"></div>
+    <div id="root">
+      <div class="initial-loader">
+        <img alt="logo" class="initial-logo" src="/logo.svg" />
+      </div>
+    </div>
     <script src="/src/main.tsx" type="module"></script>
   </body>
 </html>
