@@ -6,7 +6,7 @@ import {
   formatTime,
   ONE_HOUR,
   ONE_MINUTE,
-} from "@/hooks/useCooldown/timeLogic.ts";
+} from "@/hooks/useCooldown/timeLogic/timeLogic.ts";
 import { useCooldown } from "@/hooks/useCooldown/useCooldown.ts";
 import { useLiveValidation } from "@/hooks/useLiveValidation/useLiveValidation.ts";
 import {
