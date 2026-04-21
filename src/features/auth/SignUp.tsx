@@ -3,7 +3,7 @@ import FormField from "@/components/forms/formFields/FormField.tsx";
 import PasswordFormField from "@/components/forms/formFields/PasswordFormField.tsx";
 import FormWrapper from "@/components/forms/FormWrapper.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
-import { useLiveValidation } from "@/hooks/useLiveValidation.ts";
+import { useLiveValidation } from "@/hooks/useLiveValidation/useLiveValidation.ts";
 import {
   type SignUpFormData,
   signUpSchema,
