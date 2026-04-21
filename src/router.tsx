@@ -4,7 +4,7 @@ import ForgotPassword from "@/features/auth/ForgotPassword.tsx";
 import ResetPassword from "@/features/auth/ResetPassword.tsx";
 import SignUp from "@/features/auth/SignUp.tsx";
 import MyFamily from "@/features/MyFamily/MyFamily.tsx";
-import AuthGate from "@/features/navigation/AuthGate.tsx";
+import AuthGate from "@/features/navigation/AuthGate/AuthGate.tsx";
 import PageNotFound from "@/features/navigation/PageNotFound.tsx";
 import Onboarding from "@/features/onboarding/Onboarding.tsx";
 import SettingsLanding from "@/features/settings/SettingsLanding.tsx";
