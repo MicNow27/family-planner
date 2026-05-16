@@ -5,8 +5,6 @@ import type { User } from "@supabase/supabase-js";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router";
 
-vi.mock("@/context/auth/useAuth");
-
 const mockUseAuth = (overrides: Partial<AuthContextType>) => {
   vi.spyOn(useAuthModule, "useAuth").mockReturnValue({
     user: null,
@@ -37,6 +35,10 @@ const renderAuthGate = (requireAuth: boolean, initialPath = "/protected") => {
 };
 
 describe("AuthGate", () => {
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
   it("shows loader while loading", () => {
     mockUseAuth({ loading: true });
     renderAuthGate(true);
