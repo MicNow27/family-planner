@@ -14,3 +14,5 @@ export const PASSWORD_CONFIRM_LABEL = "Confirm Password";
 export const PASSWORD_CONFIRM_PLACEHOLDER = "Confirm your password";
 export const PASSWORD_CONFIRM_ERROR_LENGTH = "Please confirm your password";
 export const PASSWORD_CONFIRM_ERROR_MATCH = "Passwords do not match";
+export const SHOW_PASSWORD = "Show";
+export const HIDE_PASSWORD = "Hide";
