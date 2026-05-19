@@ -1,7 +1,6 @@
 import BackButton from "@/components/buttons/BackButton.tsx";
 import type { HeaderSettings } from "@/types/header.ts";
 import type { Handle } from "@/types/route.ts";
-import { isInstalledApp } from "@/utils/isInstalledApp.ts";
 import logo from "@assets/images/logo.svg";
 import { APP_NAME } from "@copy/general.ts";
 import { type UIMatch, useMatches, useNavigate } from "react-router";
@@ -26,7 +25,7 @@ const StartUpHeader = () => {
 
   return (
     <header className="bg-primary-surface border-b-divider relative flex h-20 items-center justify-center border-b">
-      {showBackButton && isInstalledApp && (
+      {showBackButton && (
         <BackButton onClick={handleClick} className="absolute left-4" />
       )}
       <div className="flex items-center justify-center gap-4">

@@ -2,8 +2,8 @@ import {
   confirmPasswordSchema,
   emailSchema,
   passwordSchema,
-  strongPasswordSchema,
 } from "@/schemas/auth/auth.schemas.ts";
+import { strongPasswordSchema } from "@/schemas/auth/strongPassword/strongPassword.schema.ts";
 
 export const emailField = { email: emailSchema };
 export const passwordField = { password: passwordSchema };
