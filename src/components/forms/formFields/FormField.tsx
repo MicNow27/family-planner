@@ -1,4 +1,4 @@
-import type { FormFieldProps } from "@/components/forms/FormField/types.ts";
+import type { FormFieldProps } from "@/components/forms/formFields/types.ts";
 
 const FormField = ({
   id,

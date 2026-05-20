@@ -1,9 +1,9 @@
 import FormFeedback from "@/components/forms/FormFeedback.tsx";
-import FormField from "@/components/forms/FormField/FormField.tsx";
-import PasswordFormField from "@/components/forms/FormField/PasswordFormField.tsx";
-import Form from "@/components/forms/FormWrapper/Form.tsx";
+import FormField from "@/components/forms/formFields/FormField.tsx";
+import PasswordFormField from "@/components/forms/formFields/PasswordFormField.tsx";
+import FormWrapper from "@/components/forms/FormWrapper.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
-import { useLiveValidation } from "@/hooks/useLiveValidation.ts";
+import { useLiveValidation } from "@/hooks/useLiveValidation/useLiveValidation.ts";
 import {
   type LoginFormData,
   loginSchema,
@@ -60,7 +60,7 @@ const Login = () => {
     <section className="center-content">
       <h1 className="text-primary-text mb-6 font-medium">{LOGIN}</h1>
       <div className="form-card">
-        <Form form={form} onSubmit={onSubmit} submitButtonText={LOGIN}>
+        <FormWrapper form={form} onSubmit={onSubmit} submitButtonText={LOGIN}>
           <FormField
             id="email"
             label={EMAIL_LABEL}
@@ -80,7 +80,7 @@ const Login = () => {
             error={errors.password?.message}
             disabled={isSubmitting}
           />
-        </Form>
+        </FormWrapper>
 
         <Link
           className="text-secondary-text hover:text-primary block w-full pt-1 pr-2 text-right text-xs italic"

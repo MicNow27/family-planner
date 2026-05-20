@@ -7,6 +7,7 @@ type BackButtonProps = {
 
 const BackButton = ({ onClick, className }: BackButtonProps) => (
   <button
+    aria-label="Back"
     className={`hover:bg-primary-disabled focus:ring-primary-focus flex h-11 w-11 items-center justify-center rounded-full transition-all outline-none focus:ring-4 ${className}`}
     onClick={onClick}
   >

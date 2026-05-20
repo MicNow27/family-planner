@@ -1,14 +1,14 @@
 import FormFeedback from "@/components/forms/FormFeedback.tsx";
-import FormField from "@/components/forms/FormField/FormField.tsx";
-import Form from "@/components/forms/FormWrapper/Form.tsx";
+import FormField from "@/components/forms/formFields/FormField.tsx";
+import FormWrapper from "@/components/forms/FormWrapper.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
 import {
   formatTime,
   ONE_HOUR,
   ONE_MINUTE,
-} from "@/hooks/useCooldown/timeLogic.ts";
+} from "@/hooks/useCooldown/timeLogic/timeLogic.ts";
 import { useCooldown } from "@/hooks/useCooldown/useCooldown.ts";
-import { useLiveValidation } from "@/hooks/useLiveValidation.ts";
+import { useLiveValidation } from "@/hooks/useLiveValidation/useLiveValidation.ts";
 import {
   type ForgotPasswordFormData,
   forgotPasswordSchema,
@@ -55,7 +55,7 @@ const ForgotPassword = () => {
     <section className="center-content">
       <h1 className="text-primary-text mb-6 font-medium">{FORGOT_PASSWORD}</h1>
       <div className="form-card">
-        <Form
+        <FormWrapper
           form={form}
           onSubmit={onSubmit}
           submitButtonText={SUBMIT}
@@ -70,7 +70,7 @@ const ForgotPassword = () => {
             error={errors.email?.message}
             disabled={isSubmitting}
           />
-        </Form>
+        </FormWrapper>
 
         <div className="relative flex h-6 items-center pt-2">
           <FormFeedback text={RESET_PASSWORD_WAIT} condition={isSubmitting} />

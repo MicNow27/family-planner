@@ -1,10 +1,11 @@
-import AuthGate from "@/components/routes/AuthGate.tsx";
 import AuthCallback from "@/features/auth/AuthCallback.tsx";
 import CheckEmail from "@/features/auth/CheckEmail.tsx";
 import ForgotPassword from "@/features/auth/ForgotPassword.tsx";
 import ResetPassword from "@/features/auth/ResetPassword.tsx";
 import SignUp from "@/features/auth/SignUp.tsx";
 import MyFamily from "@/features/MyFamily/MyFamily.tsx";
+import AuthGate from "@/features/navigation/AuthGate.tsx";
+import PageNotFound from "@/features/navigation/PageNotFound.tsx";
 import Onboarding from "@/features/onboarding/Onboarding.tsx";
 import SettingsLanding from "@/features/settings/SettingsLanding.tsx";
 import App from "@/layouts/App.tsx";
@@ -36,6 +37,11 @@ const routes: Route[] = [
       {
         path: "/reset-password",
         element: <ResetPassword />,
+        handle: { header: { showBackButton: true, backButtonRoute: "/" } },
+      },
+      {
+        path: "*",
+        element: <PageNotFound />,
         handle: { header: { showBackButton: true, backButtonRoute: "/" } },
       },
     ],

@@ -1,0 +1,25 @@
+.initial-loader {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0f1320;
+}
+
+.initial-logo {
+  width: 144px;
+  height: 144px;
+  animation: spin3d 2s ease-in-out infinite;
+  transform-style: preserve-3d;
+}
+
+@keyframes spin3d {
+  0% {
+    transform: rotateY(0deg);
+  }
+
+  100% {
+    transform: rotateY(360deg);
+  }
+}

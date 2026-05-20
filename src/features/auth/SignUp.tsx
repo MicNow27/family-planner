@@ -1,9 +1,9 @@
 import FormFeedback from "@/components/forms/FormFeedback.tsx";
-import FormField from "@/components/forms/FormField/FormField.tsx";
-import PasswordFormField from "@/components/forms/FormField/PasswordFormField.tsx";
-import Form from "@/components/forms/FormWrapper/Form.tsx";
+import FormField from "@/components/forms/formFields/FormField.tsx";
+import PasswordFormField from "@/components/forms/formFields/PasswordFormField.tsx";
+import FormWrapper from "@/components/forms/FormWrapper.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
-import { useLiveValidation } from "@/hooks/useLiveValidation.ts";
+import { useLiveValidation } from "@/hooks/useLiveValidation/useLiveValidation.ts";
 import {
   type SignUpFormData,
   signUpSchema,
@@ -70,7 +70,7 @@ const SignUp = () => {
     <section className="center-content">
       <h1 className="text-primary-text mb-6 font-medium">{SIGN_UP}</h1>
       <div className="form-card">
-        <Form form={form} onSubmit={onSubmit} submitButtonText={SIGN_UP}>
+        <FormWrapper form={form} onSubmit={onSubmit} submitButtonText={SIGN_UP}>
           <FormField
             id="email"
             label={EMAIL_LABEL}
@@ -103,7 +103,7 @@ const SignUp = () => {
             error={errors.confirmPassword?.message}
             disabled={isSubmitting}
           />
-        </Form>
+        </FormWrapper>
 
         <div className="relative flex h-6 items-center pt-2">
           <FormFeedback text={SIGN_UP_BUTTON_WAIT} condition={isSubmitting} />

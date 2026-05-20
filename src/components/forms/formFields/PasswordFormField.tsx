@@ -1,4 +1,5 @@
-import type { PasswordFormFieldProps } from "@/components/forms/FormField/types.ts";
+import type { PasswordFormFieldProps } from "@/components/forms/formFields/types.ts";
+import { HIDE_PASSWORD, SHOW_PASSWORD } from "@copy/password.ts";
 import { useState } from "react";
 
 const PasswordFormField = ({
@@ -32,13 +33,13 @@ const PasswordFormField = ({
         />
         {hasValue && (
           <button
+            aria-label="Show/hide"
             type="button"
             className="text-secondary-text hover:text-primary absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer text-sm font-medium disabled:cursor-not-allowed"
             onClick={() => setShowPassword((current) => !current)}
             disabled={disabled}
-            aria-label={showPassword ? "Hide password" : "Show password"}
           >
-            {showPassword ? "Hide" : "Show"}
+            {showPassword ? HIDE_PASSWORD : SHOW_PASSWORD}
           </button>
         )}
       </div>
