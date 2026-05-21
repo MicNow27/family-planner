@@ -1,0 +1,43 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy-dev:
+    runs-on: ubuntu-latest
+    environment: dev
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to Dev
+        run: |
+          echo "Deploying to DEV..."
+          # replace with your actual deploy command
+          # e.g. vercel deploy, aws deploy, docker push, etc.
+
+  deploy-test:
+    runs-on: ubuntu-latest
+    environment: test
+    needs: deploy-dev
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to Test
+        run: |
+          echo "Deploying to TEST..."
+          
+  deploy-prod:
+    runs-on: ubuntu-latest
+    environment: prod
+    needs: deploy-test
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to PROD
+        run: |
+          echo "Deploying to PROD..."
