@@ -18,6 +18,8 @@ A React-based web application designed to help families organize their schedules
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
 - **Styling**: [TailwindCSS 4](https://sass-lang.com/)
 - **Linting**: [ESLint](https://eslint.org/)
+- **Unit Testing**: [Vitest](https://vitest.dev/)
+- **E2E Testing**: [Playwright](https://playwright.dev/)
 
 ## 🏁 Getting Started
 
@@ -66,6 +68,9 @@ npm run lint
 
 ```text
 family-planner/
+├── .github/
+│   └── workflows/
+│       └── ci.yml     # CI/CD workflow configuration
 ├── public/            # Static assets
 ├── src/
 │   ├── assets/        # Images, icons, etc.
@@ -74,7 +79,7 @@ family-planner/
 │   │   ├── forms/
 │   │   └── loaders/
 │   ├── config/
-│   ├── context/    
+│   ├── context/
 │   │   └── auth/
 │   ├── copy/
 │   ├── features/
@@ -88,6 +93,7 @@ family-planner/
 │   ├── styles/
 │   │   ├── layers/
 │   │   └── theme/
+│   ├── test/          # Unit tests
 │   ├── types/
 │   ├── utils/
 │   ├── index.scss     # Global styles and entry point for CSS
@@ -95,15 +101,17 @@ family-planner/
 │   └── router.tsx     # React Router configuration
 ├── .gitignore
 ├── .prettierrc
-├── eslint.config.js   # ESLint configuration
-├── index.html         # HTML template
-├── package.json       # Node.js dependencies and scripts
-├── package-lock.json  # Locks the versions of dependencies
-├── README.md          # Project documentation
-├── tsconfig.app.json  # TypeScript configuration for the application
-├── tsconfig.json      # TypeScript configuration
-├── tsconfig.node.json # TypeScript configuration for Node.js
-└── vite.config.ts     # Vite configuration
+├── eslint.config.js        # ESLint configuration
+├── index.html              # HTML template
+├── package.json            # Node.js dependencies and scripts
+├── package-lock.json       # Locks the versions of dependencies
+├── playwright.config.ts    # Playwright configuration
+├── README.md               # Project documentation
+├── tsconfig.app.json       # TypeScript configuration for the application
+├── tsconfig.e2e.json       # TypeScript configuration for end-to-end tests
+├── tsconfig.json           # TypeScript configuration
+├── tsconfig.node.json      # TypeScript configuration for Node.js
+└── vite.config.ts          # Vite configuration
 ```
 
 ## 🇺🇸 Spelling Convention
@@ -113,6 +121,10 @@ family-planner/
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
+
+### Branching Strategy
+
+This project uses a **trunk-based development** strategy with `main` as the trunk branch. All development work should be done on short-lived feature branches that are merged back into `main` frequently. This approach promotes continuous integration and reduces merge conflicts.
 
 ### Commit Guidelines
 
