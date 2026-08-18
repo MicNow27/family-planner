@@ -13,7 +13,6 @@ dist-ssr
 *.local
 playwright-report
 test-results
-e2e/auth/data/testUser.ts
 
 # Editor directories and files
 .vscode/*
