@@ -111,6 +111,7 @@ family-planner/
 ├── tsconfig.e2e.json       # TypeScript configuration for end-to-end tests
 ├── tsconfig.json           # TypeScript configuration
 ├── tsconfig.node.json      # TypeScript configuration for Node.js
+├── vercel.json             # Vercel deployment configuration
 └── vite.config.ts          # Vite configuration
 ```
 
