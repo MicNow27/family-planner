@@ -32,6 +32,8 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          VITE_BASE_URL: ${{ vars.VITE_BASE_URL }}
 
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
@@ -43,3 +45,4 @@ jobs:
           VITE_SUPABASE_PUBLISHABLE_KEY: ${{ vars.VITE_SUPABASE_PUBLISHABLE_KEY }}
           TEST_USER_EMAIL: ${{ secrets.TEST_USER_EMAIL }}
           TEST_USER_PASSWORD: ${{ secrets.TEST_USER_PASSWORD }}
+          VITE_BASE_URL: ${{ vars.VITE_BASE_URL }}
