@@ -1,4 +1,4 @@
-import { BASE_URL } from "@/config/dev.ts";
+import { BASE_URL } from "@/config";
 import { supabaseClient } from "@/services/apiService.ts";
 import type { Auth, AuthError } from "@/types/auth.ts";
 import type { Session, User } from "@supabase/supabase-js";
