@@ -4,6 +4,7 @@ import ForgotPassword from "@/features/auth/ForgotPassword.tsx";
 import ResetPassword from "@/features/auth/ResetPassword.tsx";
 import SignUp from "@/features/auth/SignUp.tsx";
 import MyFamily from "@/features/MyFamily/MyFamily.tsx";
+import ErrorPage from "@/features/navigation/ErrorPage.tsx";
 import PageNotFound from "@/features/navigation/PageNotFound.tsx";
 import AuthGate from "@/features/navigation/routeGates/AuthGate.tsx";
 import DashboardGate from "@/features/navigation/routeGates/DashboardGate.tsx";
@@ -48,6 +49,11 @@ const routes: Route[] = [
       {
         path: "/reset-password",
         element: <ResetPassword />,
+        handle: { header: { showBackButton: true, backButtonRoute: "/" } },
+      },
+      {
+        path: "/error-page",
+        element: <ErrorPage />,
         handle: { header: { showBackButton: true, backButtonRoute: "/" } },
       },
       {

@@ -8,3 +8,5 @@ export const MY_FAMILY = "My Family";
 export const SETTINGS = "Settings";
 
 export const PAGE_NOT_FOUND = "Page Not Found";
+
+export const SOMETHING_WENT_WRONG = "Something Went Wrong";
