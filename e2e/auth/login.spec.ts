@@ -73,7 +73,7 @@ test.describe("Authentication - Login", () => {
     await page.getByLabel(PASSWORD_LABEL).fill(password);
     await page.getByRole("button", { name: LOGIN }).click();
 
-    await expect(page).toHaveURL("/my-family", { timeout: 10000 });
+    await expect(page).toHaveURL("/onboarding", { timeout: 10000 });
   });
 
   test("should show error message when login fails", async ({ page }) => {

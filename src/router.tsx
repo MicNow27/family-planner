@@ -4,8 +4,9 @@ import ForgotPassword from "@/features/auth/ForgotPassword.tsx";
 import ResetPassword from "@/features/auth/ResetPassword.tsx";
 import SignUp from "@/features/auth/SignUp.tsx";
 import MyFamily from "@/features/MyFamily/MyFamily.tsx";
-import AuthGate from "@/features/navigation/AuthGate.tsx";
 import PageNotFound from "@/features/navigation/PageNotFound.tsx";
+import AuthGate from "@/features/navigation/routeGates/AuthGate.tsx";
+import DashboardGate from "@/features/navigation/routeGates/DashboardGate.tsx";
 import Onboarding from "@/features/onboarding/Onboarding.tsx";
 import SettingsLanding from "@/features/settings/SettingsLanding.tsx";
 import App from "@/layouts/App.tsx";
@@ -23,6 +24,16 @@ const guest = (children: Route[]): Route => ({
 
 const auth = (children: Route[]): Route => ({
   element: <AuthGate requireAuth={true} />,
+  children,
+});
+
+const dashboard = (children: Route[]): Route => ({
+  element: <DashboardGate requireDashboard={true} />,
+  children,
+});
+
+const onboarding = (children: Route[]): Route => ({
+  element: <DashboardGate requireDashboard={false} />,
   children,
 });
 
@@ -82,38 +93,43 @@ const routes: Route[] = [
   ]),
 
   auth([
-    {
-      element: <App />,
-      children: [
-        {
-          path: "/onboarding",
-          element: <Onboarding />,
-          handle: { header: { title: GET_STARTED } },
-        },
-        {
-          path: "/my-family",
-          element: <MyFamily />,
-          handle: {
-            header: {
-              title: MY_FAMILY,
-              // overflowMenu: "dashboard",
+    onboarding([
+      {
+        path: "/onboarding",
+        element: <Onboarding />,
+        handle: { header: { title: GET_STARTED } },
+      },
+    ]),
+
+    dashboard([
+      {
+        element: <App />,
+        children: [
+          {
+            path: "/my-family",
+            element: <MyFamily />,
+            handle: {
+              header: {
+                title: MY_FAMILY,
+                // overflowMenu: "dashboard",
+              },
             },
           },
-        },
-        {
-          path: "/settings",
-          element: <SettingsLanding />,
-          handle: {
-            header: {
-              title: SETTINGS,
-              // showBackButton: true,
-              // backButtonRoute: "/dashboard",
-              // overflowMenu: "settings",
+          {
+            path: "/settings",
+            element: <SettingsLanding />,
+            handle: {
+              header: {
+                title: SETTINGS,
+                // showBackButton: true,
+                // backButtonRoute: "/dashboard",
+                // overflowMenu: "settings",
+              },
             },
           },
-        },
-      ],
-    },
+        ],
+      },
+    ]),
   ]),
 ];
 

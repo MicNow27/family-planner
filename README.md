@@ -82,6 +82,9 @@ family-planner/
 │   ├── context/
 │   │   └── auth/
 │   ├── copy/
+│   ├── data/           # Backend data access and data-fetching hooks
+│   │   ├── profile/
+│   │   └── supabase.ts
 │   ├── features/
 │   │   ├── auth/
 │   │   └── navigation/

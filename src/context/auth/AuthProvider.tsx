@@ -1,5 +1,5 @@
 import { BASE_URL } from "@/config";
-import { supabaseClient } from "@/services/apiService.ts";
+import { supabaseClient } from "@/data/supabase.ts";
 import type { Auth, AuthError } from "@/types/auth.ts";
 import type { Session, User } from "@supabase/supabase-js";
 import { type ReactNode, useEffect, useState } from "react";
