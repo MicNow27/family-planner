@@ -24,11 +24,7 @@ const FormWrapper = <T extends FieldValues>({
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-7">
       <div className="flex flex-col gap-4">{children}</div>
 
-      <PrimaryButton
-        type="submit"
-        text={submitButtonText}
-        disabled={isSubmitting || !isValid || disableSubmit}
-      />
+      <PrimaryButton type="submit" text={submitButtonText} disabled={isSubmitting || !isValid || disableSubmit} />
     </form>
   );
 };

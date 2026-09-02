@@ -1,8 +1,4 @@
-import {
-  formatTime,
-  getNextLevel,
-  getRemainingCooldownTime,
-} from "@/hooks/useCooldown/timeLogic/timeLogic.ts";
+import { formatTime, getNextLevel, getRemainingCooldownTime } from "@/hooks/useCooldown/timeLogic/timeLogic.ts";
 
 describe("getNextLevel", () => {
   it("increments level", () => {

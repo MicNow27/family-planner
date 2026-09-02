@@ -10,10 +10,7 @@ export const CHECK_EMAIL_INSTRUCTION = (email: string) =>
 
 export const RESEND_EMAIL_BUTTON = "Resend Email";
 
-export const RESEND_EMAIL_BUTTON_WAIT = ({
-  minutes,
-  seconds,
-}: ResendEmailTime) => {
+export const RESEND_EMAIL_BUTTON_WAIT = ({ minutes, seconds }: ResendEmailTime) => {
   if (minutes) return `Resend in ${minutes} minutes and ${seconds} seconds`;
   else return `Resend in ${seconds} seconds`;
 };

@@ -3,15 +3,8 @@ import PasswordFormField from "@/components/forms/formFields/PasswordFormField.t
 import FormWrapper from "@/components/forms/FormWrapper.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
 import { useLiveValidation } from "@/hooks/useLiveValidation/useLiveValidation.ts";
-import {
-  type ResetPasswordFormData,
-  resetPasswordSchema,
-} from "@/schemas/auth/resetPassword.schema.ts";
-import {
-  RESET_PASSWORD,
-  RESET_PASSWORD_ERROR,
-  RESET_PASSWORD_WAIT,
-} from "@copy/forgotPassword.ts";
+import { type ResetPasswordFormData, resetPasswordSchema } from "@/schemas/auth/resetPassword.schema.ts";
+import { RESET_PASSWORD, RESET_PASSWORD_ERROR, RESET_PASSWORD_WAIT } from "@copy/forgotPassword.ts";
 import { SUBMIT } from "@copy/general.ts";
 import {
   PASSWORD_CONFIRM_LABEL,
@@ -78,10 +71,7 @@ const ResetPassword = () => {
             id="confirmPassword"
             label={PASSWORD_CONFIRM_LABEL}
             placeholder={PASSWORD_CONFIRM_PLACEHOLDER}
-            register={register(
-              "confirmPassword",
-              liveValidate("confirmPassword"),
-            )}
+            register={register("confirmPassword", liveValidate("confirmPassword"))}
             value={watch("confirmPassword")}
             error={errors.confirmPassword?.message}
             disabled={isSubmitting}
@@ -90,11 +80,7 @@ const ResetPassword = () => {
 
         <div className="relative flex h-6 items-center pt-2">
           <FormFeedback text={RESET_PASSWORD_WAIT} condition={isSubmitting} />
-          <FormFeedback
-            type={"error"}
-            text={submitError ?? ""}
-            condition={!isSubmitting && !!submitError}
-          />
+          <FormFeedback type={"error"} text={submitError ?? ""} condition={!isSubmitting && !!submitError} />
         </div>
       </div>
     </section>

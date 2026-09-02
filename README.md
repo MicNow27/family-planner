@@ -31,6 +31,7 @@ A React-based web application designed to help families organize their schedules
 ### Installation
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/MicNow27/family-planner.git
    cd family-planner
@@ -44,22 +45,27 @@ A React-based web application designed to help families organize their schedules
 ### Development
 
 Run the development server:
+
 ```bash
 npm run dev
 ```
+
 The application will be available at `http://localhost:5173`.
 
 ### Build
 
 Create a production build:
+
 ```bash
 npm run build
 ```
+
 The output will be in the `dist/` directory.
 
 ### Linting
 
 Run ESLint to check for code quality:
+
 ```bash
 npm run lint
 ```
@@ -145,7 +151,8 @@ To maintain a clean and consistent history, please follow these rules for commit
 
 - **Commit Description**: Use the imperative voice and normal sentence structure.
 
-Example: 
+Example:
+
 ```text
 chore: add initial project README
 

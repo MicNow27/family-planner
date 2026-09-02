@@ -4,10 +4,7 @@ import PasswordFormField from "@/components/forms/formFields/PasswordFormField.t
 import FormWrapper from "@/components/forms/FormWrapper.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
 import { useLiveValidation } from "@/hooks/useLiveValidation/useLiveValidation.ts";
-import {
-  type SignUpFormData,
-  signUpSchema,
-} from "@/schemas/auth/signUp.schema.ts";
+import { type SignUpFormData, signUpSchema } from "@/schemas/auth/signUp.schema.ts";
 import { EMAIL_LABEL, EMAIL_PLACEHOLDER } from "@copy/email.ts";
 import {
   PASSWORD_CONFIRM_LABEL,
@@ -15,11 +12,7 @@ import {
   PASSWORD_CREATE_PLACEHOLDER,
   PASSWORD_LABEL,
 } from "@copy/password.ts";
-import {
-  SIGN_UP,
-  SIGN_UP_BUTTON_WAIT,
-  SIGN_UP_ERROR_GENERAL,
-} from "@copy/signUp.ts";
+import { SIGN_UP, SIGN_UP_BUTTON_WAIT, SIGN_UP_ERROR_GENERAL } from "@copy/signUp.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -95,10 +88,7 @@ const SignUp = () => {
             id="confirmPassword"
             label={PASSWORD_CONFIRM_LABEL}
             placeholder={PASSWORD_CONFIRM_PLACEHOLDER}
-            register={register(
-              "confirmPassword",
-              liveValidate("confirmPassword"),
-            )}
+            register={register("confirmPassword", liveValidate("confirmPassword"))}
             value={watch("confirmPassword")}
             error={errors.confirmPassword?.message}
             disabled={isSubmitting}
@@ -107,11 +97,7 @@ const SignUp = () => {
 
         <div className="relative flex h-6 items-center pt-2">
           <FormFeedback text={SIGN_UP_BUTTON_WAIT} condition={isSubmitting} />
-          <FormFeedback
-            type={"error"}
-            text={submitError ?? ""}
-            condition={!isSubmitting && !!submitError}
-          />
+          <FormFeedback type={"error"} text={submitError ?? ""} condition={!isSubmitting && !!submitError} />
         </div>
       </div>
     </section>

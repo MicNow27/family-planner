@@ -2,24 +2,13 @@ import type { PasswordFormFieldProps } from "@/components/forms/formFields/types
 import { HIDE_PASSWORD, SHOW_PASSWORD } from "@copy/password.ts";
 import { useState } from "react";
 
-const PasswordFormField = ({
-  id,
-  label,
-  placeholder,
-  register,
-  error,
-  disabled,
-  value,
-}: PasswordFormFieldProps) => {
+const PasswordFormField = ({ id, label, placeholder, register, error, disabled, value }: PasswordFormFieldProps) => {
   const [showPassword, setShowPassword] = useState(false);
   const hasValue = !!value;
 
   return (
     <div className={`flex w-full flex-col gap-1 ${disabled && "opacity-50"}`}>
-      <label
-        className="text-secondary-text ml-2 text-base font-medium"
-        htmlFor={id}
-      >
+      <label className="text-secondary-text ml-2 text-base font-medium" htmlFor={id}>
         {label}
       </label>
       <div className="relative">
@@ -43,9 +32,7 @@ const PasswordFormField = ({
           </button>
         )}
       </div>
-      <div className="h-4">
-        {error && <p className="text-error ml-2 text-xs">{error}</p>}
-      </div>
+      <div className="h-4">{error && <p className="text-error ml-2 text-xs">{error}</p>}</div>
     </div>
   );
 };

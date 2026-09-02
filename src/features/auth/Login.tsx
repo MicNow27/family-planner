@@ -4,10 +4,7 @@ import PasswordFormField from "@/components/forms/formFields/PasswordFormField.t
 import FormWrapper from "@/components/forms/FormWrapper.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
 import { useLiveValidation } from "@/hooks/useLiveValidation/useLiveValidation.ts";
-import {
-  type LoginFormData,
-  loginSchema,
-} from "@/schemas/auth/login.schema.ts";
+import { type LoginFormData, loginSchema } from "@/schemas/auth/login.schema.ts";
 import { EMAIL_LABEL, EMAIL_PLACEHOLDER } from "@copy/email.ts";
 import { FORGOT_PASSWORD } from "@copy/forgotPassword.ts";
 import { LOGIN, LOGIN_BUTTON_WAIT, LOGIN_ERROR } from "@copy/login.ts";
@@ -50,8 +47,7 @@ const Login = () => {
     if (error) {
       const lowerError = error.toLowerCase();
 
-      if (lowerError.includes("email not confirmed"))
-        navigate("/check-email", { state: { email: data.email } });
+      if (lowerError.includes("email not confirmed")) navigate("/check-email", { state: { email: data.email } });
       else setSubmitError(LOGIN_ERROR);
     }
   };
@@ -91,11 +87,7 @@ const Login = () => {
 
         <div className="relative flex h-6 items-center pt-2">
           <FormFeedback text={LOGIN_BUTTON_WAIT} condition={isSubmitting} />
-          <FormFeedback
-            type={"error"}
-            text={submitError ?? ""}
-            condition={!isSubmitting && !!submitError}
-          />
+          <FormFeedback type={"error"} text={submitError ?? ""} condition={!isSubmitting && !!submitError} />
         </div>
       </div>
     </section>

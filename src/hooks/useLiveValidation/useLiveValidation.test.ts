@@ -5,9 +5,7 @@ const setup = (dirtyFields: Record<string, boolean> = {}) => {
   const trigger = vi.fn();
   const clearSubmitError = vi.fn();
 
-  const { result } = renderHook(() =>
-    useLiveValidation({ trigger, dirtyFields, clearSubmitError }),
-  );
+  const { result } = renderHook(() => useLiveValidation({ trigger, dirtyFields, clearSubmitError }));
 
   return { result, trigger, clearSubmitError };
 };
