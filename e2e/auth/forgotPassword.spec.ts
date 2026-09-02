@@ -6,8 +6,6 @@ test.describe("Authentication - Forgot Password", () => {
     await page.goto("/login");
     await page.getByRole("link", { name: FORGOT_PASSWORD }).click();
     await expect(page).toHaveURL("/forgot-password");
-    await expect(
-      page.getByRole("heading", { name: FORGOT_PASSWORD }),
-    ).toBeVisible();
+    await expect(page.getByRole("heading", { name: FORGOT_PASSWORD })).toBeVisible();
   });
 });

@@ -17,9 +17,7 @@ export const useLiveValidation = <T extends FieldValues>({
   dirtyFields,
   clearSubmitError,
 }: UseLiveValidationOptions<T>): UseLiveValidationReturn<T> => {
-  const [liveValidate, setLiveValidate] = useState<
-    Partial<Record<Path<T>, boolean>>
-  >({});
+  const [liveValidate, setLiveValidate] = useState<Partial<Record<Path<T>, boolean>>>({});
 
   const handlers: UseLiveValidationReturn<T> = (name: Path<T>) => ({
     onBlur: () => {

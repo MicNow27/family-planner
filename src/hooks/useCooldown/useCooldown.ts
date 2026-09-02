@@ -27,17 +27,10 @@ type UseCooldownState = {
   cooldown: number;
 };
 
-export const useCooldown = ({
-  action,
-  storageKey,
-  cooldownSequence,
-}: UseCooldownOptions): UseCooldownReturn => {
+export const useCooldown = ({ action, storageKey, cooldownSequence }: UseCooldownOptions): UseCooldownReturn => {
   const [state, setState] = useState<UseCooldownState>(() => {
     const level = getInitialLevel(storageKey);
-    const cooldown = getRemainingCooldownTime(
-      storageKey,
-      cooldownSequence[level],
-    );
+    const cooldown = getRemainingCooldownTime(storageKey, cooldownSequence[level]);
 
     return { level, cooldown };
   });

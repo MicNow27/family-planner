@@ -13,21 +13,15 @@ const StartUpHeader = () => {
   const matches = useMatches() as UIMatch<unknown, Handle>[];
   const navigate = useNavigate();
 
-  const lastMatchWithHeader = [...matches]
-    .reverse()
-    .find((m) => m.handle?.header);
+  const lastMatchWithHeader = [...matches].reverse().find((m) => m.handle?.header);
 
-  const { showBackButton, backButtonRoute }: HeaderSettings =
-    lastMatchWithHeader?.handle.header || DEFAULT_SETTINGS;
+  const { showBackButton, backButtonRoute }: HeaderSettings = lastMatchWithHeader?.handle.header || DEFAULT_SETTINGS;
 
-  const handleClick = () =>
-    backButtonRoute ? navigate(backButtonRoute) : navigate(-1);
+  const handleClick = () => (backButtonRoute ? navigate(backButtonRoute) : navigate(-1));
 
   return (
     <header className="bg-primary-surface border-b-divider relative flex h-20 items-center justify-center border-b">
-      {showBackButton && (
-        <BackButton onClick={handleClick} className="absolute left-4" />
-      )}
+      {showBackButton && <BackButton onClick={handleClick} className="absolute left-4" />}
       <div className="flex items-center justify-center gap-4">
         <img src={logo} alt="logo" className="h-12 md:h-15" />
         <p className="text-primary-text text-xl md:text-3xl">{APP_NAME}</p>

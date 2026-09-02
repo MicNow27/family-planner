@@ -1,11 +1,6 @@
 import { EMAIL_ERROR, EMAIL_LABEL } from "@copy/email.ts";
 import { LOGIN, LOGIN_ERROR } from "@copy/login.ts";
-import {
-  HIDE_PASSWORD,
-  PASSWORD_ERROR_LENGTH,
-  PASSWORD_LABEL,
-  SHOW_PASSWORD,
-} from "@copy/password.ts";
+import { HIDE_PASSWORD, PASSWORD_ERROR_LENGTH, PASSWORD_LABEL, SHOW_PASSWORD } from "@copy/password.ts";
 import { expect, test } from "@playwright/test";
 import { testUser } from "./data/testUser";
 
@@ -19,18 +14,14 @@ test.describe("Authentication - Login", () => {
     await expect(page).toHaveURL("/");
   });
 
-  test("should show validation error on email field with invalid email", async ({
-    page,
-  }) => {
+  test("should show validation error on email field with invalid email", async ({ page }) => {
     await page.goto("/login");
     await page.getByLabel(EMAIL_LABEL).fill("invalid-email");
     await page.getByLabel(PASSWORD_LABEL).click();
     await expect(page.getByText(EMAIL_ERROR)).toBeVisible();
   });
 
-  test("should show validation error on password field with too short password", async ({
-    page,
-  }) => {
+  test("should show validation error on password field with too short password", async ({ page }) => {
     await page.goto("/login");
     await page.getByLabel(PASSWORD_LABEL).fill("1234567");
     await page.getByLabel(EMAIL_LABEL).fill(testUser.email);

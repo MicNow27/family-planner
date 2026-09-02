@@ -2,22 +2,11 @@ import FormFeedback from "@/components/forms/FormFeedback.tsx";
 import FormField from "@/components/forms/formFields/FormField.tsx";
 import FormWrapper from "@/components/forms/FormWrapper.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
-import {
-  formatTime,
-  ONE_HOUR,
-  ONE_MINUTE,
-} from "@/hooks/useCooldown/timeLogic/timeLogic.ts";
+import { formatTime, ONE_HOUR, ONE_MINUTE } from "@/hooks/useCooldown/timeLogic/timeLogic.ts";
 import { useCooldown } from "@/hooks/useCooldown/useCooldown.ts";
 import { useLiveValidation } from "@/hooks/useLiveValidation/useLiveValidation.ts";
-import {
-  type ForgotPasswordFormData,
-  forgotPasswordSchema,
-} from "@/schemas/auth/forgotPassword.schema.ts";
-import {
-  EMAIL_LABEL,
-  EMAIL_PLACEHOLDER,
-  RESEND_EMAIL_BUTTON_WAIT,
-} from "@copy/email.ts";
+import { type ForgotPasswordFormData, forgotPasswordSchema } from "@/schemas/auth/forgotPassword.schema.ts";
+import { EMAIL_LABEL, EMAIL_PLACEHOLDER, RESEND_EMAIL_BUTTON_WAIT } from "@copy/email.ts";
 import { FORGOT_PASSWORD, RESET_PASSWORD_WAIT } from "@copy/forgotPassword.ts";
 import { SUBMIT } from "@copy/general.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -55,12 +44,7 @@ const ForgotPassword = () => {
     <section className="center-content">
       <h1 className="text-primary-text mb-6 font-medium">{FORGOT_PASSWORD}</h1>
       <div className="form-card">
-        <FormWrapper
-          form={form}
-          onSubmit={onSubmit}
-          submitButtonText={SUBMIT}
-          disableSubmit={cooldown > 0}
-        >
+        <FormWrapper form={form} onSubmit={onSubmit} submitButtonText={SUBMIT} disableSubmit={cooldown > 0}>
           <FormField
             id="email"
             label={EMAIL_LABEL}
@@ -74,15 +58,8 @@ const ForgotPassword = () => {
 
         <div className="relative flex h-6 items-center pt-2">
           <FormFeedback text={RESET_PASSWORD_WAIT} condition={isSubmitting} />
-          <FormFeedback
-            type={"error"}
-            text={submitError ?? ""}
-            condition={!isSubmitting && !!submitError}
-          />
-          <FormFeedback
-            text={RESEND_EMAIL_BUTTON_WAIT(formatTime(cooldown))}
-            condition={cooldown > 0}
-          />
+          <FormFeedback type={"error"} text={submitError ?? ""} condition={!isSubmitting && !!submitError} />
+          <FormFeedback text={RESEND_EMAIL_BUTTON_WAIT(formatTime(cooldown))} condition={cooldown > 0} />
         </div>
       </div>
     </section>

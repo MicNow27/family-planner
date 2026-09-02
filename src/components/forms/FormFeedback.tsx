@@ -4,11 +4,7 @@ type FormFeedbackProps = {
   condition: boolean;
 };
 
-const FormFeedback = ({
-  text,
-  type = "info",
-  condition,
-}: FormFeedbackProps) => {
+const FormFeedback = ({ text, type = "info", condition }: FormFeedbackProps) => {
   const color = type === "error" ? "text-error" : "text-tertiary-text";
 
   return (

@@ -15,13 +15,11 @@ const AuthProvider = ({ children }: AuthContextProviderProps) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const { data } = supabaseClient.auth.onAuthStateChange(
-      (_event, session) => {
-        setSession(session);
-        setUser(session?.user ?? null);
-        setLoading(false);
-      },
-    );
+    const { data } = supabaseClient.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+      setUser(session?.user ?? null);
+      setLoading(false);
+    });
 
     return () => data.subscription.unsubscribe();
   }, []);

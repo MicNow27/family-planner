@@ -11,19 +11,12 @@ const Header = () => {
   const matches = useMatches() as UIMatch<unknown, Handle>[];
   const navigate = useNavigate();
 
-  const lastMatchWithHeader = [...matches]
-    .reverse()
-    .find((m) => m.handle?.header);
+  const lastMatchWithHeader = [...matches].reverse().find((m) => m.handle?.header);
 
-  const {
-    showBackButton,
-    backButtonRoute,
-    title,
-    overflowMenu,
-  }: HeaderSettings = lastMatchWithHeader?.handle.header || DEFAULT_SETTINGS;
+  const { showBackButton, backButtonRoute, title, overflowMenu }: HeaderSettings =
+    lastMatchWithHeader?.handle.header || DEFAULT_SETTINGS;
 
-  const handleClick = () =>
-    backButtonRoute ? navigate(backButtonRoute) : navigate(-1);
+  const handleClick = () => (backButtonRoute ? navigate(backButtonRoute) : navigate(-1));
 
   return (
     <header>

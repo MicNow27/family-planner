@@ -15,10 +15,8 @@ export const getInitialLevel = (key: string): number => {
   return level ? parseInt(level, 10) : 0;
 };
 
-export const getNextLevel = (
-  currLevel: number,
-  cooldownSequence: number[],
-): number => Math.min(currLevel + 1, cooldownSequence.length - 1);
+export const getNextLevel = (currLevel: number, cooldownSequence: number[]): number =>
+  Math.min(currLevel + 1, cooldownSequence.length - 1);
 
 export const setNextLevel = (key: string, level: number): void =>
   localStorage.setItem(`${key}_level`, level.toString());
@@ -28,10 +26,7 @@ const getStoredTime = (key: string): number | null => {
   return time ? parseInt(time, 10) : null;
 };
 
-export const getRemainingCooldownTime = (
-  key: string,
-  initialValue: number,
-): number => {
+export const getRemainingCooldownTime = (key: string, initialValue: number): number => {
   const storedTime = getStoredTime(key);
 
   if (storedTime) return Math.max(0, storedTime - getNow());
