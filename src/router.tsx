@@ -101,9 +101,14 @@ const routes: Route[] = [
   auth([
     onboarding([
       {
-        path: "/onboarding",
-        element: <Onboarding />,
-        handle: { header: { title: GET_STARTED } },
+        element: <App />,
+        children: [
+          {
+            path: "/onboarding",
+            element: <Onboarding />,
+            handle: { header: { title: GET_STARTED } },
+          },
+        ],
       },
     ]),
 
