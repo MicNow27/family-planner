@@ -5,14 +5,14 @@ import FormWrapper from "@/components/forms/FormWrapper.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
 import { useLiveValidation } from "@/hooks/useLiveValidation/useLiveValidation.ts";
 import { type SignUpFormData, signUpSchema } from "@/schemas/auth/signUp.schema.ts";
-import { EMAIL_LABEL, EMAIL_PLACEHOLDER } from "@copy/email.ts";
+import { EMAIL_LABEL, EMAIL_PLACEHOLDER } from "@copy/auth/email.ts";
 import {
   PASSWORD_CONFIRM_LABEL,
   PASSWORD_CONFIRM_PLACEHOLDER,
   PASSWORD_CREATE_PLACEHOLDER,
   PASSWORD_LABEL,
-} from "@copy/password.ts";
-import { SIGN_UP, SIGN_UP_BUTTON_WAIT, SIGN_UP_ERROR_GENERAL } from "@copy/signUp.ts";
+} from "@copy/auth/password.ts";
+import { SIGN_UP, SIGN_UP_BUTTON_WAIT, SIGN_UP_ERROR_GENERAL } from "@copy/auth/signUp.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";

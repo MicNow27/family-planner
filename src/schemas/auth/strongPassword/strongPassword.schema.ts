@@ -4,7 +4,7 @@ import {
   PASSWORD_ERROR_NUMBER,
   PASSWORD_ERROR_SPECIAL,
   PASSWORD_ERROR_UPPERCASE,
-} from "@copy/password.ts";
+} from "@copy/auth/password.ts";
 import { z } from "zod";
 
 export const strongPasswordSchema = z

@@ -1,5 +1,5 @@
 import type { PasswordFormFieldProps } from "@/components/forms/formFields/types.ts";
-import { HIDE_PASSWORD, SHOW_PASSWORD } from "@copy/password.ts";
+import { HIDE_PASSWORD, SHOW_PASSWORD } from "@copy/auth/password.ts";
 import { useState } from "react";
 
 const PasswordFormField = ({ id, label, placeholder, register, error, disabled, value }: PasswordFormFieldProps) => {

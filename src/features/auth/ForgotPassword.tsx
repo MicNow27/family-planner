@@ -6,8 +6,8 @@ import { formatTime, ONE_HOUR, ONE_MINUTE } from "@/hooks/useCooldown/timeLogic/
 import { useCooldown } from "@/hooks/useCooldown/useCooldown.ts";
 import { useLiveValidation } from "@/hooks/useLiveValidation/useLiveValidation.ts";
 import { type ForgotPasswordFormData, forgotPasswordSchema } from "@/schemas/auth/forgotPassword.schema.ts";
-import { EMAIL_LABEL, EMAIL_PLACEHOLDER, RESEND_EMAIL_BUTTON_WAIT } from "@copy/email.ts";
-import { FORGOT_PASSWORD, RESET_PASSWORD_WAIT } from "@copy/forgotPassword.ts";
+import { EMAIL_LABEL, EMAIL_PLACEHOLDER, RESEND_EMAIL_BUTTON_WAIT } from "@copy/auth/email.ts";
+import { FORGOT_PASSWORD, RESET_PASSWORD_WAIT } from "@copy/auth/forgotPassword.ts";
 import { SUBMIT } from "@copy/general.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";

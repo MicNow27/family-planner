@@ -1,5 +1,5 @@
 import { confirmPasswordField, strongPasswordField } from "@/schemas/auth/auth.fields.ts";
-import { PASSWORD_CONFIRM_ERROR_MATCH } from "@copy/password.ts";
+import { PASSWORD_CONFIRM_ERROR_MATCH } from "@copy/auth/password.ts";
 import { z } from "zod";
 
 export const passwordConfirmationSchema = z

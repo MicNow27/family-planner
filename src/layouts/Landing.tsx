@@ -2,9 +2,9 @@ import PrimaryButton from "@/components/buttons/PrimaryButton.tsx";
 import SecondaryButton from "@/components/buttons/SecondaryButton.tsx";
 import family from "@assets/images/family.svg";
 import logo from "@assets/images/logo.svg";
+import { LOGIN } from "@copy/auth/login.ts";
+import { SIGN_UP } from "@copy/auth/signUp.ts";
 import { APP_NAME, SLOGAN } from "@copy/general.ts";
-import { LOGIN } from "@copy/login.ts";
-import { SIGN_UP } from "@copy/signUp.ts";
 import { useNavigate } from "react-router";
 
 const Landing = () => {
