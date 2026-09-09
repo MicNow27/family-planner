@@ -16,7 +16,7 @@ export const getOnboardingData = async (
 
   return {
     onboardingStep: data.onboarding_step,
-    familyGroupName: data.family_groups[0]?.name,
+    familyGroupName: data.family_groups?.name ?? null,
     fullName: data.full_name,
     birthday: data.birthday,
     picture: data.avatar_url,
