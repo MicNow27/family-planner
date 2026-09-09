@@ -1,4 +1,6 @@
+import FullScreenLoader from "@/components/loaders/FullScreenLoader/FullScreenLoader.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
+import ErrorPage from "@/features/navigation/ErrorPage.tsx";
 import Carousel from "@/features/onboarding/Carousel.tsx";
 import { useOnboardingData } from "@/features/onboarding/data/onboardingData/useOnboardingData.ts";
 import type { OnboardingStepForm } from "@/features/onboarding/onboarding.types.ts";
@@ -8,6 +10,7 @@ import Name from "@/features/onboarding/steps/Name.tsx";
 import Picture from "@/features/onboarding/steps/Picture.tsx";
 import Role from "@/features/onboarding/steps/Role.tsx";
 import { useOnboardingStore } from "@/features/onboarding/store/onboarding.store.ts";
+import { ONBOARDING_DATA_FETCH_ERROR } from "@copy/onboarding.ts";
 import { useEffect } from "react";
 
 const Onboarding = () => {
@@ -19,9 +22,9 @@ const Onboarding = () => {
     if (data) hydrate(data);
   }, [data, hydrate]);
 
-  if (isLoading) return <div>Loading...</div>; // TODO: add loader component
+  if (isLoading) return <FullScreenLoader />;
 
-  if (error) return <div>Error: {error.message}</div>; // TODO: add error component
+  if (error) return <ErrorPage messageProp={ONBOARDING_DATA_FETCH_ERROR} />;
 
   const steps: OnboardingStepForm[] = [
     <FamilyGroup />,
