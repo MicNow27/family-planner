@@ -14,9 +14,13 @@ export const getOnboardingData = async (
 
   if (error) throw error;
 
+  const familyGroup = Array.isArray(data.family_groups)
+    ? data.family_groups[0]
+    : data.family_groups;
+
   return {
     onboardingStep: data.onboarding_step,
-    familyGroupName: data.family_groups?.name ?? null,
+    familyGroupName: familyGroup?.name ?? null,
     fullName: data.full_name,
     birthday: data.birthday,
     picture: data.avatar_url,
