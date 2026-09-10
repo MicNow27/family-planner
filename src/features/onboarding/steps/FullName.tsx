@@ -1,6 +1,8 @@
 import FormFeedback from "@/components/forms/FormFeedback.tsx";
 import FormField from "@/components/forms/formFields/FormField.tsx";
 import OnboardingFormWrapper from "@/components/forms/OnboardingFormWrapper.tsx";
+import { useAuth } from "@/context/auth/useAuth.ts";
+import { updateFullName } from "@/features/onboarding/data/updateFullName.ts";
 import { useOnboardingStore } from "@/features/onboarding/store/onboarding.store.ts";
 import { useLiveValidation } from "@/hooks/useLiveValidation/useLiveValidation.ts";
 import {
@@ -20,6 +22,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const FullName = () => {
+  const { user } = useAuth();
+
   const fullName = useOnboardingStore((state) => state.fullName);
   const setFullName = useOnboardingStore((state) => state.setFullName);
   const setOnboardingStep = useOnboardingStore((state) => state.setOnboardingStep);
@@ -47,14 +51,18 @@ const FullName = () => {
   const onSubmit = async (data: FullNameFormData) => {
     setSubmitError(null);
 
-    try {
-      // TODO: set on BE
-      setFullName(data.fullName);
-      setOnboardingStep(2);
-      setCarouselStep(2);
-    } catch {
-      setSubmitError(FULL_NAME_SUBMIT_ERROR);
+    if (data.fullName !== fullName) {
+      try {
+        await updateFullName(user!.id, data.fullName);
+        setFullName(data.fullName);
+        setOnboardingStep(2);
+      } catch {
+        setSubmitError(FULL_NAME_SUBMIT_ERROR);
+        return;
+      }
     }
+
+    setCarouselStep(2);
   };
 
   return (
@@ -65,7 +73,7 @@ const FullName = () => {
           form={form}
           onSubmit={onSubmit}
           submitButtonText={NEXT}
-          onBack={() => setOnboardingStep(0)}
+          onBack={() => setCarouselStep(0)}
         >
           <FormField
             id="fullName"
