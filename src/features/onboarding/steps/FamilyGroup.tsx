@@ -7,7 +7,7 @@ import { useLiveValidation } from "@/hooks/useLiveValidation/useLiveValidation.t
 import {
   type FamilyGroupFormData,
   familyGroupSchema,
-} from "@/schemas/onboarding/familyGroup.schema.ts";
+} from "@/schemas/onboarding/familyGroupSchema.ts";
 import { SUBMIT_BUTTON_WAIT } from "@copy/general.ts";
 import { NEXT } from "@copy/navigation.ts";
 import {
