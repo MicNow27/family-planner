@@ -1,7 +1,8 @@
 import FormFeedback from "@/components/forms/FormFeedback.tsx";
 import FormField from "@/components/forms/formFields/FormField.tsx";
 import OnboardingFormWrapper from "@/components/forms/OnboardingFormWrapper.tsx";
-import { createFamilyGroup } from "@/features/onboarding/data/createFamilyGroup.ts";
+import { createFamilyGroup } from "@/features/onboarding/data/familyGroup/createFamilyGroup.ts";
+import { updateFamilyGroupName } from "@/features/onboarding/data/familyGroup/updateFamilyGroup.ts";
 import { useOnboardingStore } from "@/features/onboarding/store/onboarding.store.ts";
 import { useLiveValidation } from "@/hooks/useLiveValidation/useLiveValidation.ts";
 import {
@@ -21,6 +22,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const FamilyGroup = () => {
+  const familyGroupId = useOnboardingStore((state) => state.familyGroupId);
+  const setFamilyGroupId = useOnboardingStore((state) => state.setFamilyGroupId);
   const familyGroupName = useOnboardingStore((state) => state.familyGroupName);
   const setFamilyGroupName = useOnboardingStore((state) => state.setFamilyGroupName);
   const setOnboardingStep = useOnboardingStore((state) => state.setOnboardingStep);
@@ -48,14 +51,24 @@ const FamilyGroup = () => {
   const onSubmit = async (data: FamilyGroupFormData) => {
     setSubmitError(null);
 
-    try {
-      await createFamilyGroup(data.familyGroupName);
-      setFamilyGroupName(data.familyGroupName);
-      setOnboardingStep(1);
-      setCarouselStep(1);
-    } catch {
-      setSubmitError(FAMILY_GROUP_SUBMIT_ERROR);
+    if (data.familyGroupName !== familyGroupName) {
+      try {
+        if (familyGroupId)
+          await updateFamilyGroupName(familyGroupId, data.familyGroupName);
+        else {
+          const newGroupId = await createFamilyGroup(data.familyGroupName);
+          setFamilyGroupId(newGroupId);
+        }
+
+        setFamilyGroupName(data.familyGroupName);
+        setOnboardingStep(1);
+      } catch {
+        setSubmitError(FAMILY_GROUP_SUBMIT_ERROR);
+        return;
+      }
     }
+
+    setCarouselStep(1);
   };
 
   return (

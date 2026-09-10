@@ -7,6 +7,7 @@ import { create } from "zustand/react";
 export type OnboardingState = {
   onboardingStep: OnboardingStep;
   carouselStep: OnboardingStep;
+  familyGroupId: string | null;
   familyGroupName: string | null;
   fullName: string | null;
   birthday: string | null;
@@ -17,6 +18,7 @@ export type OnboardingState = {
 type OnboardingAction = {
   setOnboardingStep: (step: OnboardingStep) => void;
   setCarouselStep: (step: OnboardingStep) => void;
+  setFamilyGroupId: (familyGroupId: string | null) => void;
   setFamilyGroupName: (familyGroupName: string | null) => void;
   setFullName: (fullName: string | null) => void;
   setBirthday: (birthday: string | null) => void;
@@ -29,6 +31,7 @@ type OnboardingAction = {
 const initialState: OnboardingState = {
   onboardingStep: 0,
   carouselStep: 0,
+  familyGroupId: null,
   familyGroupName: null,
   fullName: null,
   birthday: null,
@@ -41,6 +44,7 @@ export const useOnboardingStore = create<OnboardingState & OnboardingAction>(
     ...initialState,
     setOnboardingStep: (step) => set({ onboardingStep: step }),
     setCarouselStep: (step) => set({ carouselStep: step }),
+    setFamilyGroupId: (familyGroupId) => set({ familyGroupId }),
     setFamilyGroupName: (familyGroupName) => set({ familyGroupName }),
     setFullName: (fullName) => set({ fullName }),
     setBirthday: (birthday) => set({ birthday }),
