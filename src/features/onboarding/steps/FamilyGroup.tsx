@@ -24,6 +24,7 @@ const FamilyGroup = () => {
   const familyGroupName = useOnboardingStore((state) => state.familyGroupName);
   const setFamilyGroupName = useOnboardingStore((state) => state.setFamilyGroupName);
   const setOnboardingStep = useOnboardingStore((state) => state.setOnboardingStep);
+  const setCarouselStep = useOnboardingStore((state) => state.setCarouselStep);
 
   const [submitError, setSubmitError] = useState<string | null>(null);
 
@@ -51,6 +52,7 @@ const FamilyGroup = () => {
       await createFamilyGroup(data.familyGroupName);
       setFamilyGroupName(data.familyGroupName);
       setOnboardingStep(1);
+      setCarouselStep(1);
     } catch {
       setSubmitError(FAMILY_GROUP_SUBMIT_ERROR);
     }

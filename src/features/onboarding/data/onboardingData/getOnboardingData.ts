@@ -20,6 +20,7 @@ export const getOnboardingData = async (
 
   return {
     onboardingStep: data.onboarding_step,
+    carouselStep: data.onboarding_step,
     familyGroupName: familyGroup?.name ?? null,
     fullName: data.full_name,
     birthday: data.birthday,

@@ -6,7 +6,7 @@ type CarouselProps = {
 };
 
 const Carousel = ({ steps }: CarouselProps) => {
-  const currentStep = useOnboardingStore((state) => state.onboardingStep);
+  const currentStep = useOnboardingStore((state) => state.carouselStep);
 
   return steps[currentStep];
 };
