@@ -3,7 +3,7 @@ import { useAuth } from "@/context/auth/useAuth.ts";
 import ErrorPage from "@/features/navigation/ErrorPage.tsx";
 import Carousel from "@/features/onboarding/Carousel.tsx";
 import { useOnboardingData } from "@/features/onboarding/data/onboardingData/useOnboardingData.ts";
-import type { OnboardingStepForm } from "@/features/onboarding/onboarding.types.ts";
+import type { OnboardingStepForm } from "@/features/onboarding/onboardingTypes.ts";
 import Birthday from "@/features/onboarding/steps/Birthday.tsx";
 import FamilyGroup from "@/features/onboarding/steps/FamilyGroup.tsx";
 import FullName from "@/features/onboarding/steps/FullName.tsx";

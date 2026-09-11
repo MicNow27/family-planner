@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export type OnboardingStepForm = React.ReactNode;
+export type OnboardingStepForm = React.ReactNode; // TODO flatten later
 
 export type OnboardingStep = 0 | 1 | 2 | 3 | 4;
 
