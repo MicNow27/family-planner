@@ -13,3 +13,5 @@ export type FormFieldProps = {
 export type PasswordFormFieldProps = Omit<FormFieldProps, "type"> & {
   value?: string;
 };
+
+export type DateFormFieldProps = Omit<FormFieldProps, "type">;
