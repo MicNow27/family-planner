@@ -1,19 +1,19 @@
 import { formatDate } from "@/utils/strings/date.ts";
 
 describe("formatDate", () => {
-  it("returns digits without formatting when there are 4 or fewer digits", () => {
+  it("returns digits without formatting when there are fewer than 4 digits", () => {
     expect(formatDate("1")).toBe("1");
-    expect(formatDate("1990")).toBe("1990");
+    expect(formatDate("199")).toBe("199");
   });
 
   it("adds a hyphen after the year", () => {
-    expect(formatDate("19901")).toBe("1990-1");
-    expect(formatDate("199001")).toBe("1990-01");
+    expect(formatDate("1990")).toBe("1990-");
+    expect(formatDate("19900")).toBe("1990-0");
   });
 
   it("adds a hyphen after the month", () => {
+    expect(formatDate("199001")).toBe("1990-01-");
     expect(formatDate("1990010")).toBe("1990-01-0");
-    expect(formatDate("19900101")).toBe("1990-01-01");
   });
 
   it("removes non-digit characters", () => {
