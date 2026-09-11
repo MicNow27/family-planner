@@ -3,13 +3,13 @@ import { useAuth } from "@/context/auth/useAuth.ts";
 import ErrorPage from "@/features/navigation/ErrorPage.tsx";
 import Carousel from "@/features/onboarding/Carousel.tsx";
 import { useOnboardingData } from "@/features/onboarding/data/onboardingData/useOnboardingData.ts";
-import type { OnboardingStepForm } from "@/features/onboarding/onboardingTypes.ts";
 import Birthday from "@/features/onboarding/steps/Birthday.tsx";
 import FamilyGroup from "@/features/onboarding/steps/FamilyGroup.tsx";
 import FullName from "@/features/onboarding/steps/FullName.tsx";
 import Picture from "@/features/onboarding/steps/Picture.tsx";
 import Role from "@/features/onboarding/steps/Role.tsx";
 import { useOnboardingStore } from "@/features/onboarding/store/onboarding.store.ts";
+import type { OnboardingStepForm } from "@/features/onboarding/types.ts";
 import { ONBOARDING_DATA_FETCH_ERROR } from "@copy/onboarding.ts";
 import { useEffect } from "react";
 

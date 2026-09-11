@@ -1,5 +1,5 @@
-import type { OnboardingStepForm } from "@/features/onboarding/onboardingTypes.ts";
 import { useOnboardingStore } from "@/features/onboarding/store/onboarding.store.ts";
+import type { OnboardingStepForm } from "@/features/onboarding/types.ts";
 
 type CarouselProps = {
   steps: OnboardingStepForm[];

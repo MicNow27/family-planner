@@ -1,4 +1,4 @@
-import type { OnboardingStep, Role } from "@/features/onboarding/onboardingTypes.ts";
+import type { OnboardingStep, Role } from "@/features/onboarding/types.ts";
 import { create } from "zustand/react";
 
 export type OnboardingState = {
