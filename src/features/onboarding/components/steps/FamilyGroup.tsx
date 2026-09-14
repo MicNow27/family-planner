@@ -3,12 +3,12 @@ import FormField from "@/components/forms/formFields/FormField.tsx";
 import OnboardingFormWrapper from "@/components/forms/OnboardingFormWrapper.tsx";
 import { createFamilyGroup } from "@/features/onboarding/data/familyGroup/createFamilyGroup.ts";
 import { updateFamilyGroupName } from "@/features/onboarding/data/familyGroup/updateFamilyGroup.ts";
-import { useOnboardingStore } from "@/features/onboarding/store/onboarding.store.ts";
-import { useLiveValidation } from "@/hooks/useLiveValidation/useLiveValidation.ts";
 import {
   type FamilyGroupFormData,
   familyGroupSchema,
-} from "@/schemas/onboarding/familyGroupSchema.ts";
+} from "@/features/onboarding/schemas/familyGroupSchema.ts";
+import { useOnboardingStore } from "@/features/onboarding/store/onboarding.store.ts";
+import { useLiveValidation } from "@/hooks/useLiveValidation/useLiveValidation.ts";
 import { SUBMIT_BUTTON_WAIT } from "@copy/general.ts";
 import { NEXT } from "@copy/navigation.ts";
 import {

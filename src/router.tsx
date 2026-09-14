@@ -8,7 +8,7 @@ import ErrorPage from "@/features/navigation/ErrorPage.tsx";
 import PageNotFound from "@/features/navigation/PageNotFound.tsx";
 import AuthGate from "@/features/navigation/routeGates/AuthGate.tsx";
 import DashboardGate from "@/features/navigation/routeGates/DashboardGate.tsx";
-import Onboarding from "@/features/onboarding/Onboarding.tsx";
+import Onboarding from "@/features/onboarding/components/Onboarding.tsx";
 import SettingsLanding from "@/features/settings/SettingsLanding.tsx";
 import App from "@/layouts/App.tsx";
 import Landing from "@/layouts/Landing.tsx";

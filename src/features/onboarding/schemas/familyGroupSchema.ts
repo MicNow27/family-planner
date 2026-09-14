@@ -1,4 +1,4 @@
-import { nameSchema } from "@/schemas/onboarding/nameSchema/nameSchema.ts";
+import { nameSchema } from "@/features/onboarding/schemas/nameSchema/nameSchema.ts";
 import { z } from "zod";
 
 export const familyGroupSchema = z.object({
