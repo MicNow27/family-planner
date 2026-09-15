@@ -2,10 +2,10 @@ import FullScreenLoader from "@/components/loaders/FullScreenLoader/FullScreenLo
 import { useAuth } from "@/context/auth/useAuth.ts";
 import ErrorPage from "@/features/navigation/ErrorPage.tsx";
 import Carousel from "@/features/onboarding/components/Carousel.tsx";
+import Avatar from "@/features/onboarding/components/steps/Avatar.tsx";
 import Birthday from "@/features/onboarding/components/steps/Birthday.tsx";
 import FamilyGroup from "@/features/onboarding/components/steps/FamilyGroup.tsx";
 import FullName from "@/features/onboarding/components/steps/FullName.tsx";
-import Picture from "@/features/onboarding/components/steps/Picture.tsx";
 import Role from "@/features/onboarding/components/steps/Role.tsx";
 import { useOnboardingData } from "@/features/onboarding/data/onboardingData/useOnboardingData.ts";
 import { useOnboardingStore } from "@/features/onboarding/store/onboarding.store.ts";
@@ -30,7 +30,7 @@ const Onboarding = () => {
     <FamilyGroup />,
     <FullName />,
     <Birthday />,
-    <Picture />,
+    <Avatar />,
     <Role />,
   ];
 

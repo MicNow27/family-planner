@@ -8,7 +8,7 @@ export type OnboardingState = {
   familyGroupName: string | null;
   fullName: string | null;
   birthday: string | null;
-  picture: string | null;
+  avatarUrl: string | null;
   role: Role;
 };
 
@@ -19,7 +19,7 @@ type OnboardingAction = {
   setFamilyGroupName: (familyGroupName: string | null) => void;
   setFullName: (fullName: string | null) => void;
   setBirthday: (birthday: string | null) => void;
-  setPicture: (picture: string | null) => void;
+  setAvatarUrl: (picture: string | null) => void;
   setRole: (role: Role) => void;
   hydrate: (data: Partial<OnboardingState>) => void;
   reset: () => void;
@@ -32,7 +32,7 @@ const initialState: OnboardingState = {
   familyGroupName: null,
   fullName: null,
   birthday: null,
-  picture: null,
+  avatarUrl: null,
   role: "home-manager",
 };
 
@@ -45,7 +45,7 @@ export const useOnboardingStore = create<OnboardingState & OnboardingAction>(
     setFamilyGroupName: (familyGroupName) => set({ familyGroupName }),
     setFullName: (fullName) => set({ fullName }),
     setBirthday: (birthday) => set({ birthday }),
-    setPicture: (picture) => set({ picture }),
+    setAvatarUrl: (avatarUrl) => set({ avatarUrl }),
     setRole: (role) => set({ role }),
     hydrate: (data) => set(data),
     reset: () => set(initialState),

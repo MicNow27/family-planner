@@ -25,7 +25,7 @@ export const getOnboardingData = async (
     familyGroupName: familyGroup?.name ?? null,
     fullName: data.full_name,
     birthday: data.birthday,
-    picture: data.avatar_url,
+    avatarUrl: data.avatar_url,
     role: data.role,
   };
 };
