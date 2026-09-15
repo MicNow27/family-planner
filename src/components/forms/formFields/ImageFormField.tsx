@@ -40,7 +40,7 @@ const ImageFormField = ({
         <img
           src={localPreview || previewUrl || avatarPlaceholder}
           alt="Profile preview"
-          className="border-primary h-32 w-32 rounded-full border-2 object-cover"
+          className="border-primary h-32 w-32 rounded-full border-4 object-cover"
         />
       </div>
 
