@@ -15,3 +15,7 @@ export type PasswordFormFieldProps = Omit<FormFieldProps, "type"> & {
 };
 
 export type DateFormFieldProps = Omit<FormFieldProps, "type">;
+
+export type ImageFormFieldProps = Omit<FormFieldProps, "type"> & {
+  previewUrl?: string | null;
+};
