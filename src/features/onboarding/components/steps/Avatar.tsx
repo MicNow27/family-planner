@@ -17,8 +17,8 @@ import {
   AVATAR_SUBMIT_ERROR,
 } from "@copy/onboarding/avatar.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import { useState } from "react";
+import { useForm, useWatch } from "react-hook-form";
 
 const Avatar = () => {
   const { user } = useAuth();
@@ -31,7 +31,7 @@ const Avatar = () => {
   const [submitError, setSubmitError] = useState<string | null>(null);
 
   const form = useForm<AvatarFormData>({
-    resolver: zodResolver(avatarSchema(avatarUrl)),
+    resolver: zodResolver(avatarSchema),
   });
 
   const {
@@ -40,15 +40,14 @@ const Avatar = () => {
     formState: { errors, dirtyFields, isSubmitting },
   } = form;
 
+  const avatarFile = useWatch({ control: form.control, name: "avatarFile" });
+  const hasNoAvatar = !avatarUrl && (!avatarFile || avatarFile.length === 0);
+
   const liveValidate = useLiveValidation({
     trigger,
     dirtyFields,
     clearSubmitError: () => setSubmitError(null),
   });
-
-  useEffect(() => {
-    void trigger("avatarFile");
-  }, [avatarUrl, trigger]);
 
   const onSubmit = async (data: AvatarFormData) => {
     setSubmitError(null);
@@ -77,6 +76,7 @@ const Avatar = () => {
           onSubmit={onSubmit}
           submitButtonText={NEXT}
           onBack={() => setCarouselStep(2)}
+          disableSubmit={hasNoAvatar}
         >
           <ImageFormField
             id="avatarFile"
