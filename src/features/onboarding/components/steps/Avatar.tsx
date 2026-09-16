@@ -17,7 +17,7 @@ import {
   AVATAR_SUBMIT_ERROR,
 } from "@copy/onboarding/avatar.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 const Avatar = () => {
@@ -32,7 +32,6 @@ const Avatar = () => {
 
   const form = useForm<AvatarFormData>({
     resolver: zodResolver(avatarSchema(avatarUrl)),
-    defaultValues: { avatarFile: undefined },
   });
 
   const {
@@ -46,6 +45,10 @@ const Avatar = () => {
     dirtyFields,
     clearSubmitError: () => setSubmitError(null),
   });
+
+  useEffect(() => {
+    void trigger("avatarFile");
+  }, [avatarUrl, trigger]);
 
   const onSubmit = async (data: AvatarFormData) => {
     setSubmitError(null);
