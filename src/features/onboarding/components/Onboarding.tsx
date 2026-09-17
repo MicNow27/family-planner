@@ -6,7 +6,7 @@ import Avatar from "@/features/onboarding/components/steps/Avatar.tsx";
 import Birthday from "@/features/onboarding/components/steps/Birthday.tsx";
 import FamilyGroup from "@/features/onboarding/components/steps/FamilyGroup.tsx";
 import FullName from "@/features/onboarding/components/steps/FullName.tsx";
-import Role from "@/features/onboarding/components/steps/Role.tsx";
+import Role from "@/features/onboarding/components/steps/role/Role.tsx";
 import { useOnboardingData } from "@/features/onboarding/data/onboardingData/useOnboardingData.ts";
 import { useOnboardingStore } from "@/features/onboarding/store/onboarding.store.ts";
 import type { OnboardingStepForm } from "@/features/onboarding/types.ts";
