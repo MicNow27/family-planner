@@ -1,4 +1,11 @@
 import type { SelectFormFieldProps } from "@/components/forms/formFields/types.ts";
+import {
+  Label,
+  Listbox,
+  ListboxButton,
+  ListboxOption,
+  ListboxOptions,
+} from "@headlessui/react";
 import { ChevronDown } from "lucide-react";
 
 const SelectFormField = ({
@@ -11,36 +18,54 @@ const SelectFormField = ({
   disabled,
   value,
 }: SelectFormFieldProps) => {
-  const isPlaceholder = !value;
+  const selectedOption = options.find((option) => option.value === value);
+  const isPlaceholder = !selectedOption;
+
+  const handleChange = (selectedValue: string) => {
+    void register.onChange({
+      target: {
+        name: register.name,
+        value: selectedValue,
+      },
+      type: "change",
+    });
+  };
 
   return (
     <div className={`flex w-full flex-col gap-1 ${disabled && "opacity-50"}`}>
-      <label className="text-secondary-text ml-2 text-base font-medium" htmlFor={id}>
-        {label}
-      </label>
+      <Listbox value={value ?? ""} onChange={handleChange} disabled={disabled}>
+        <Label className="text-secondary-text ml-2 text-base font-medium">
+          {label}
+        </Label>
 
-      <div className="relative">
-        <select
-          className={`h-button-h rounded-button bg-interactive-surface focus-visible:border-primary focus-visible:ring-primary-focus border-divider w-full appearance-none border px-3 text-base transition-all outline-none focus-visible:ring-4 disabled:cursor-not-allowed ${isPlaceholder ? "text-disabled-text" : "text-secondary-text"} ${error && "border-error! focus-visible:ring-error-focus!"}`}
-          id={id}
-          disabled={disabled}
-          {...register}
-        >
-          {placeholder && (
-            <option value="" disabled>
-              {placeholder}
-            </option>
-          )}
+        <div className="relative">
+          <ListboxButton
+            id={id}
+            className={`hover:ring-primary-focus! h-button-h hover:border-primary! rounded-button bg-interactive-surface border-divider flex w-full cursor-pointer items-center justify-between border px-3 text-left text-base transition-all outline-none hover:ring-4 disabled:cursor-not-allowed ${
+              isPlaceholder ? "text-disabled-text" : "text-secondary-text"
+            } ${error && "border-error! hover:ring-error-focus!"}`}
+          >
+            <span>{selectedOption?.label ?? placeholder}</span>
 
-          {options.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-
-        <ChevronDown className="text-secondary-text absolute top-1/2 right-2.5 size-4 -translate-y-1/2" />
-      </div>
+            <ChevronDown className="text-secondary-text size-4" />
+          </ListboxButton>
+          {/* TODO: check each style from here down */}
+          <ListboxOptions
+            anchor="bottom"
+            className="bg-interactive-surface border-divider rounded-button z-10 mt-1 w-(--button-width) border p-1 shadow-lg [--anchor-gap:4px]"
+          >
+            {options.map((option) => (
+              <ListboxOption
+                key={option.value}
+                value={option.value}
+                className="text-secondary-text hover:bg-interactive-surface-hover flex w-full cursor-pointer items-center rounded-md px-3 py-2 text-base transition-colors outline-none"
+              >
+                {option.label}
+              </ListboxOption>
+            ))}
+          </ListboxOptions>
+        </div>
+      </Listbox>
 
       <div className="h-4">
         {error && <p className="text-error ml-2 text-xs">{error}</p>}
