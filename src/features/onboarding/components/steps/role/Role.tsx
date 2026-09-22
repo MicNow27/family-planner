@@ -34,8 +34,7 @@ const Role = () => {
 
   const form = useForm<RoleFormData>({
     resolver: zodResolver(roleSchema),
-    defaultValues: { role: "" },
-    // values: { role: role ?? "home-manager" },
+    values: { role: role ?? "home-manager" },
   });
 
   const {
