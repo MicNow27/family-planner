@@ -55,7 +55,7 @@ const ImageFormField = ({
       />
 
       <label
-        htmlFor={disabled ? undefined : id}
+        htmlFor={id}
         className={`rounded-button bg-interactive-surface text-secondary-text border-divider mb-4 flex flex-col items-center justify-center gap-2 border py-3 text-base transition-all ${
           disabled
             ? "cursor-not-allowed"

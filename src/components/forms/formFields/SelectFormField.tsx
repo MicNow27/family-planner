@@ -49,16 +49,16 @@ const SelectFormField = ({
 
             <ChevronDown className="text-secondary-text size-4" />
           </ListboxButton>
-          {/* TODO: check each style from here down */}
+
           <ListboxOptions
             anchor="bottom"
-            className="bg-interactive-surface border-divider rounded-button z-10 mt-1 w-(--button-width) border p-1 shadow-lg [--anchor-gap:4px]"
+            className="bg-interactive-surface border-divider rounded-button mt-1 w-(--button-width) border p-1 shadow-lg outline-none [--anchor-gap:0.25rem]"
           >
             {options.map((option) => (
               <ListboxOption
                 key={option.value}
                 value={option.value}
-                className="text-secondary-text hover:bg-interactive-surface-hover flex w-full cursor-pointer items-center rounded-md px-3 py-2 text-base transition-colors outline-none"
+                className="text-secondary-text hover:bg-interactive-surface-hover cursor-pointer rounded-md px-3 py-2 text-base transition-colors"
               >
                 {option.label}
               </ListboxOption>
