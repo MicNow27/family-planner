@@ -7,6 +7,6 @@ export const MOTHER = "Mother";
 export const FATHER = "Father";
 export const GUARDIAN = "Guardian";
 
-export const ROLE_PROMPT = "What is you role in the home?";
+export const ROLE_PROMPT = "What is your role in the home?";
 export const ROLE_LABEL = "Role";
 export const ROLE_SUBMIT_ERROR = "Unable to submit your role. Please try again.";
