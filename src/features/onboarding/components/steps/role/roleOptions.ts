@@ -8,7 +8,7 @@ import {
   PARENT,
   PARTNER,
   WIFE,
-} from "@copy/onboarding/role.ts";
+} from "@/features/onboarding/copy/role.ts";
 
 export const roleOptions: SelectOption[] = [
   { value: "home-manager", label: HOME_MANAGER },

@@ -1,21 +1,13 @@
 import FormFeedback from "@/components/forms/FormFeedback.tsx";
 import ImageFormField from "@/components/forms/formFields/ImageFormField.tsx";
 import OnboardingFormWrapper from "@/components/forms/OnboardingFormWrapper.tsx";
-import { useAuth } from "@/context/auth/useAuth.ts";
+import { useAuth } from "@/features/auth/context/useAuth.ts";
+import { AVATAR_LABEL, AVATAR_PROMPT, AVATAR_SUBMIT_ERROR } from "@/features/onboarding/copy/avatar.ts";
 import { uploadAvatar } from "@/features/onboarding/data/picture/uploadAvatar.ts";
-import {
-  type AvatarFormData,
-  avatarSchema,
-} from "@/features/onboarding/schemas/avatarSchema.ts";
+import { type AvatarFormData, avatarSchema } from "@/features/onboarding/schemas/avatarSchema.ts";
 import { useOnboardingStore } from "@/features/onboarding/store/onboarding.store.ts";
 import { useLiveValidation } from "@/hooks/useLiveValidation/useLiveValidation.ts";
-import { SUBMIT_BUTTON_WAIT } from "@copy/general.ts";
-import { NEXT } from "@copy/navigation.ts";
-import {
-  AVATAR_LABEL,
-  AVATAR_PROMPT,
-  AVATAR_SUBMIT_ERROR,
-} from "@copy/onboarding/avatar.ts";
+import { NEXT, SUBMIT_BUTTON_WAIT } from "@copy/general.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
@@ -90,11 +82,7 @@ const Avatar = () => {
 
         <div className="relative flex h-6 items-center pt-2">
           <FormFeedback text={SUBMIT_BUTTON_WAIT} condition={isSubmitting} />
-          <FormFeedback
-            type={"error"}
-            text={submitError ?? ""}
-            condition={!isSubmitting && !!submitError}
-          />
+          <FormFeedback type={"error"} text={submitError ?? ""} condition={!isSubmitting && !!submitError} />
         </div>
       </div>
     </section>

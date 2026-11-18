@@ -9,6 +9,8 @@ export const GET_STARTED = "Let's Get Started";
 export const MY_FAMILY = "My Family";
 export const SETTINGS = "Settings";
 
-export const PAGE_NOT_FOUND = "Page Not Found";
+export const SHOW = "Show";
+export const HIDE = "Hide";
 
-export const SOMETHING_WENT_WRONG = "Something Went Wrong";
+export const BACK = "Back";
+export const NEXT = "Next";

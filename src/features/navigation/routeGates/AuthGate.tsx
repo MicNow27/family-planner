@@ -1,7 +1,7 @@
 import FullScreenLoader from "@/components/loaders/FullScreenLoader/FullScreenLoader.tsx";
-import { useAuth } from "@/context/auth/useAuth.ts";
-import { useProfile } from "@/data/profile/useProfile.ts";
-import { SOMETHING_WRONG_PROFILE } from "@copy/profile.ts";
+import { useAuth } from "@/features/auth/context/useAuth.ts";
+import { PROFILE_FETCH_ERROR } from "@/features/navigation/copy/errors.ts";
+import { useProfile } from "@/features/navigation/data/profile/useProfile.ts";
 import { Navigate, Outlet } from "react-router";
 
 type AuthGateProps = {
@@ -19,7 +19,7 @@ const AuthGate = ({ requireAuth }: AuthGateProps) => {
   if (!requireAuth && user) {
     if (isPending) return <FullScreenLoader />;
 
-    if (isError) return <Navigate to="/error-page" replace state={{ message: SOMETHING_WRONG_PROFILE }} />;
+    if (isError) return <Navigate to="/error-page" replace state={{ message: PROFILE_FETCH_ERROR }} />;
 
     return profile.onboarding_completed ? <Navigate to="/my-family" replace /> : <Navigate to="/onboarding" replace />;
   }

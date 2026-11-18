@@ -1,44 +1,44 @@
-import AuthCallback from "@/features/auth/AuthCallback.tsx";
-import CheckEmail from "@/features/auth/CheckEmail.tsx";
-import ForgotPassword from "@/features/auth/ForgotPassword.tsx";
-import ResetPassword from "@/features/auth/ResetPassword.tsx";
-import SignUp from "@/features/auth/SignUp.tsx";
+import AuthCallback from "@/features/auth/components/AuthCallback.tsx";
+import CheckEmail from "@/features/auth/components/CheckEmail.tsx";
+import ForgotPassword from "@/features/auth/components/ForgotPassword.tsx";
+import Landing from "@/features/auth/components/Landing.tsx";
+import ResetPassword from "@/features/auth/components/ResetPassword.tsx";
+import SignUp from "@/features/auth/components/SignUp.tsx";
 import MyFamily from "@/features/MyFamily/MyFamily.tsx";
-import ErrorPage from "@/features/navigation/ErrorPage.tsx";
-import PageNotFound from "@/features/navigation/PageNotFound.tsx";
+import ErrorPage from "@/features/navigation/components/ErrorPage.tsx";
+import PageNotFound from "@/features/navigation/components/PageNotFound.tsx";
 import AuthGate from "@/features/navigation/routeGates/AuthGate.tsx";
 import DashboardGate from "@/features/navigation/routeGates/DashboardGate.tsx";
+import type { RouteTypes } from "@/features/navigation/types/routeTypes.ts";
 import Onboarding from "@/features/onboarding/components/Onboarding.tsx";
 import SettingsLanding from "@/features/settings/SettingsLanding.tsx";
 import App from "@/layouts/App.tsx";
-import Landing from "@/layouts/Landing.tsx";
 import StartingUp from "@/layouts/StartingUp.tsx";
-import type { Route } from "@/types/route.ts";
 import { GET_STARTED, MY_FAMILY, SETTINGS } from "@copy/general.ts";
 import { createBrowserRouter } from "react-router";
-import Login from "./features/auth/Login.tsx";
+import Login from "./features/auth/components/Login.tsx";
 
-const guest = (children: Route[]): Route => ({
+const guest = (children: RouteTypes[]): RouteTypes => ({
   element: <AuthGate requireAuth={false} />,
   children,
 });
 
-const auth = (children: Route[]): Route => ({
+const auth = (children: RouteTypes[]): RouteTypes => ({
   element: <AuthGate requireAuth={true} />,
   children,
 });
 
-const dashboard = (children: Route[]): Route => ({
+const dashboard = (children: RouteTypes[]): RouteTypes => ({
   element: <DashboardGate requireDashboard={true} />,
   children,
 });
 
-const onboarding = (children: Route[]): Route => ({
+const onboarding = (children: RouteTypes[]): RouteTypes => ({
   element: <DashboardGate requireDashboard={false} />,
   children,
 });
 
-const routes: Route[] = [
+const routes: RouteTypes[] = [
   {
     element: <StartingUp />,
     children: [

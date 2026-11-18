@@ -1,9 +1,5 @@
 import { nameSchema } from "@/features/onboarding/schemas/nameSchema/nameSchema.ts";
-import {
-  NAME_LENGTH_ERROR,
-  NAME_REQUIRED_ERROR,
-  NAME_VALID_ERROR,
-} from "@copy/onboarding/name.ts";
+import { NAME_LENGTH_ERROR, NAME_REQUIRED_ERROR, NAME_VALID_ERROR } from "@/features/onboarding/copy/name.ts";
 
 describe("nameSchema", () => {
   it("accepts a valid name", () => {
@@ -39,42 +35,30 @@ describe("nameSchema", () => {
   it("rejects an empty string", () => {
     const result = nameSchema.safeParse("");
     expect(result.success).toBe(false);
-    if (!result.success)
-      expect(result.error.issues[0].message).toBe(NAME_REQUIRED_ERROR);
+    if (!result.success) expect(result.error.issues[0].message).toBe(NAME_REQUIRED_ERROR);
   });
 
   it("rejects a whitespace-only string", () => {
     const result = nameSchema.safeParse("   ");
     expect(result.success).toBe(false);
-    if (!result.success)
-      expect(result.error.issues[0].message).toBe(NAME_REQUIRED_ERROR);
+    if (!result.success) expect(result.error.issues[0].message).toBe(NAME_REQUIRED_ERROR);
   });
 
   it("rejects numbers", () => {
     const result = nameSchema.safeParse("Abigail123");
     expect(result.success).toBe(false);
-    if (!result.success)
-      expect(result.error.issues[0].message).toBe(NAME_VALID_ERROR);
+    if (!result.success) expect(result.error.issues[0].message).toBe(NAME_VALID_ERROR);
   });
 
   it("rejects special characters", () => {
-    const invalidNames = [
-      "Abigail@",
-      "Abigail_",
-      "Abigail.",
-      "Abigail!",
-      "Abigail#",
-      "Abigail$",
-      "Abigail/",
-    ];
+    const invalidNames = ["Abigail@", "Abigail_", "Abigail.", "Abigail!", "Abigail#", "Abigail$", "Abigail/"];
 
     invalidNames.forEach((name) => {
       const result = nameSchema.safeParse(name);
 
       expect(result.success).toBe(false);
 
-      if (!result.success)
-        expect(result.error.issues[0].message).toBe(NAME_VALID_ERROR);
+      if (!result.success) expect(result.error.issues[0].message).toBe(NAME_VALID_ERROR);
     });
   });
 

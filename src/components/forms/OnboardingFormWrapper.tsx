@@ -1,6 +1,6 @@
 import PrimaryButton from "@/components/buttons/PrimaryButton.tsx";
 import SecondaryButton from "@/components/buttons/SecondaryButton.tsx";
-import { BACK } from "@copy/navigation.ts";
+import { BACK } from "@copy/general.ts";
 import type { ReactNode } from "react";
 import type { FieldValues, UseFormReturn } from "react-hook-form";
 

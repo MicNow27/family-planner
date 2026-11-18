@@ -1,7 +1,7 @@
 import FullScreenLoader from "@/components/loaders/FullScreenLoader/FullScreenLoader.tsx";
-import { useAuth } from "@/context/auth/useAuth.ts";
-import { useProfile } from "@/data/profile/useProfile.ts";
-import { SOMETHING_WRONG_PROFILE } from "@copy/profile.ts";
+import { useAuth } from "@/features/auth/context/useAuth.ts";
+import { PROFILE_FETCH_ERROR } from "@/features/navigation/copy/errors.ts";
+import { useProfile } from "@/features/navigation/data/profile/useProfile.ts";
 import { Navigate, Outlet } from "react-router";
 
 type DashboardGateProps = {
@@ -14,7 +14,7 @@ const DashboardGate = ({ requireDashboard }: DashboardGateProps) => {
 
   if (isPending) return <FullScreenLoader />;
 
-  if (isError) return <Navigate to="/error-page" replace state={{ message: SOMETHING_WRONG_PROFILE }} />;
+  if (isError) return <Navigate to="/error-page" replace state={{ message: PROFILE_FETCH_ERROR }} />;
 
   if (requireDashboard && !profile.onboarding_completed) return <Navigate to="/onboarding" replace />;
 
