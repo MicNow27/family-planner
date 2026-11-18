@@ -4,14 +4,14 @@ import FormWrapper from "@/components/forms/FormWrapper.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
 import { useLiveValidation } from "@/hooks/useLiveValidation/useLiveValidation.ts";
 import { type ResetPasswordFormData, resetPasswordSchema } from "@/schemas/auth/resetPassword.schema.ts";
-import { RESET_PASSWORD, RESET_PASSWORD_ERROR, RESET_PASSWORD_WAIT } from "@copy/forgotPassword.ts";
-import { SUBMIT } from "@copy/general.ts";
+import { RESET_PASSWORD, RESET_PASSWORD_ERROR, RESET_PASSWORD_WAIT } from "@copy/auth/forgotPassword.ts";
 import {
   PASSWORD_CONFIRM_LABEL,
   PASSWORD_CONFIRM_PLACEHOLDER,
   PASSWORD_CREATE_PLACEHOLDER,
   PASSWORD_LABEL,
-} from "@copy/password.ts";
+} from "@copy/auth/password.ts";
+import { SUBMIT } from "@copy/general.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";

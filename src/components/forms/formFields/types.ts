@@ -13,3 +13,19 @@ export type FormFieldProps = {
 export type PasswordFormFieldProps = Omit<FormFieldProps, "type"> & {
   value?: string;
 };
+
+export type DateFormFieldProps = Omit<FormFieldProps, "type">;
+
+export type ImageFormFieldProps = Omit<FormFieldProps, "type"> & {
+  previewUrl?: string | null;
+};
+
+export type SelectOption = {
+  value: string;
+  label: string;
+};
+
+export type SelectFormFieldProps = Omit<FormFieldProps, "type"> & {
+  options: SelectOption[];
+  value?: string;
+};

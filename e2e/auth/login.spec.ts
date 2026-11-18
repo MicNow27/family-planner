@@ -1,6 +1,6 @@
-import { EMAIL_ERROR, EMAIL_LABEL } from "@copy/email.ts";
-import { LOGIN, LOGIN_ERROR } from "@copy/login.ts";
-import { HIDE_PASSWORD, PASSWORD_ERROR_LENGTH, PASSWORD_LABEL, SHOW_PASSWORD } from "@copy/password.ts";
+import { EMAIL_ERROR, EMAIL_LABEL } from "@copy/auth/email.ts";
+import { LOGIN, LOGIN_ERROR } from "@copy/auth/login.ts";
+import { HIDE_PASSWORD, PASSWORD_ERROR_LENGTH, PASSWORD_LABEL, SHOW_PASSWORD } from "@copy/auth/password.ts";
 import { expect, test } from "@playwright/test";
 import { testUser } from "./data/testUser";
 

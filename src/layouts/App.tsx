@@ -5,7 +5,7 @@ import { Outlet } from "react-router";
 const App = () => (
   <>
     <Header />
-    <main>
+    <main className="h-full w-full p-6">
       <Outlet />
     </main>
     <NavBar />

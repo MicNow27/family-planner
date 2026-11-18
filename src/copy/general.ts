@@ -1,6 +1,8 @@
 export const APP_NAME = "Family Planner";
 export const SLOGAN = "Plan smart. Live free.";
+
 export const SUBMIT = "Submit";
+export const SUBMIT_BUTTON_WAIT = "Submitting...";
 
 export const GET_STARTED = "Let's Get Started";
 

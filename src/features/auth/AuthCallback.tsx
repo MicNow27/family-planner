@@ -1,6 +1,6 @@
 import { useAuth } from "@/context/auth/useAuth.ts";
 import email from "@assets/images/email.svg";
-import { CONFIRMING_EMAIL } from "@copy/email.ts";
+import { CONFIRMING_EMAIL } from "@copy/auth/email.ts";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 

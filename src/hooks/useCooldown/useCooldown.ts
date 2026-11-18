@@ -6,7 +6,7 @@ import {
   setNextLevel,
 } from "@/hooks/useCooldown/timeLogic/timeLogic.ts";
 import type { AuthError } from "@/types/auth.ts";
-import { EMAIL_RESENT_ERROR } from "@copy/email.ts";
+import { EMAIL_RESENT_ERROR } from "@copy/auth/email.ts";
 import { useEffect, useState } from "react";
 
 type UseCooldownOptions = {

@@ -3,7 +3,12 @@ import FormFeedback from "@/components/forms/FormFeedback.tsx";
 import { useAuth } from "@/context/auth/useAuth.ts";
 import { formatTime, ONE_HOUR, ONE_MINUTE } from "@/hooks/useCooldown/timeLogic/timeLogic.ts";
 import { useCooldown } from "@/hooks/useCooldown/useCooldown.ts";
-import { CHECK_EMAIL, CHECK_EMAIL_INSTRUCTION, RESEND_EMAIL_BUTTON, RESEND_EMAIL_BUTTON_WAIT } from "@copy/email.ts";
+import {
+  CHECK_EMAIL,
+  CHECK_EMAIL_INSTRUCTION,
+  RESEND_EMAIL_BUTTON,
+  RESEND_EMAIL_BUTTON_WAIT,
+} from "@copy/auth/email.ts";
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router";
 
