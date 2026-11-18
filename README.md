@@ -76,38 +76,35 @@ npm run lint
 family-planner/
 ├── .github/
 │   └── workflows/
-│       └── ci.yml     # CI/CD workflow configuration
-├── public/            # Static assets
+│       └── ci.yml          # CI/CD workflow configuration
+├── e2e/                    # End-to-end tests
+│   └── auth/
+├── public/                 # Static assets
 ├── src/
-│   ├── assets/        # Images, icons, etc.
-│   ├── components/    # Reusable React components
+│   ├── assets/             # Images, icons, etc.
+│   ├── components/         # Reusable React components
 │   │   ├── buttons/
 │   │   ├── forms/
 │   │   └── loaders/
-│   ├── config/
-│   ├── context/
-│   │   └── auth/
 │   ├── copy/
-│   ├── data/           # Backend data access and data-fetching hooks
-│   │   ├── profile/
+│   ├── data/               # Backend data access and data-fetching hooks
 │   │   └── supabase.ts
 │   ├── features/
 │   │   ├── auth/
-│   │   └── navigation/
+│   │   ├── MyFamily/
+│   │   ├── navigation/
+│   │   ├── onboarding/
+│   │   └── settings/
 │   ├── hooks/
-│   ├── layouts/       # Page layouts
-│   ├── schemas/       # Form validation schemas
-│   │   └── auth/
-│   ├── services/
+│   ├── layouts/            # Page layouts
 │   ├── styles/
 │   │   ├── layers/
 │   │   └── theme/
-│   ├── test/          # Unit tests
-│   ├── types/
+│   ├── test/               # Unit test setup
 │   ├── utils/
-│   ├── index.scss     # Global styles and entry point for CSS
-│   ├── main.tsx       # Application entry point
-│   └── router.tsx     # React Router configuration
+│   ├── index.css           # Global styles and entry point for CSS
+│   ├── main.tsx            # Application entry point
+│   └── router.tsx          # React Router configuration
 ├── .gitignore
 ├── .prettierrc
 ├── eslint.config.js        # ESLint configuration
