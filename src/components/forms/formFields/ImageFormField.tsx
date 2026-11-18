@@ -4,14 +4,7 @@ import { Upload } from "lucide-react";
 import * as React from "react";
 import { useEffect, useState } from "react";
 
-const ImageFormField = ({
-  id,
-  label,
-  register,
-  error,
-  disabled,
-  previewUrl,
-}: ImageFormFieldProps) => {
+const ImageFormField = ({ id, label, register, error, disabled, previewUrl }: ImageFormFieldProps) => {
   const [fileName, setFileName] = useState("");
   const [localPreview, setLocalPreview] = useState<string | null>(null);
   const { onChange, ...registerProps } = register;
@@ -57,9 +50,7 @@ const ImageFormField = ({
       <label
         htmlFor={id}
         className={`rounded-button bg-interactive-surface text-secondary-text border-divider mb-4 flex flex-col items-center justify-center gap-2 border py-3 text-base transition-all ${
-          disabled
-            ? "cursor-not-allowed"
-            : "hover:border-primary hover:ring-primary-focus cursor-pointer hover:ring-4"
+          disabled ? "cursor-not-allowed" : "hover:border-primary hover:ring-primary-focus cursor-pointer hover:ring-4"
         } ${error && "border-error! hover:ring-error-focus!"}`}
       >
         <Upload />
@@ -71,14 +62,10 @@ const ImageFormField = ({
           error && "border-error!"
         }`}
       >
-        <span className={`truncate ${!fileName && "text-disabled-text"}`}>
-          {fileName || "No file chosen"}
-        </span>
+        <span className={`truncate ${!fileName && "text-disabled-text"}`}>{fileName || "No file chosen"}</span>
       </div>
 
-      <div className="h-4">
-        {error && <p className="text-error ml-2 text-xs">{error}</p>}
-      </div>
+      <div className="h-4">{error && <p className="text-error ml-2 text-xs">{error}</p>}</div>
     </div>
   );
 };

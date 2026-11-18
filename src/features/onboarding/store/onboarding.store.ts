@@ -36,18 +36,16 @@ const initialState: OnboardingState = {
   role: "home-manager",
 };
 
-export const useOnboardingStore = create<OnboardingState & OnboardingAction>(
-  (set) => ({
-    ...initialState,
-    setOnboardingStep: (step) => set({ onboardingStep: step }),
-    setCarouselStep: (step) => set({ carouselStep: step }),
-    setFamilyGroupId: (familyGroupId) => set({ familyGroupId }),
-    setFamilyGroupName: (familyGroupName) => set({ familyGroupName }),
-    setFullName: (fullName) => set({ fullName }),
-    setBirthday: (birthday) => set({ birthday }),
-    setAvatarUrl: (avatarUrl) => set({ avatarUrl }),
-    setRole: (role) => set({ role }),
-    hydrate: (data) => set(data),
-    reset: () => set(initialState),
-  }),
-);
+export const useOnboardingStore = create<OnboardingState & OnboardingAction>((set) => ({
+  ...initialState,
+  setOnboardingStep: (step) => set({ onboardingStep: step }),
+  setCarouselStep: (step) => set({ carouselStep: step }),
+  setFamilyGroupId: (familyGroupId) => set({ familyGroupId }),
+  setFamilyGroupName: (familyGroupName) => set({ familyGroupName }),
+  setFullName: (fullName) => set({ fullName }),
+  setBirthday: (birthday) => set({ birthday }),
+  setAvatarUrl: (avatarUrl) => set({ avatarUrl }),
+  setRole: (role) => set({ role }),
+  hydrate: (data) => set(data),
+  reset: () => set(initialState),
+}));

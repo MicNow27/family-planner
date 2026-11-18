@@ -1,11 +1,5 @@
 import type { SelectFormFieldProps } from "@/components/forms/formFields/types.ts";
-import {
-  Label,
-  Listbox,
-  ListboxButton,
-  ListboxOption,
-  ListboxOptions,
-} from "@headlessui/react";
+import { Label, Listbox, ListboxButton, ListboxOption, ListboxOptions } from "@headlessui/react";
 import { ChevronDown } from "lucide-react";
 
 const SelectFormField = ({
@@ -34,9 +28,7 @@ const SelectFormField = ({
   return (
     <div className={`flex w-full flex-col gap-1 ${disabled && "opacity-50"}`}>
       <Listbox value={value ?? ""} onChange={handleChange} disabled={disabled}>
-        <Label className="text-secondary-text ml-2 text-base font-medium">
-          {label}
-        </Label>
+        <Label className="text-secondary-text ml-2 text-base font-medium">{label}</Label>
 
         <div className="relative">
           <ListboxButton
@@ -67,9 +59,7 @@ const SelectFormField = ({
         </div>
       </Listbox>
 
-      <div className="h-4">
-        {error && <p className="text-error ml-2 text-xs">{error}</p>}
-      </div>
+      <div className="h-4">{error && <p className="text-error ml-2 text-xs">{error}</p>}</div>
     </div>
   );
 };
