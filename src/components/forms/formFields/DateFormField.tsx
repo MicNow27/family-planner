@@ -2,14 +2,7 @@ import type { DateFormFieldProps } from "@/components/forms/formFields/types.ts"
 import { formatDate } from "@/utils/strings/date.ts";
 import * as React from "react";
 
-const DateFormField = ({
-  id,
-  label,
-  placeholder,
-  register,
-  error,
-  disabled,
-}: DateFormFieldProps) => {
+const DateFormField = ({ id, label, placeholder, register, error, disabled }: DateFormFieldProps) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.target.value = formatDate(event.target.value);
     void register.onChange(event);
@@ -63,9 +56,7 @@ const DateFormField = ({
         onChange={handleChange}
         onKeyDown={handleKeyDown}
       />
-      <div className="h-4">
-        {error && <p className="text-error ml-2 text-xs">{error}</p>}
-      </div>
+      <div className="h-4">{error && <p className="text-error ml-2 text-xs">{error}</p>}</div>
     </div>
   );
 };

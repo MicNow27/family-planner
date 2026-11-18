@@ -1,22 +1,18 @@
 import FormFeedback from "@/components/forms/FormFeedback.tsx";
 import FormField from "@/components/forms/formFields/FormField.tsx";
 import OnboardingFormWrapper from "@/components/forms/OnboardingFormWrapper.tsx";
-import { createFamilyGroup } from "@/features/onboarding/data/familyGroup/createFamilyGroup.ts";
-import { updateFamilyGroupName } from "@/features/onboarding/data/familyGroup/updateFamilyGroup.ts";
-import {
-  type FamilyGroupFormData,
-  familyGroupSchema,
-} from "@/features/onboarding/schemas/familyGroupSchema.ts";
-import { useOnboardingStore } from "@/features/onboarding/store/onboarding.store.ts";
-import { useLiveValidation } from "@/hooks/useLiveValidation/useLiveValidation.ts";
-import { SUBMIT_BUTTON_WAIT } from "@copy/general.ts";
-import { NEXT } from "@copy/navigation.ts";
 import {
   FAMILY_GROUP_LABEL,
   FAMILY_GROUP_PLACEHOLDER,
   FAMILY_GROUP_PROMPT,
   FAMILY_GROUP_SUBMIT_ERROR,
-} from "@copy/onboarding/familyGroup.ts";
+} from "@/features/onboarding/copy/familyGroup.ts";
+import { createFamilyGroup } from "@/features/onboarding/data/familyGroup/createFamilyGroup.ts";
+import { updateFamilyGroupName } from "@/features/onboarding/data/familyGroup/updateFamilyGroup.ts";
+import { type FamilyGroupFormData, familyGroupSchema } from "@/features/onboarding/schemas/familyGroupSchema.ts";
+import { useOnboardingStore } from "@/features/onboarding/store/onboarding.store.ts";
+import { useLiveValidation } from "@/hooks/useLiveValidation/useLiveValidation.ts";
+import { NEXT, SUBMIT_BUTTON_WAIT } from "@copy/general.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -53,8 +49,7 @@ const FamilyGroup = () => {
 
     if (data.familyGroupName !== familyGroupName) {
       try {
-        if (familyGroupId)
-          await updateFamilyGroupName(familyGroupId, data.familyGroupName);
+        if (familyGroupId) await updateFamilyGroupName(familyGroupId, data.familyGroupName);
         else {
           const newGroupId = await createFamilyGroup(data.familyGroupName);
           setFamilyGroupId(newGroupId);
@@ -75,11 +70,7 @@ const FamilyGroup = () => {
     <section className="center-content">
       <h1 className="text-primary-text mb-6 font-medium">{FAMILY_GROUP_PROMPT}</h1>
       <div className="form-card">
-        <OnboardingFormWrapper
-          form={form}
-          onSubmit={onSubmit}
-          submitButtonText={NEXT}
-        >
+        <OnboardingFormWrapper form={form} onSubmit={onSubmit} submitButtonText={NEXT}>
           <FormField
             id="familyGroupName"
             label={FAMILY_GROUP_LABEL}
@@ -93,11 +84,7 @@ const FamilyGroup = () => {
 
         <div className="relative flex h-6 items-center pt-2">
           <FormFeedback text={SUBMIT_BUTTON_WAIT} condition={isSubmitting} />
-          <FormFeedback
-            type={"error"}
-            text={submitError ?? ""}
-            condition={!isSubmitting && !!submitError}
-          />
+          <FormFeedback type={"error"} text={submitError ?? ""} condition={!isSubmitting && !!submitError} />
         </div>
       </div>
     </section>

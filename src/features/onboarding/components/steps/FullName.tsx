@@ -1,22 +1,18 @@
 import FormFeedback from "@/components/forms/FormFeedback.tsx";
 import FormField from "@/components/forms/formFields/FormField.tsx";
 import OnboardingFormWrapper from "@/components/forms/OnboardingFormWrapper.tsx";
-import { useAuth } from "@/context/auth/useAuth.ts";
-import { updateFullName } from "@/features/onboarding/data/updateFullName.ts";
-import {
-  type FullNameFormData,
-  fullNameSchema,
-} from "@/features/onboarding/schemas/fullNameSchema.ts";
-import { useOnboardingStore } from "@/features/onboarding/store/onboarding.store.ts";
-import { useLiveValidation } from "@/hooks/useLiveValidation/useLiveValidation.ts";
-import { SUBMIT_BUTTON_WAIT } from "@copy/general.ts";
-import { NEXT } from "@copy/navigation.ts";
+import { useAuth } from "@/features/auth/context/useAuth.ts";
 import {
   FULL_NAME_LABEL,
   FULL_NAME_PLACEHOLDER,
   FULL_NAME_PROMPT,
   FULL_NAME_SUBMIT_ERROR,
-} from "@copy/onboarding/fullName.ts";
+} from "@/features/onboarding/copy/fullName.ts";
+import { updateFullName } from "@/features/onboarding/data/updateFullName.ts";
+import { type FullNameFormData, fullNameSchema } from "@/features/onboarding/schemas/fullNameSchema.ts";
+import { useOnboardingStore } from "@/features/onboarding/store/onboarding.store.ts";
+import { useLiveValidation } from "@/hooks/useLiveValidation/useLiveValidation.ts";
+import { NEXT, SUBMIT_BUTTON_WAIT } from "@copy/general.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -88,11 +84,7 @@ const FullName = () => {
 
         <div className="relative flex h-6 items-center pt-2">
           <FormFeedback text={SUBMIT_BUTTON_WAIT} condition={isSubmitting} />
-          <FormFeedback
-            type={"error"}
-            text={submitError ?? ""}
-            condition={!isSubmitting && !!submitError}
-          />
+          <FormFeedback type={"error"} text={submitError ?? ""} condition={!isSubmitting && !!submitError} />
         </div>
       </div>
     </section>

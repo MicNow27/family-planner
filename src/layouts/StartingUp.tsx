@@ -1,4 +1,4 @@
-import StartUpHeader from "@/features/navigation/StartUpHeader.tsx";
+import StartUpHeader from "@/features/navigation/components/StartUpHeader.tsx";
 import { Outlet } from "react-router";
 
 const StartingUp = () => (

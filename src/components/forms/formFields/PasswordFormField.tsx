@@ -1,5 +1,5 @@
 import type { PasswordFormFieldProps } from "@/components/forms/formFields/types.ts";
-import { HIDE_PASSWORD, SHOW_PASSWORD } from "@copy/auth/password.ts";
+import { HIDE, SHOW } from "@copy/general";
 import { useState } from "react";
 
 const PasswordFormField = ({ id, label, placeholder, register, error, disabled, value }: PasswordFormFieldProps) => {
@@ -28,7 +28,7 @@ const PasswordFormField = ({ id, label, placeholder, register, error, disabled, 
             onClick={() => setShowPassword((current) => !current)}
             disabled={disabled}
           >
-            {showPassword ? HIDE_PASSWORD : SHOW_PASSWORD}
+            {showPassword ? HIDE : SHOW}
           </button>
         )}
       </div>

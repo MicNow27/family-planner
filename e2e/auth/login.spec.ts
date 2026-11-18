@@ -1,6 +1,7 @@
-import { EMAIL_ERROR, EMAIL_LABEL } from "@copy/auth/email.ts";
-import { LOGIN, LOGIN_ERROR } from "@copy/auth/login.ts";
-import { HIDE_PASSWORD, PASSWORD_ERROR_LENGTH, PASSWORD_LABEL, SHOW_PASSWORD } from "@copy/auth/password.ts";
+import { EMAIL_ERROR, EMAIL_LABEL } from "@/features/auth/copy/email.ts";
+import { LOGIN, LOGIN_ERROR } from "@/features/auth/copy/login.ts";
+import { PASSWORD_ERROR_LENGTH, PASSWORD_LABEL } from "@/features/auth/copy/password.ts";
+import { HIDE, SHOW } from "@copy/general.ts";
 import { expect, test } from "@playwright/test";
 import { testUser } from "./data/testUser";
 
@@ -37,16 +38,16 @@ test.describe("Authentication - Login", () => {
     });
 
     await passwordField.fill("1234");
-    await expect(showHideButton).toHaveText(SHOW_PASSWORD);
+    await expect(showHideButton).toHaveText(SHOW);
     await expect(passwordField).toHaveAttribute("type", "password");
 
     await showHideButton.click();
-    await expect(showHideButton).toHaveText(HIDE_PASSWORD);
+    await expect(showHideButton).toHaveText(HIDE);
     await expect(passwordField).toHaveAttribute("type", "text");
     await expect(passwordField).toHaveValue("1234");
 
     await showHideButton.click();
-    await expect(showHideButton).toHaveText(SHOW_PASSWORD);
+    await expect(showHideButton).toHaveText(SHOW);
     await expect(passwordField).toHaveAttribute("type", "password");
     await expect(passwordField).toHaveValue("1234");
   });
