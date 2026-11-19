@@ -1,4 +1,4 @@
-import { formatDate } from "@/utils/strings/date.ts";
+import { formatDate } from "@utils/strings/date.ts";
 
 describe("formatDate", () => {
   it("returns digits without formatting when there are fewer than 4 digits", () => {

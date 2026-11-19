@@ -1,6 +1,6 @@
 import { supabaseClient } from "@/data/supabase.ts";
-import { BASE_URL } from "@/features/auth/context/baseUrl.ts";
-import type { AuthError, AuthTypes } from "@/features/auth/types/authTypes.ts";
+import { BASE_URL } from "@auth/context/baseUrl.ts";
+import type { AuthCredentials, AuthError } from "@auth/types/authTypes.ts";
 import type { Session, User } from "@supabase/supabase-js";
 import { type ReactNode, useEffect, useState } from "react";
 import { AuthContext } from "./AuthContext.ts";
@@ -24,7 +24,7 @@ const AuthProvider = ({ children }: AuthContextProviderProps) => {
     return () => data.subscription.unsubscribe();
   }, []);
 
-  const signUp = async ({ email, password }: AuthTypes): Promise<AuthError> => {
+  const signUp = async ({ email, password }: AuthCredentials): Promise<AuthError> => {
     const { error } = await supabaseClient.auth.signUp({
       email,
       password,
@@ -36,7 +36,7 @@ const AuthProvider = ({ children }: AuthContextProviderProps) => {
     return { error: error?.message ?? null };
   };
 
-  const signIn = async ({ email, password }: AuthTypes): Promise<AuthError> => {
+  const signIn = async ({ email, password }: AuthCredentials): Promise<AuthError> => {
     const { error } = await supabaseClient.auth.signInWithPassword({
       email,
       password,

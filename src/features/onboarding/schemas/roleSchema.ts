@@ -1,4 +1,4 @@
-import type { Role } from "@/features/onboarding/types.ts";
+import type { Role } from "@onboarding/types.ts";
 import { z } from "zod";
 
 const roleValues = [

@@ -1,4 +1,4 @@
-import { emailField, passwordField } from "@/features/auth/schemas/auth/authFields.ts";
+import { emailField, passwordField } from "@auth/schemas/auth/authFields.ts";
 import { z } from "zod";
 
 export const loginSchema = z.object({

@@ -1,4 +1,4 @@
-import type { SelectOption } from "@/components/forms/formFields/types.ts";
+import type { SelectOption } from "@/components/forms/formFields/props.ts";
 import {
   FATHER,
   GUARDIAN,

@@ -1,5 +1,5 @@
-import { confirmPasswordSchema, emailSchema, passwordSchema } from "@/features/auth/schemas/auth/authSchemas.ts";
-import { strongPasswordSchema } from "@/features/auth/schemas/auth/strongPassword/strongPasswordSchema.ts";
+import { confirmPasswordSchema, emailSchema, passwordSchema } from "@auth/schemas/auth/authSchemas.ts";
+import { strongPasswordSchema } from "@auth/schemas/auth/strongPassword/strongPasswordSchema.ts";
 
 export const emailField = { email: emailSchema };
 export const passwordField = { password: passwordSchema };

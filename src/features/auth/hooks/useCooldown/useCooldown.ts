@@ -1,12 +1,12 @@
-import { EMAIL_RESENT_ERROR } from "@/features/auth/copy/email.ts";
+import { EMAIL_RESENT_ERROR } from "@auth/copy/email.ts";
 import {
   getInitialLevel,
   getNextLevel,
   getRemainingCooldownTime,
   setCooldownTime,
   setNextLevel,
-} from "@/features/auth/hooks/useCooldown/timeLogic/timeLogic.ts";
-import type { AuthError } from "@/features/auth/types/authTypes.ts";
+} from "@auth/hooks/useCooldown/timeLogic/timeLogic.ts";
+import type { AuthError } from "@auth/types/authTypes.ts";
 import { useEffect, useState } from "react";
 
 type UseCooldownOptions = {

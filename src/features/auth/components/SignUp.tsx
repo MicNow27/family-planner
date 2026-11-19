@@ -1,18 +1,18 @@
-import FormFeedback from "@/components/forms/FormFeedback.tsx";
-import FormField from "@/components/forms/formFields/FormField.tsx";
-import PasswordFormField from "@/components/forms/formFields/PasswordFormField.tsx";
-import FormWrapper from "@/components/forms/FormWrapper.tsx";
-import { useAuth } from "@/features/auth/context/useAuth.ts";
-import { EMAIL_LABEL, EMAIL_PLACEHOLDER } from "@/features/auth/copy/email.ts";
+import { useAuth } from "@auth/context/useAuth.ts";
+import { EMAIL_LABEL, EMAIL_PLACEHOLDER } from "@auth/copy/email.ts";
 import {
   PASSWORD_CONFIRM_LABEL,
   PASSWORD_CONFIRM_PLACEHOLDER,
   PASSWORD_CREATE_PLACEHOLDER,
   PASSWORD_LABEL,
-} from "@/features/auth/copy/password.ts";
-import { SIGN_UP, SIGN_UP_BUTTON_WAIT, SIGN_UP_ERROR_GENERAL } from "@/features/auth/copy/signUp.ts";
-import { type SignUpFormData, signUpSchema } from "@/features/auth/schemas/auth/signUpSchema.ts";
-import { useLiveValidation } from "@/hooks/useLiveValidation/useLiveValidation.ts";
+} from "@auth/copy/password.ts";
+import { SIGN_UP, SIGN_UP_BUTTON_WAIT, SIGN_UP_ERROR_GENERAL } from "@auth/copy/signUp.ts";
+import { type SignUpFormData, signUpSchema } from "@auth/schemas/auth/signUpSchema.ts";
+import FormFeedback from "@components/forms/FormFeedback.tsx";
+import FormField from "@components/forms/formFields/FormField.tsx";
+import PasswordFormField from "@components/forms/formFields/PasswordFormField.tsx";
+import FormWrapper from "@components/forms/formWrappers/FormWrapper.tsx";
+import { useLiveValidation } from "@components/forms/hooks/useLiveValidation/useLiveValidation.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";

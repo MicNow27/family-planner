@@ -1,4 +1,4 @@
-import type { HeaderSettings } from "@/features/navigation/types/headerTypes.ts";
+import type { HeaderSettings } from "@navigation/types/headerTypes.ts";
 import * as React from "react";
 
 export type Handle = {

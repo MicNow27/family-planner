@@ -1,16 +1,13 @@
-import FormFeedback from "@/components/forms/FormFeedback.tsx";
-import FormField from "@/components/forms/formFields/FormField.tsx";
-import FormWrapper from "@/components/forms/FormWrapper.tsx";
-import { useAuth } from "@/features/auth/context/useAuth.ts";
-import { EMAIL_LABEL, EMAIL_PLACEHOLDER, RESEND_EMAIL_BUTTON_WAIT } from "@/features/auth/copy/email.ts";
-import { FORGOT_PASSWORD, RESET_PASSWORD_WAIT } from "@/features/auth/copy/forgotPassword.ts";
-import { formatTime, ONE_HOUR, ONE_MINUTE } from "@/features/auth/hooks/useCooldown/timeLogic/timeLogic.ts";
-import { useCooldown } from "@/features/auth/hooks/useCooldown/useCooldown.ts";
-import {
-  type ForgotPasswordFormData,
-  forgotPasswordSchema,
-} from "@/features/auth/schemas/auth/forgotPasswordSchema.ts";
-import { useLiveValidation } from "@/hooks/useLiveValidation/useLiveValidation.ts";
+import { useAuth } from "@auth/context/useAuth.ts";
+import { EMAIL_LABEL, EMAIL_PLACEHOLDER, RESEND_EMAIL_BUTTON_WAIT } from "@auth/copy/email.ts";
+import { FORGOT_PASSWORD, RESET_PASSWORD_WAIT } from "@auth/copy/forgotPassword.ts";
+import { formatTime, ONE_HOUR, ONE_MINUTE } from "@auth/hooks/useCooldown/timeLogic/timeLogic.ts";
+import { useCooldown } from "@auth/hooks/useCooldown/useCooldown.ts";
+import { type ForgotPasswordFormData, forgotPasswordSchema } from "@auth/schemas/auth/forgotPasswordSchema.ts";
+import FormFeedback from "@components/forms/FormFeedback.tsx";
+import FormField from "@components/forms/formFields/FormField.tsx";
+import FormWrapper from "@components/forms/formWrappers/FormWrapper.tsx";
+import { useLiveValidation } from "@components/forms/hooks/useLiveValidation/useLiveValidation.ts";
 import { SUBMIT } from "@copy/general.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";

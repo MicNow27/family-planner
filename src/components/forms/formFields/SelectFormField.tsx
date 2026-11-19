@@ -1,4 +1,4 @@
-import type { SelectFormFieldProps } from "@/components/forms/formFields/types.ts";
+import type { SelectFormFieldProps } from "@components/forms/formFields/props.ts";
 import { Label, Listbox, ListboxButton, ListboxOption, ListboxOptions } from "@headlessui/react";
 import { ChevronDown } from "lucide-react";
 

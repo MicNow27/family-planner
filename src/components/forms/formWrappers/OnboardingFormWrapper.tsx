@@ -1,17 +1,8 @@
-import PrimaryButton from "@/components/buttons/PrimaryButton.tsx";
-import SecondaryButton from "@/components/buttons/SecondaryButton.tsx";
+import PrimaryButton from "@components/buttons/PrimaryButton.tsx";
+import SecondaryButton from "@components/buttons/SecondaryButton.tsx";
+import type { OnboardingFormWrapperProps } from "@components/forms/formWrappers/props.ts";
 import { BACK } from "@copy/general.ts";
-import type { ReactNode } from "react";
-import type { FieldValues, UseFormReturn } from "react-hook-form";
-
-interface OnboardingFormWrapperProps<T extends FieldValues> {
-  form: UseFormReturn<T>;
-  onSubmit: (data: T) => Promise<void>;
-  onBack?: () => void;
-  submitButtonText: string;
-  disableSubmit?: boolean;
-  children: ReactNode;
-}
+import type { FieldValues } from "react-hook-form";
 
 const OnboardingFormWrapper = <T extends FieldValues>({
   form,

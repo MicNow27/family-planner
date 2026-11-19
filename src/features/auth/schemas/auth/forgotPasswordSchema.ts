@@ -1,4 +1,4 @@
-import { emailField } from "@/features/auth/schemas/auth/authFields.ts";
+import { emailField } from "@auth/schemas/auth/authFields.ts";
 import { z } from "zod";
 
 export const forgotPasswordSchema = z.object({

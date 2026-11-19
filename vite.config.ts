@@ -16,7 +16,12 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "./src"),
       "@assets": path.resolve(__dirname, "./src/assets"),
+      "@auth": path.resolve(__dirname, "./src/features/auth"),
+      "@components": path.resolve(__dirname, "./src/components"),
       "@copy": path.resolve(__dirname, "./src/copy"),
+      "@navigation": path.resolve(__dirname, "./src/features/navigation"),
+      "@onboarding": path.resolve(__dirname, "./src/features/onboarding"),
+      "@utils": path.resolve(__dirname, "./src/utils"),
     },
   },
 });

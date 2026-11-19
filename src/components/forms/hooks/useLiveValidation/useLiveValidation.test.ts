@@ -1,4 +1,4 @@
-import { useLiveValidation } from "@/hooks/useLiveValidation/useLiveValidation.ts";
+import { useLiveValidation } from "@components/forms/hooks/useLiveValidation/useLiveValidation.ts";
 import { act, renderHook } from "@testing-library/react";
 
 const setup = (dirtyFields: Record<string, boolean> = {}) => {

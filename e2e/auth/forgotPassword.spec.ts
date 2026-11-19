@@ -1,4 +1,4 @@
-import { FORGOT_PASSWORD } from "@/features/auth/copy/forgotPassword.ts";
+import { FORGOT_PASSWORD } from "@auth/copy/forgotPassword.ts";
 import { expect, test } from "@playwright/test";
 
 test.describe("Authentication - Forgot Password", () => {

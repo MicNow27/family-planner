@@ -29,7 +29,12 @@
     "paths": {
       "@/*": ["src/*"],
       "@assets/*": ["src/assets/*"],
-      "@copy/*": ["src/copy/*"]
+      "@auth/*": ["src/features/auth/*"],
+      "@components/*": ["src/components/*"],
+      "@copy/*": ["src/copy/*"],
+      "@navigation/*": ["src/features/navigation/*"],
+      "@onboarding/*": ["src/features/onboarding/*"],
+      "@utils/*": ["src/utils/*"]
     }
   },
   "include": ["src"]

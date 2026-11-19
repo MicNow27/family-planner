@@ -1,5 +1,5 @@
 import { supabaseClient } from "@/data/supabase.ts";
-import type { OnboardingState } from "@/features/onboarding/store/onboarding.store.ts";
+import type { OnboardingState } from "@onboarding/store/onboarding.store.ts";
 
 export const getOnboardingData = async (userId: string): Promise<OnboardingState> => {
   const { data, error } = await supabaseClient
