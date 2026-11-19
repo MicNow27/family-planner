@@ -1,6 +1,6 @@
 import FormFeedback from "@/components/forms/FormFeedback.tsx";
 import DateFormField from "@/components/forms/formFields/DateFormField.tsx";
-import OnboardingFormWrapper from "@/components/forms/OnboardingFormWrapper.tsx";
+import OnboardingFormWrapper from "@/components/forms/formWrappers/OnboardingFormWrapper.tsx";
 import { useAuth } from "@/features/auth/context/useAuth.ts";
 import { BIRTHDAY_LABEL, BIRTHDAY_PROMPT, BIRTHDAY_SUBMIT_ERROR } from "@/features/onboarding/copy/birthday.ts";
 import { updateBirthday } from "@/features/onboarding/data/updateBirthday.ts";

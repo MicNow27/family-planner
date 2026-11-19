@@ -1,6 +1,6 @@
 import FormFeedback from "@/components/forms/FormFeedback.tsx";
 import PasswordFormField from "@/components/forms/formFields/PasswordFormField.tsx";
-import FormWrapper from "@/components/forms/FormWrapper.tsx";
+import FormWrapper from "@/components/forms/formWrappers/FormWrapper.tsx";
 import { useAuth } from "@/features/auth/context/useAuth.ts";
 import { RESET_PASSWORD, RESET_PASSWORD_ERROR, RESET_PASSWORD_WAIT } from "@/features/auth/copy/forgotPassword.ts";
 import {

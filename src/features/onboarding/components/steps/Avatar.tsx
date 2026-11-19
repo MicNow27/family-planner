@@ -1,6 +1,6 @@
 import FormFeedback from "@/components/forms/FormFeedback.tsx";
 import ImageFormField from "@/components/forms/formFields/ImageFormField.tsx";
-import OnboardingFormWrapper from "@/components/forms/OnboardingFormWrapper.tsx";
+import OnboardingFormWrapper from "@/components/forms/formWrappers/OnboardingFormWrapper.tsx";
 import { useAuth } from "@/features/auth/context/useAuth.ts";
 import { AVATAR_LABEL, AVATAR_PROMPT, AVATAR_SUBMIT_ERROR } from "@/features/onboarding/copy/avatar.ts";
 import { uploadAvatar } from "@/features/onboarding/data/picture/uploadAvatar.ts";

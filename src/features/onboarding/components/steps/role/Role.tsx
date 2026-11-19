@@ -1,6 +1,6 @@
 import FormFeedback from "@/components/forms/FormFeedback.tsx";
 import SelectFormField from "@/components/forms/formFields/SelectFormField.tsx";
-import OnboardingFormWrapper from "@/components/forms/OnboardingFormWrapper.tsx";
+import OnboardingFormWrapper from "@/components/forms/formWrappers/OnboardingFormWrapper.tsx";
 import { useAuth } from "@/features/auth/context/useAuth.ts";
 import { roleOptions } from "@/features/onboarding/components/steps/role/roleOptions.ts";
 import { ROLE_LABEL, ROLE_PROMPT, ROLE_SUBMIT_ERROR } from "@/features/onboarding/copy/role.ts";

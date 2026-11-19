@@ -1,4 +1,4 @@
-import type { FormFieldProps } from "@/components/forms/formFields/types.ts";
+import type { FormFieldProps } from "@/components/forms/formFields/props.ts";
 
 const FormField = ({ id, label, type, placeholder, register, error, disabled }: FormFieldProps) => (
   <div className={`flex w-full flex-col gap-1 ${disabled && "opacity-50"}`}>

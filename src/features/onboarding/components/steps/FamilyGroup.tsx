@@ -1,6 +1,6 @@
 import FormFeedback from "@/components/forms/FormFeedback.tsx";
 import FormField from "@/components/forms/formFields/FormField.tsx";
-import OnboardingFormWrapper from "@/components/forms/OnboardingFormWrapper.tsx";
+import OnboardingFormWrapper from "@/components/forms/formWrappers/OnboardingFormWrapper.tsx";
 import {
   FAMILY_GROUP_LABEL,
   FAMILY_GROUP_PLACEHOLDER,

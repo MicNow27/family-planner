@@ -1,14 +1,6 @@
-import type { ReactNode } from "react";
-import type { FieldValues, UseFormReturn } from "react-hook-form";
-import PrimaryButton from "../buttons/PrimaryButton.tsx";
-
-interface FormWrapperProps<T extends FieldValues> {
-  form: UseFormReturn<T>;
-  onSubmit: (data: T) => Promise<void>;
-  submitButtonText: string;
-  disableSubmit?: boolean;
-  children: ReactNode;
-}
+import type { FormWrapperProps } from "@/components/forms/formWrappers/props.ts";
+import type { FieldValues } from "react-hook-form";
+import PrimaryButton from "../../buttons/PrimaryButton.tsx";
 
 const FormWrapper = <T extends FieldValues>({
   form,

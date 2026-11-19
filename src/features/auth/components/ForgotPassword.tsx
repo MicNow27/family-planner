@@ -1,6 +1,6 @@
 import FormFeedback from "@/components/forms/FormFeedback.tsx";
 import FormField from "@/components/forms/formFields/FormField.tsx";
-import FormWrapper from "@/components/forms/FormWrapper.tsx";
+import FormWrapper from "@/components/forms/formWrappers/FormWrapper.tsx";
 import { useAuth } from "@/features/auth/context/useAuth.ts";
 import { EMAIL_LABEL, EMAIL_PLACEHOLDER, RESEND_EMAIL_BUTTON_WAIT } from "@/features/auth/copy/email.ts";
 import { FORGOT_PASSWORD, RESET_PASSWORD_WAIT } from "@/features/auth/copy/forgotPassword.ts";
