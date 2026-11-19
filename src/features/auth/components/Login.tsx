@@ -1,9 +1,9 @@
-import { useAuth } from "@/features/auth/context/useAuth.ts";
-import { EMAIL_LABEL, EMAIL_PLACEHOLDER } from "@/features/auth/copy/email.ts";
-import { FORGOT_PASSWORD } from "@/features/auth/copy/forgotPassword.ts";
-import { LOGIN, LOGIN_BUTTON_WAIT, LOGIN_ERROR } from "@/features/auth/copy/login.ts";
-import { PASSWORD_ENTER_PLACEHOLDER, PASSWORD_LABEL } from "@/features/auth/copy/password.ts";
-import { type LoginFormData, loginSchema } from "@/features/auth/schemas/auth/loginSchema.ts";
+import { useAuth } from "@auth/context/useAuth.ts";
+import { EMAIL_LABEL, EMAIL_PLACEHOLDER } from "@auth/copy/email.ts";
+import { FORGOT_PASSWORD } from "@auth/copy/forgotPassword.ts";
+import { LOGIN, LOGIN_BUTTON_WAIT, LOGIN_ERROR } from "@auth/copy/login.ts";
+import { PASSWORD_ENTER_PLACEHOLDER, PASSWORD_LABEL } from "@auth/copy/password.ts";
+import { type LoginFormData, loginSchema } from "@auth/schemas/auth/loginSchema.ts";
 import FormFeedback from "@components/forms/FormFeedback.tsx";
 import FormField from "@components/forms/formFields/FormField.tsx";
 import PasswordFormField from "@components/forms/formFields/PasswordFormField.tsx";

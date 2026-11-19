@@ -1,4 +1,4 @@
-import type { ResendEmailTime } from "@/features/auth/types/resendEmailTime.ts";
+import type { ResendEmailTime } from "@auth/types/resendEmailTime.ts";
 
 export const EMAIL_LABEL = "Email";
 export const EMAIL_PLACEHOLDER = "Enter your email";

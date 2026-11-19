@@ -1,5 +1,5 @@
-import { EMAIL_ERROR } from "@/features/auth/copy/email.ts";
-import { PASSWORD_CONFIRM_ERROR_LENGTH, PASSWORD_ERROR_LENGTH } from "@/features/auth/copy/password.ts";
+import { EMAIL_ERROR } from "@auth/copy/email.ts";
+import { PASSWORD_CONFIRM_ERROR_LENGTH, PASSWORD_ERROR_LENGTH } from "@auth/copy/password.ts";
 import { z } from "zod";
 
 export const emailSchema = z.email(EMAIL_ERROR);

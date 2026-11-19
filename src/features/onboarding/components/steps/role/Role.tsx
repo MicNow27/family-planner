@@ -1,4 +1,4 @@
-import { useAuth } from "@/features/auth/context/useAuth.ts";
+import { useAuth } from "@auth/context/useAuth.ts";
 import { roleOptions } from "@/features/onboarding/components/steps/role/roleOptions.ts";
 import { ROLE_LABEL, ROLE_PROMPT, ROLE_SUBMIT_ERROR } from "@/features/onboarding/copy/role.ts";
 import { updateRole } from "@/features/onboarding/data/updateRole.ts";

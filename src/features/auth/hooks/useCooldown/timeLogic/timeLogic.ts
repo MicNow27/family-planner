@@ -1,4 +1,4 @@
-import type { ResendEmailTime } from "@/features/auth/types/resendEmailTime.ts";
+import type { ResendEmailTime } from "@auth/types/resendEmailTime.ts";
 
 export const ONE_HOUR = 3600;
 export const ONE_MINUTE = 60;

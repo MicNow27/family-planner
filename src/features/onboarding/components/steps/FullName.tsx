@@ -1,4 +1,4 @@
-import { useAuth } from "@/features/auth/context/useAuth.ts";
+import { useAuth } from "@auth/context/useAuth.ts";
 import {
   FULL_NAME_LABEL,
   FULL_NAME_PLACEHOLDER,

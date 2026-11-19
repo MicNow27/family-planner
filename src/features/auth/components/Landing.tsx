@@ -1,5 +1,5 @@
-import { LOGIN } from "@/features/auth/copy/login.ts";
-import { SIGN_UP } from "@/features/auth/copy/signUp.ts";
+import { LOGIN } from "@auth/copy/login.ts";
+import { SIGN_UP } from "@auth/copy/signUp.ts";
 import family from "@assets/images/family.svg";
 import logo from "@assets/images/logo.svg";
 import PrimaryButton from "@components/buttons/PrimaryButton.tsx";

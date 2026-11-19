@@ -1,4 +1,4 @@
-import { passwordConfirmationSchema } from "@/features/auth/schemas/auth/passwordConfirmation/passwordConfirmationSchema.ts";
+import { passwordConfirmationSchema } from "@auth/schemas/auth/passwordConfirmation/passwordConfirmationSchema.ts";
 import { z } from "zod";
 
 export const resetPasswordSchema = passwordConfirmationSchema;

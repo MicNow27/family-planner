@@ -1,12 +1,12 @@
-import { useAuth } from "@/features/auth/context/useAuth.ts";
-import { RESET_PASSWORD, RESET_PASSWORD_ERROR, RESET_PASSWORD_WAIT } from "@/features/auth/copy/forgotPassword.ts";
+import { useAuth } from "@auth/context/useAuth.ts";
+import { RESET_PASSWORD, RESET_PASSWORD_ERROR, RESET_PASSWORD_WAIT } from "@auth/copy/forgotPassword.ts";
 import {
   PASSWORD_CONFIRM_LABEL,
   PASSWORD_CONFIRM_PLACEHOLDER,
   PASSWORD_CREATE_PLACEHOLDER,
   PASSWORD_LABEL,
-} from "@/features/auth/copy/password.ts";
-import { type ResetPasswordFormData, resetPasswordSchema } from "@/features/auth/schemas/auth/resetPasswordSchema.ts";
+} from "@auth/copy/password.ts";
+import { type ResetPasswordFormData, resetPasswordSchema } from "@auth/schemas/auth/resetPasswordSchema.ts";
 import FormFeedback from "@components/forms/FormFeedback.tsx";
 import PasswordFormField from "@components/forms/formFields/PasswordFormField.tsx";
 import FormWrapper from "@components/forms/formWrappers/FormWrapper.tsx";

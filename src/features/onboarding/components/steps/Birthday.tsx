@@ -1,4 +1,4 @@
-import { useAuth } from "@/features/auth/context/useAuth.ts";
+import { useAuth } from "@auth/context/useAuth.ts";
 import { BIRTHDAY_LABEL, BIRTHDAY_PROMPT, BIRTHDAY_SUBMIT_ERROR } from "@/features/onboarding/copy/birthday.ts";
 import { updateBirthday } from "@/features/onboarding/data/updateBirthday.ts";
 import { type BirthdayFormData, birthdaySchema } from "@/features/onboarding/schemas/birthdaySchema.ts";

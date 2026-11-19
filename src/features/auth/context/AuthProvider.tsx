@@ -1,6 +1,6 @@
 import { supabaseClient } from "@/data/supabase.ts";
-import { BASE_URL } from "@/features/auth/context/baseUrl.ts";
-import type { AuthCredentials, AuthError } from "@/features/auth/types/authTypes.ts";
+import { BASE_URL } from "@auth/context/baseUrl.ts";
+import type { AuthCredentials, AuthError } from "@auth/types/authTypes.ts";
 import type { Session, User } from "@supabase/supabase-js";
 import { type ReactNode, useEffect, useState } from "react";
 import { AuthContext } from "./AuthContext.ts";

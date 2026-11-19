@@ -1,4 +1,4 @@
-import { strongPasswordSchema } from "@/features/auth/schemas/auth/strongPassword/strongPasswordSchema.ts";
+import { strongPasswordSchema } from "@auth/schemas/auth/strongPassword/strongPasswordSchema.ts";
 
 describe("strongPasswordSchema", () => {
   it("accepts a valid strong password", () => {

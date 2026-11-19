@@ -29,6 +29,7 @@
     "paths": {
       "@/*": ["src/*"],
       "@assets/*": ["src/assets/*"],
+      "@auth/*": ["src/features/auth/*"],
       "@components/*": ["src/components/*"],
       "@copy/*": ["src/copy/*"],
       "@utils/*": ["src/utils/*"]

@@ -1,4 +1,4 @@
-import { useAuth } from "@/features/auth/context/useAuth.ts";
+import { useAuth } from "@auth/context/useAuth.ts";
 import { AVATAR_LABEL, AVATAR_PROMPT, AVATAR_SUBMIT_ERROR } from "@/features/onboarding/copy/avatar.ts";
 import { uploadAvatar } from "@/features/onboarding/data/picture/uploadAvatar.ts";
 import { type AvatarFormData, avatarSchema } from "@/features/onboarding/schemas/avatarSchema.ts";

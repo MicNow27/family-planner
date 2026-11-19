@@ -1,4 +1,4 @@
-import { useAuth } from "@/features/auth/context/useAuth.ts";
+import { useAuth } from "@auth/context/useAuth.ts";
 import { PROFILE_FETCH_ERROR } from "@/features/navigation/copy/errors.ts";
 import { useProfile } from "@/features/navigation/data/profile/useProfile.ts";
 import FullScreenLoader from "@components/loaders/FullScreenLoader/FullScreenLoader.tsx";

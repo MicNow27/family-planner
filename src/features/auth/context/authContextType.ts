@@ -1,4 +1,4 @@
-import type { AuthCredentials, AuthError } from "@/features/auth/types/authTypes.ts";
+import type { AuthCredentials, AuthError } from "@auth/types/authTypes.ts";
 import type { Session, User } from "@supabase/supabase-js";
 
 export type AuthContextType = {

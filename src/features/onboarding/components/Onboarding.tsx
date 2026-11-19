@@ -1,4 +1,4 @@
-import { useAuth } from "@/features/auth/context/useAuth.ts";
+import { useAuth } from "@auth/context/useAuth.ts";
 import ErrorPage from "@/features/navigation/components/ErrorPage.tsx";
 import Carousel from "@/features/onboarding/components/Carousel.tsx";
 import Avatar from "@/features/onboarding/components/steps/Avatar.tsx";
