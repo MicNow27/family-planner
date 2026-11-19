@@ -1,5 +1,5 @@
-import { SOMETHING_WENT_WRONG } from "@/features/navigation/copy/errors.ts";
 import errorPage from "@assets/images/errorPage.svg";
+import { SOMETHING_WENT_WRONG } from "@navigation/copy/errors.ts";
 import { useLocation } from "react-router";
 
 type ErrorPageProps = {

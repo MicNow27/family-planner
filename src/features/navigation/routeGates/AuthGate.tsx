@@ -1,7 +1,7 @@
 import { useAuth } from "@auth/context/useAuth.ts";
-import { PROFILE_FETCH_ERROR } from "@/features/navigation/copy/errors.ts";
-import { useProfile } from "@/features/navigation/data/profile/useProfile.ts";
 import FullScreenLoader from "@components/loaders/FullScreenLoader/FullScreenLoader.tsx";
+import { PROFILE_FETCH_ERROR } from "@navigation/copy/errors.ts";
+import { useProfile } from "@navigation/data/profile/useProfile.ts";
 import { Navigate, Outlet } from "react-router";
 
 type AuthGateProps = {

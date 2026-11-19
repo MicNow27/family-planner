@@ -32,6 +32,7 @@
       "@auth/*": ["src/features/auth/*"],
       "@components/*": ["src/components/*"],
       "@copy/*": ["src/copy/*"],
+      "@navigation/*": ["src/features/navigation/*"],
       "@utils/*": ["src/utils/*"]
     }
   },

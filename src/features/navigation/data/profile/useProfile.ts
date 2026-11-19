@@ -1,4 +1,4 @@
-import { getProfile } from "@/features/navigation/data/profile/getProfile.ts";
+import { getProfile } from "@navigation/data/profile/getProfile.ts";
 import { useQuery } from "@tanstack/react-query";
 
 export const useProfile = (userId?: string) =>
