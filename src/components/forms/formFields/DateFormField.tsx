@@ -1,5 +1,5 @@
-import { formatDate } from "@/utils/strings/date.ts";
 import type { DateFormFieldProps } from "@components/forms/formFields/props.ts";
+import { formatDate } from "@utils/strings/date.ts";
 import * as React from "react";
 
 const DateFormField = ({ id, label, placeholder, register, error, disabled }: DateFormFieldProps) => {
