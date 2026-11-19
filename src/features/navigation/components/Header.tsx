@@ -1,7 +1,7 @@
-import BackButton from "@/components/buttons/BackButton.tsx";
 import type { HeaderSettings } from "@/features/navigation/types/headerTypes.ts";
 import type { Handle } from "@/features/navigation/types/routeTypes.ts";
 import logo from "@assets/images/logo.svg";
+import BackButton from "@components/buttons/BackButton.tsx";
 import { APP_NAME } from "@copy/general.ts";
 import { type UIMatch, useMatches, useNavigate } from "react-router";
 

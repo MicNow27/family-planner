@@ -1,5 +1,5 @@
-import type { ImageFormFieldProps } from "@/components/forms/formFields/props.ts";
 import avatarPlaceholder from "@assets/images/avatarPlaceholder.svg";
+import type { ImageFormFieldProps } from "@components/forms/formFields/props.ts";
 import { Upload } from "lucide-react";
 import * as React from "react";
 import { useEffect, useState } from "react";

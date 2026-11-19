@@ -1,6 +1,3 @@
-import FormFeedback from "@/components/forms/FormFeedback.tsx";
-import FormField from "@/components/forms/formFields/FormField.tsx";
-import OnboardingFormWrapper from "@/components/forms/formWrappers/OnboardingFormWrapper.tsx";
 import { useAuth } from "@/features/auth/context/useAuth.ts";
 import {
   FULL_NAME_LABEL,
@@ -12,6 +9,9 @@ import { updateFullName } from "@/features/onboarding/data/updateFullName.ts";
 import { type FullNameFormData, fullNameSchema } from "@/features/onboarding/schemas/fullNameSchema.ts";
 import { useOnboardingStore } from "@/features/onboarding/store/onboarding.store.ts";
 import { useLiveValidation } from "@/hooks/useLiveValidation/useLiveValidation.ts";
+import FormFeedback from "@components/forms/FormFeedback.tsx";
+import FormField from "@components/forms/formFields/FormField.tsx";
+import OnboardingFormWrapper from "@components/forms/formWrappers/OnboardingFormWrapper.tsx";
 import { NEXT, SUBMIT_BUTTON_WAIT } from "@copy/general.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";

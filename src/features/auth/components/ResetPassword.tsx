@@ -1,6 +1,3 @@
-import FormFeedback from "@/components/forms/FormFeedback.tsx";
-import PasswordFormField from "@/components/forms/formFields/PasswordFormField.tsx";
-import FormWrapper from "@/components/forms/formWrappers/FormWrapper.tsx";
 import { useAuth } from "@/features/auth/context/useAuth.ts";
 import { RESET_PASSWORD, RESET_PASSWORD_ERROR, RESET_PASSWORD_WAIT } from "@/features/auth/copy/forgotPassword.ts";
 import {
@@ -11,6 +8,9 @@ import {
 } from "@/features/auth/copy/password.ts";
 import { type ResetPasswordFormData, resetPasswordSchema } from "@/features/auth/schemas/auth/resetPasswordSchema.ts";
 import { useLiveValidation } from "@/hooks/useLiveValidation/useLiveValidation.ts";
+import FormFeedback from "@components/forms/FormFeedback.tsx";
+import PasswordFormField from "@components/forms/formFields/PasswordFormField.tsx";
+import FormWrapper from "@components/forms/formWrappers/FormWrapper.tsx";
 import { SUBMIT } from "@copy/general.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";

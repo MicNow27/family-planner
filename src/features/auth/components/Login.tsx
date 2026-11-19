@@ -1,7 +1,3 @@
-import FormFeedback from "@/components/forms/FormFeedback.tsx";
-import FormField from "@/components/forms/formFields/FormField.tsx";
-import PasswordFormField from "@/components/forms/formFields/PasswordFormField.tsx";
-import FormWrapper from "@/components/forms/formWrappers/FormWrapper.tsx";
 import { useAuth } from "@/features/auth/context/useAuth.ts";
 import { EMAIL_LABEL, EMAIL_PLACEHOLDER } from "@/features/auth/copy/email.ts";
 import { FORGOT_PASSWORD } from "@/features/auth/copy/forgotPassword.ts";
@@ -9,6 +5,10 @@ import { LOGIN, LOGIN_BUTTON_WAIT, LOGIN_ERROR } from "@/features/auth/copy/logi
 import { PASSWORD_ENTER_PLACEHOLDER, PASSWORD_LABEL } from "@/features/auth/copy/password.ts";
 import { type LoginFormData, loginSchema } from "@/features/auth/schemas/auth/loginSchema.ts";
 import { useLiveValidation } from "@/hooks/useLiveValidation/useLiveValidation.ts";
+import FormFeedback from "@components/forms/FormFeedback.tsx";
+import FormField from "@components/forms/formFields/FormField.tsx";
+import PasswordFormField from "@components/forms/formFields/PasswordFormField.tsx";
+import FormWrapper from "@components/forms/formWrappers/FormWrapper.tsx";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";

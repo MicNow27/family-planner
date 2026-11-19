@@ -1,6 +1,6 @@
-import PrimaryButton from "@/components/buttons/PrimaryButton.tsx";
-import SecondaryButton from "@/components/buttons/SecondaryButton.tsx";
-import type { OnboardingFormWrapperProps } from "@/components/forms/formWrappers/props.ts";
+import PrimaryButton from "@components/buttons/PrimaryButton.tsx";
+import SecondaryButton from "@components/buttons/SecondaryButton.tsx";
+import type { OnboardingFormWrapperProps } from "@components/forms/formWrappers/props.ts";
 import { BACK } from "@copy/general.ts";
 import type { FieldValues } from "react-hook-form";
 

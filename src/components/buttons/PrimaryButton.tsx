@@ -1,4 +1,4 @@
-import type { Props } from "@/components/buttons/props.ts";
+import type { Props } from "@components/buttons/props.ts";
 
 const PrimaryButton = ({ text, onClick, disabled = false, type = "button" }: Props) => (
   <button

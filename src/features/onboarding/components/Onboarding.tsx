@@ -1,4 +1,3 @@
-import FullScreenLoader from "@/components/loaders/FullScreenLoader/FullScreenLoader.tsx";
 import { useAuth } from "@/features/auth/context/useAuth.ts";
 import ErrorPage from "@/features/navigation/components/ErrorPage.tsx";
 import Carousel from "@/features/onboarding/components/Carousel.tsx";
@@ -7,10 +6,11 @@ import Birthday from "@/features/onboarding/components/steps/Birthday.tsx";
 import FamilyGroup from "@/features/onboarding/components/steps/FamilyGroup.tsx";
 import FullName from "@/features/onboarding/components/steps/FullName.tsx";
 import Role from "@/features/onboarding/components/steps/role/Role.tsx";
+import { ONBOARDING_DATA_FETCH_ERROR } from "@/features/onboarding/copy/onboarding.ts";
 import { useOnboardingData } from "@/features/onboarding/data/onboardingData/useOnboardingData.ts";
 import { useOnboardingStore } from "@/features/onboarding/store/onboarding.store.ts";
 import type { OnboardingStepForm } from "@/features/onboarding/types.ts";
-import { ONBOARDING_DATA_FETCH_ERROR } from "@/features/onboarding/copy/onboarding.ts";
+import FullScreenLoader from "@components/loaders/FullScreenLoader/FullScreenLoader.tsx";
 import { useEffect } from "react";
 
 const Onboarding = () => {

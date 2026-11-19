@@ -1,12 +1,12 @@
-import FormFeedback from "@/components/forms/FormFeedback.tsx";
-import DateFormField from "@/components/forms/formFields/DateFormField.tsx";
-import OnboardingFormWrapper from "@/components/forms/formWrappers/OnboardingFormWrapper.tsx";
 import { useAuth } from "@/features/auth/context/useAuth.ts";
 import { BIRTHDAY_LABEL, BIRTHDAY_PROMPT, BIRTHDAY_SUBMIT_ERROR } from "@/features/onboarding/copy/birthday.ts";
 import { updateBirthday } from "@/features/onboarding/data/updateBirthday.ts";
 import { type BirthdayFormData, birthdaySchema } from "@/features/onboarding/schemas/birthdaySchema.ts";
 import { useOnboardingStore } from "@/features/onboarding/store/onboarding.store.ts";
 import { useLiveValidation } from "@/hooks/useLiveValidation/useLiveValidation.ts";
+import FormFeedback from "@components/forms/FormFeedback.tsx";
+import DateFormField from "@components/forms/formFields/DateFormField.tsx";
+import OnboardingFormWrapper from "@components/forms/formWrappers/OnboardingFormWrapper.tsx";
 import { NEXT, SUBMIT_BUTTON_WAIT } from "@copy/general.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";

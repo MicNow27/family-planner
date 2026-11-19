@@ -1,4 +1,4 @@
-import type { FormWrapperProps } from "@/components/forms/formWrappers/props.ts";
+import type { FormWrapperProps } from "@components/forms/formWrappers/props.ts";
 import type { FieldValues } from "react-hook-form";
 import PrimaryButton from "../../buttons/PrimaryButton.tsx";
 

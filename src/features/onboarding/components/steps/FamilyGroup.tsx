@@ -1,6 +1,3 @@
-import FormFeedback from "@/components/forms/FormFeedback.tsx";
-import FormField from "@/components/forms/formFields/FormField.tsx";
-import OnboardingFormWrapper from "@/components/forms/formWrappers/OnboardingFormWrapper.tsx";
 import {
   FAMILY_GROUP_LABEL,
   FAMILY_GROUP_PLACEHOLDER,
@@ -12,6 +9,9 @@ import { updateFamilyGroupName } from "@/features/onboarding/data/familyGroup/up
 import { type FamilyGroupFormData, familyGroupSchema } from "@/features/onboarding/schemas/familyGroupSchema.ts";
 import { useOnboardingStore } from "@/features/onboarding/store/onboarding.store.ts";
 import { useLiveValidation } from "@/hooks/useLiveValidation/useLiveValidation.ts";
+import FormFeedback from "@components/forms/FormFeedback.tsx";
+import FormField from "@components/forms/formFields/FormField.tsx";
+import OnboardingFormWrapper from "@components/forms/formWrappers/OnboardingFormWrapper.tsx";
 import { NEXT, SUBMIT_BUTTON_WAIT } from "@copy/general.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";

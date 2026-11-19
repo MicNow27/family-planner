@@ -1,5 +1,3 @@
-import PrimaryButton from "@/components/buttons/PrimaryButton.tsx";
-import FormFeedback from "@/components/forms/FormFeedback.tsx";
 import { useAuth } from "@/features/auth/context/useAuth.ts";
 import {
   CHECK_EMAIL,
@@ -9,6 +7,8 @@ import {
 } from "@/features/auth/copy/email.ts";
 import { formatTime, ONE_HOUR, ONE_MINUTE } from "@/features/auth/hooks/useCooldown/timeLogic/timeLogic.ts";
 import { useCooldown } from "@/features/auth/hooks/useCooldown/useCooldown.ts";
+import PrimaryButton from "@components/buttons/PrimaryButton.tsx";
+import FormFeedback from "@components/forms/FormFeedback.tsx";
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router";
 
