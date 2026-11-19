@@ -1,4 +1,4 @@
-import { NAME_LENGTH_ERROR, NAME_REQUIRED_ERROR, NAME_VALID_ERROR } from "@/features/onboarding/copy/name.ts";
+import { NAME_LENGTH_ERROR, NAME_REQUIRED_ERROR, NAME_VALID_ERROR } from "@onboarding/copy/name.ts";
 import { z } from "zod";
 
 export const nameSchema = z

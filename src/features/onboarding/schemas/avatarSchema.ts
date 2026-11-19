@@ -1,4 +1,4 @@
-import { AVATAR_SIZE_ERROR, AVATAR_VALID_ERROR } from "@/features/onboarding/copy/avatar.ts";
+import { AVATAR_SIZE_ERROR, AVATAR_VALID_ERROR } from "@onboarding/copy/avatar.ts";
 import { z } from "zod";
 
 export const avatarSchema = z.object({

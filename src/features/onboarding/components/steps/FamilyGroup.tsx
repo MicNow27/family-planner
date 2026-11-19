@@ -1,19 +1,19 @@
-import {
-  FAMILY_GROUP_LABEL,
-  FAMILY_GROUP_PLACEHOLDER,
-  FAMILY_GROUP_PROMPT,
-  FAMILY_GROUP_SUBMIT_ERROR,
-} from "@/features/onboarding/copy/familyGroup.ts";
-import { createFamilyGroup } from "@/features/onboarding/data/familyGroup/createFamilyGroup.ts";
-import { updateFamilyGroupName } from "@/features/onboarding/data/familyGroup/updateFamilyGroup.ts";
-import { type FamilyGroupFormData, familyGroupSchema } from "@/features/onboarding/schemas/familyGroupSchema.ts";
-import { useOnboardingStore } from "@/features/onboarding/store/onboarding.store.ts";
 import FormFeedback from "@components/forms/FormFeedback.tsx";
 import FormField from "@components/forms/formFields/FormField.tsx";
 import OnboardingFormWrapper from "@components/forms/formWrappers/OnboardingFormWrapper.tsx";
 import { useLiveValidation } from "@components/forms/hooks/useLiveValidation/useLiveValidation.ts";
 import { NEXT, SUBMIT_BUTTON_WAIT } from "@copy/general.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  FAMILY_GROUP_LABEL,
+  FAMILY_GROUP_PLACEHOLDER,
+  FAMILY_GROUP_PROMPT,
+  FAMILY_GROUP_SUBMIT_ERROR,
+} from "@onboarding/copy/familyGroup.ts";
+import { createFamilyGroup } from "@onboarding/data/familyGroup/createFamilyGroup.ts";
+import { updateFamilyGroupName } from "@onboarding/data/familyGroup/updateFamilyGroup.ts";
+import { type FamilyGroupFormData, familyGroupSchema } from "@onboarding/schemas/familyGroupSchema.ts";
+import { useOnboardingStore } from "@onboarding/store/onboarding.store.ts";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 

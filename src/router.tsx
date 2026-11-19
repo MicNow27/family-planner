@@ -1,5 +1,4 @@
 import MyFamily from "@/features/MyFamily/MyFamily.tsx";
-import Onboarding from "@/features/onboarding/components/Onboarding.tsx";
 import SettingsLanding from "@/features/settings/SettingsLanding.tsx";
 import App from "@/layouts/App.tsx";
 import StartingUp from "@/layouts/StartingUp.tsx";
@@ -15,6 +14,7 @@ import PageNotFound from "@navigation/components/PageNotFound.tsx";
 import AuthGate from "@navigation/routeGates/AuthGate.tsx";
 import DashboardGate from "@navigation/routeGates/DashboardGate.tsx";
 import type { RouteTypes } from "@navigation/types/routeTypes.ts";
+import Onboarding from "@onboarding/components/Onboarding.tsx";
 import { createBrowserRouter } from "react-router";
 import Login from "./features/auth/components/Login.tsx";
 

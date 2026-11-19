@@ -1,5 +1,5 @@
-import { nameSchema } from "@/features/onboarding/schemas/nameSchema/nameSchema.ts";
-import { NAME_LENGTH_ERROR, NAME_REQUIRED_ERROR, NAME_VALID_ERROR } from "@/features/onboarding/copy/name.ts";
+import { NAME_LENGTH_ERROR, NAME_REQUIRED_ERROR, NAME_VALID_ERROR } from "@onboarding/copy/name.ts";
+import { nameSchema } from "@onboarding/schemas/nameSchema/nameSchema.ts";
 
 describe("nameSchema", () => {
   it("accepts a valid name", () => {

@@ -1,8 +1,4 @@
-import {
-  BIRTHDAY_FUTURE_ERROR,
-  BIRTHDAY_INVALID_ERROR,
-  BIRTHDAY_REQUIRED_ERROR,
-} from "@/features/onboarding/copy/birthday.ts";
+import { BIRTHDAY_FUTURE_ERROR, BIRTHDAY_INVALID_ERROR, BIRTHDAY_REQUIRED_ERROR } from "@onboarding/copy/birthday.ts";
 import { z } from "zod";
 
 export const birthdaySchema = z.object({

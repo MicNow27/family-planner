@@ -1,19 +1,19 @@
 import { useAuth } from "@auth/context/useAuth.ts";
-import {
-  FULL_NAME_LABEL,
-  FULL_NAME_PLACEHOLDER,
-  FULL_NAME_PROMPT,
-  FULL_NAME_SUBMIT_ERROR,
-} from "@/features/onboarding/copy/fullName.ts";
-import { updateFullName } from "@/features/onboarding/data/updateFullName.ts";
-import { type FullNameFormData, fullNameSchema } from "@/features/onboarding/schemas/fullNameSchema.ts";
-import { useOnboardingStore } from "@/features/onboarding/store/onboarding.store.ts";
 import FormFeedback from "@components/forms/FormFeedback.tsx";
 import FormField from "@components/forms/formFields/FormField.tsx";
 import OnboardingFormWrapper from "@components/forms/formWrappers/OnboardingFormWrapper.tsx";
 import { useLiveValidation } from "@components/forms/hooks/useLiveValidation/useLiveValidation.ts";
 import { NEXT, SUBMIT_BUTTON_WAIT } from "@copy/general.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  FULL_NAME_LABEL,
+  FULL_NAME_PLACEHOLDER,
+  FULL_NAME_PROMPT,
+  FULL_NAME_SUBMIT_ERROR,
+} from "@onboarding/copy/fullName.ts";
+import { updateFullName } from "@onboarding/data/updateFullName.ts";
+import { type FullNameFormData, fullNameSchema } from "@onboarding/schemas/fullNameSchema.ts";
+import { useOnboardingStore } from "@onboarding/store/onboarding.store.ts";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
