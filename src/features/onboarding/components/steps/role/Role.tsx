@@ -4,10 +4,10 @@ import { ROLE_LABEL, ROLE_PROMPT, ROLE_SUBMIT_ERROR } from "@/features/onboardin
 import { updateRole } from "@/features/onboarding/data/updateRole.ts";
 import { type RoleFormData, roleSchema } from "@/features/onboarding/schemas/roleSchema.ts";
 import { useOnboardingStore } from "@/features/onboarding/store/onboarding.store.ts";
-import { useLiveValidation } from "@/hooks/useLiveValidation/useLiveValidation.ts";
 import FormFeedback from "@components/forms/FormFeedback.tsx";
 import SelectFormField from "@components/forms/formFields/SelectFormField.tsx";
 import OnboardingFormWrapper from "@components/forms/formWrappers/OnboardingFormWrapper.tsx";
+import { useLiveValidation } from "@components/forms/hooks/useLiveValidation/useLiveValidation.ts";
 import { NEXT, SUBMIT_BUTTON_WAIT } from "@copy/general.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";

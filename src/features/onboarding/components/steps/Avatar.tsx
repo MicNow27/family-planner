@@ -3,10 +3,10 @@ import { AVATAR_LABEL, AVATAR_PROMPT, AVATAR_SUBMIT_ERROR } from "@/features/onb
 import { uploadAvatar } from "@/features/onboarding/data/picture/uploadAvatar.ts";
 import { type AvatarFormData, avatarSchema } from "@/features/onboarding/schemas/avatarSchema.ts";
 import { useOnboardingStore } from "@/features/onboarding/store/onboarding.store.ts";
-import { useLiveValidation } from "@/hooks/useLiveValidation/useLiveValidation.ts";
 import FormFeedback from "@components/forms/FormFeedback.tsx";
 import ImageFormField from "@components/forms/formFields/ImageFormField.tsx";
 import OnboardingFormWrapper from "@components/forms/formWrappers/OnboardingFormWrapper.tsx";
+import { useLiveValidation } from "@components/forms/hooks/useLiveValidation/useLiveValidation.ts";
 import { NEXT, SUBMIT_BUTTON_WAIT } from "@copy/general.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";

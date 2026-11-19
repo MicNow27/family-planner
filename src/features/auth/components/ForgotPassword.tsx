@@ -7,10 +7,10 @@ import {
   type ForgotPasswordFormData,
   forgotPasswordSchema,
 } from "@/features/auth/schemas/auth/forgotPasswordSchema.ts";
-import { useLiveValidation } from "@/hooks/useLiveValidation/useLiveValidation.ts";
 import FormFeedback from "@components/forms/FormFeedback.tsx";
 import FormField from "@components/forms/formFields/FormField.tsx";
 import FormWrapper from "@components/forms/formWrappers/FormWrapper.tsx";
+import { useLiveValidation } from "@components/forms/hooks/useLiveValidation/useLiveValidation.ts";
 import { SUBMIT } from "@copy/general.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";

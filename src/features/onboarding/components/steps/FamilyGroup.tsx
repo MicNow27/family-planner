@@ -8,10 +8,10 @@ import { createFamilyGroup } from "@/features/onboarding/data/familyGroup/create
 import { updateFamilyGroupName } from "@/features/onboarding/data/familyGroup/updateFamilyGroup.ts";
 import { type FamilyGroupFormData, familyGroupSchema } from "@/features/onboarding/schemas/familyGroupSchema.ts";
 import { useOnboardingStore } from "@/features/onboarding/store/onboarding.store.ts";
-import { useLiveValidation } from "@/hooks/useLiveValidation/useLiveValidation.ts";
 import FormFeedback from "@components/forms/FormFeedback.tsx";
 import FormField from "@components/forms/formFields/FormField.tsx";
 import OnboardingFormWrapper from "@components/forms/formWrappers/OnboardingFormWrapper.tsx";
+import { useLiveValidation } from "@components/forms/hooks/useLiveValidation/useLiveValidation.ts";
 import { NEXT, SUBMIT_BUTTON_WAIT } from "@copy/general.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
