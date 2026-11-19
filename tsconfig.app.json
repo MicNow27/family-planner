@@ -31,7 +31,6 @@
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
       "@copy/*": ["src/copy/*"],
-      "@hooks/*": ["src/hooks/*"],
       "@utils/*": ["src/utils/*"]
     }
   },
