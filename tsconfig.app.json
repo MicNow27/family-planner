@@ -29,7 +29,10 @@
     "paths": {
       "@/*": ["src/*"],
       "@assets/*": ["src/assets/*"],
-      "@copy/*": ["src/copy/*"]
+      "@components/*": ["src/components/*"],
+      "@copy/*": ["src/copy/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@utils/*": ["src/utils/*"]
     }
   },
   "include": ["src"]
